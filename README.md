@@ -50,6 +50,15 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
 * Your work goes here
 
 ## Labs
+1. Introduction to the course
+ * [Virtualization primer](/modules/virtualization-primer.md)
+ * [Github primer](/modules/github-primer.md)
+1. Hybrid app development in Cordova
+ * TBA
+1. Native App development in Android
+ * TBA
+1. Wearable Development with Metawear
+ * TBA
 
 ## Class Topics
 1. Getting up to speed
