@@ -208,8 +208,8 @@ ember cdv run --platform=android --device
 ```
 > note this requires that you have previously installed and configured ADB (the Android Device Bridge) and that your phone is connected to your computer.
 
-#### Live Reload
-##### Configuring it
+### Live Reload
+#### Configuring it
 Those familiar with Ember probably are asking themselves - what about the awesome auto-refresh ability? Well ember-cordova supports live reload:
 
 ```
@@ -226,7 +226,7 @@ To fix it it, modify ```ember-cordova/cordova/config.xml``` by adding the flag `
 Rerunning the command, we see the familiar live-reload ember server, but now with all of the cordova features AND the ability to stream to your phone as a native app. Cool huh?
 ![Ember cordova server running](hybrid-app-tutorial/ember-cordova-server.png)
 
-##### Trying it out
+### Trying it out
 Lets try it out. Create a new application template. Then we will deploy the live reload build and then run ember cdv server.
 
 ```
