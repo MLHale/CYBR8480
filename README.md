@@ -54,7 +54,8 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
  * [Virtualization primer](/modules/virtualization-primer.md)
  * [Github primer](/modules/github-primer.md)
 1. Hybrid app development in Cordova
- * TBA
+ * [Part 1 - Setup and Hello World](modules/hybrid-app-tutorial.md)
+ * Part 2 TBA
 1. Native App development in Android
  * TBA
 1. Wearable Development with Metawear
@@ -62,8 +63,7 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
 
 ## Class Topics
 1. Getting up to speed
- * [Virtualization primer](/modules/virtualization-primer.md)
- * [Github primer](/modules/github-primer.md)
+ * Virtualization and Github Labs
 1. Introduction to Mobile app Ecosystem ([PDF Lecture 1](/lectures/lecture1.pdf))
  * Types of mobile apps
  * Stats: Threat Vectors and vulnerabilities
