@@ -178,25 +178,83 @@ Since this is tedious, the CLI provides us with another command to do it.
 ```
 ember cdv run --platform=android --emulator
 ```
-> This deploys to a previously configured emulator (you can set this up in android studio) or the default one (currently, as of writing Nexus_5x_API_23_x86)
+> This deploys to a previously configured emulator (you can set this up in android studio). Before you run the command, lets setup an emulator
+
+To make this work, we need to setup an emulator. Open Android studio, select SDK manager, and then launch the standalone SDK manager. Select the 5 packages show below for a variety of emulated hardware.
+
+[SDK Manager](hybrid-app-tutorial/sdk-emulator-images.png)
+
+Once installed, lets setup our emulator image
+
+```
+android avd
+```
+
+[Android AVD](hybrid-app-tutorial/android-avd-1.png)
+[Android AVD](hybrid-app-tutorial/android-avd-2.png)
+
+> Wait a few moments for the emulator to load, eventually your app will launch
+
+[Android AVD](hybrid-app-tutorial/android-avd-3.png)
+
+> Tip #1 If you are going to develop on an emulator, it is good to leave the emulator open after the initial launch, it only takes a few seconds to reload an app, but it can take a minute to launch the emulator the first time.
+> Tip #2 You can always launch the emulator yourself using ```emulator.exe -avd Nexus7``` on the command line (the nexus7 part would be whatever you called your emulator avd)
 
 To deploy to an Android device, you can instead use:
 ```
 ember cdv run --platform=android --device
 ```
-
 > note this requires that you have previously installed and configured ADB (the Android Device Bridge) and that your phone is connected to your computer.
 
 #### Live Reload
+##### Configuring it
 Those familiar with Ember probably are asking themselves - what about the awesome auto-refresh ability? Well ember-cordova supports live reload:
 
 ```
 ember cdv:serve --platform=android
 ```
 
+You will get an error (at first):
+[Ember error](hybrid-app-tutorial/ember-serve-error.png)
+
+To fix it it, modify ```ember-cordova/cordova/config.xml``` by adding the flag ```<allow-navigation href="*"/>```
+
+> Security Note: This is to be used in development only, you should configure your build environment to allow this, but not your production environment.
+
+Rerunning the command, we see the familiar live-reload ember server, but now with all of the cordova features AND the ability to stream to your phone as a native app. Cool huh?
+[Ember cordova server running](hybrid-app-tutorial/ember-cordova-server.png)
+
+##### Trying it out
+Lets try it out. Create a new application template. Then we will deploy the live reload build and then run ember cdv server.
+
+```
+ember generate template application
+```
+
+Lets just type 'Hello World!' in our new template.
+
+Now rebuild and deploy the app to the emulator
+
+```
+ember cdv run --platform=android --emulator
+```
+
+> After it has finished building, the app will restart in the emulator and you should see hello world.
+
+Now, run ember cdv server:
+```
+ember cdv:serve --platform=android --verbose
+```
+[Hello World](hybrid-app-tutorial/hello-world.png)
+
+Now modify the application.hbs file in /app/templates to say ```Hello world! - oh look it changed```
+
+[Hello World changed](hybrid-app-tutorial/hello-world2.png)
+
 [Top](#table-of-contents)
 
-####
+#### Exploring cordova packages
+We will stop here for today and pickup next time with cordova packages that give us access to native features on the device.
 
 
 
