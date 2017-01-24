@@ -217,7 +217,7 @@ ember cdv:serve --platform=android
 ```
 
 You will get an error (at first):
-![Ember error](hybrid-app-tutorial/ember-serve-error.png)
+![Ember error](hybrid-app-tutorial/ember-server-error.png)
 
 To fix it it, modify ```ember-cordova/cordova/config.xml``` by adding the flag ```<allow-navigation href="*"/>```
 
