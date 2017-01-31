@@ -2,11 +2,11 @@
 
 ### Table of Contents
 [Introduction](#introduction)  
-[Getting started](#getting-started)
-[Dev tool usage](#dev-tool-usage)
-[Working with your first Cordova Plugin](#working-with-your-first-cordova-plugin)
-[Accelerometer display component](#accelerometer-display-component)
-[Extending the app](#extending-the-app)
+[Getting started](#getting-started)  
+[Dev tool usage](#dev-tool-usage)  
+[Working with your first Cordova Plugin](#working-with-your-first-cordova-plugin)  
+[Accelerometer display component](#accelerometer-display-component)  
+[Extending the app](#extending-the-app)  
 
 
 ### Introduction
@@ -30,9 +30,11 @@ ember cdv:serve --platform=android --verbose
 ```
 
 If all goes well you should see a terminal running ember (leave it running):
+
 ![ember running](hybrid-app-tutorial-part2/ember-server-running.png)
 
 and then upon opening the app, the app running in the emulator:
+
 ![ember running in emulator](hybrid-app-tutorial-part2/ember-server-running2.png)
 
 [Top](#table-of-contents)
@@ -45,6 +47,7 @@ Before we get started lets launch some dev tools. First and foremost, launch the
 ![android-controls](hybrid-app-tutorial-part2/android-controls.png)
 
 This will launch a window that should resemble this:
+
 ![android-controls](hybrid-app-tutorial-part2/android-controls2.png)
 
 We will use this later to simulate some accelerometer activity.
@@ -58,6 +61,7 @@ chrome://inspect/#devices
 ```
 
 You should see something like this:
+
 ![Chrome inspect](hybrid-app-tutorial-part2/chrome-inspect.png)
 
 Clicking 'inspect' will give you a full visual + console toolset that you can use to interact directly with the running app.
@@ -103,6 +107,7 @@ ember generate component accelerometer-display
 ```
 
 open up and edit the ```/app/templates/application.hbs``` template to look like the following:
+
 ![Application Template](hybrid-app-tutorial-part2/application-template.png)
 > raw code below
 
@@ -121,6 +126,7 @@ Accelerometer Z value: {{z}}<br>
 ```
 
 Saving your code you should see:
+
 ![Empty Template](hybrid-app-tutorial-part2/template-only.png)
 
 #### Making it actually work
