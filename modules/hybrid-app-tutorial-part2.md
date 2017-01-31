@@ -112,8 +112,6 @@ Demo Cordova Plugins For Days
 
 ```
 Now open the new component ```/app/templates/components/accelerometer-display.hbs``` and modify it to the following:
-![Accelerometer Component Template](hybrid-app-tutorial-part2/accelerometer-display-template.png)
-> raw code below
 
 ```
 Accelerometer X value: {{x}}<br>
