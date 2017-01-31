@@ -288,15 +288,25 @@ You can apply the same logic used for Accelerometer to other Cordova Plugins. Th
 
 1. Install the cordova plugin using ember cdv:plugin add <name of plugin>
 1. Create an ember component to handle the data and manage the interaction with the plugin
-1. Invoke the Cordova API (Typically ```navigator.<name of plugin>```) according to the documentation and update the ember component accordingly.
+1. Add the component somewhere in your App's template code
+1. Invoke the Cordova API (Typically ```navigator.<name of plugin>```) in your component code according to the documentation and update the component variables tracking the data accordingly.
 
 #### Try it
-Work with someone else in the class and add a feature to your app to use another component.
-When you've integrated it, type up the directions in markdown, fork this readme.md and make a pull request to add in your own directions to use other features. This way everyone can benefit!
+Work with someone else in the class and add a feature to your app to use another component. Pick from one of the components listed in the [cordova docs](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-battery-status/index.html)
+
+When you've integrated it, fork this repo and edit hybrid-app-tutorial-part2.md to include your directions (below in this section) and make a pull request to add in your own directions to use other features. This way everyone can benefit!
+
+insert your directions here
+#### Authors 
+<your names go here>
+#### Plugin Name (which plugin did you look at?)
+<Provide a link to the plugin and briefly describe it>
+#### Usage
+<your instructions go here>
 
 [Top](#table-of-contents)
 
-### Next we explore vulnerabilities and exploitations in hybrid apps.
+### Next time we explore vulnerabilities and exploitations in hybrid apps.
 
 #### License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CYBER8480</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://faculty.ist.unomaha.edu/mlhale" property="cc:attributionName" rel="cc:attributionURL">Matt Hale</a> work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
