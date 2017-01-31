@@ -296,13 +296,15 @@ Work with someone else in the class and add a feature to your app to use another
 
 When you've integrated it, fork this repo and edit hybrid-app-tutorial-part2.md to include your directions (below in this section) and make a pull request to add in your own directions to use other features. This way everyone can benefit!
 
-insert your directions here
+### Student Contributions
+The following plugin module directions are submitted by previous students in the course. 
+
 #### Authors 
-<your names go here>
+(your names go here)
 #### Plugin Name (which plugin did you look at?)
-<Provide a link to the plugin and briefly describe it>
+(Provide a link to the plugin and briefly describe it)
 #### Usage
-<your instructions go here>
+(your instructions go here)
 
 [Top](#table-of-contents)
 
