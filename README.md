@@ -68,10 +68,10 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
  * Types of mobile apps
  * Stats: Threat Vectors and vulnerabilities
  * Wearable and IoT Introduction
-1. Hybrid app Development Primer
-1. Native app Development Primer
-1. IoT Development primer
-1. Test-driven Development ([PDF](/lectures/lecture7.pdf)) 
+1. Hybrid app Development Primer ([PDF Lecture 2](/lectures/lecture2.pdf))
+1. Native app Development Primer (PDF TBA)
+1. IoT Development primer (PDF TBA)
+1. Test-driven Development (PDF TBA) 
  * Unit testing
  * Acceptance critera
  * think-test-build-test-repeat
