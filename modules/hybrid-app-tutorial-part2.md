@@ -6,6 +6,7 @@
 [Dev tool usage](#dev-tool-usage)
 [Working with your first Cordova Plugin](#working-with-your-first-cordova-plugin)
 [Accelerometer display component](#accelerometer-display-component)
+[Extending the app](#extending-the-app)
 
 
 ### Introduction
@@ -186,6 +187,99 @@ Once you've saved the new code, try playing around with it using the Android con
 With rotate display off, I opened the Android emulator tools and started rotating the phone to get some readings.
 
 ![Testing accelerometer](hybrid-app-tutorial-part2/android-rotate-capture.gif)
+
+[Top](#table-of-contents)
+
+### Extending the app
+Just for kicks, lets extend this app and add a time-series chart from [http://opensource.addepar.com/ember-charts/#/time-series](http://opensource.addepar.com/ember-charts/#/time-series). We can store accelerometer data into an array of previous points and then graph them.
+
+```
+ember install ember-charts
+```
+
+#### Template Code
+First open your template code ./app/templates/components/accelerometer-display.js
+edit it to the following to add our chart component in. 
+
+```
+Accelerometer X value: {{x}}<br>
+Accelerometer Y value: {{y}}<br>
+Accelerometer Z value: {{z}}<br>
+
+{{time-series-chart lineData=accelHistory}}
+```
+This tells the chart library that our lineData is in a variable called 'accelHistory'. It doesn't exist yet, but we are about to create it.
+
+#### Component Code
+Now open your component code ./app/components/accelerometer-display.js and modify it to the following, adding an array of data points and code to update the array as new points come in.
+
+![With graph](hybrid-app-tutorial-part2/component-code-with-graph.png)
+> Raw code below
+
+```
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  x: 0,
+  y: 0,
+  z: 0,
+  accelHistory: [],
+  on: true,
+  startLogging: function(){
+    //begin logging accelerometer data once the component launches
+
+    var component = this;
+    this.updateAccelData(component);
+    
+  }.on('init'),
+  updateAccelData: function(component){
+    Ember.run.later(function(){
+      //wrapper to preserve binding satistfaction
+      try {
+        //invoke cordova accelerometer Plugin and get accelerometer data
+        navigator.accelerometer.getCurrentAcceleration(function (acceleration) {//success callback
+            //console.log('acceleration setvars called');
+            component.set('x', acceleration.x);
+            component.set('y', acceleration.y);
+            component.set('z', acceleration.z);
+
+            //update history, maintain 50 points max
+            var history=component.get('accelHistory');
+            if(history.length === 150){
+              history.shiftObject();//shift an x off
+              history.shiftObject();//shift a y off
+              history.shiftObject();//shift a z off
+            }
+            var t = Date.now();
+            var newXPoint = {time: t, label: 'x', value: acceleration.x};
+            var newYPoint = {time: t, label: 'y', value: acceleration.y};
+            var newZPoint = {time: t, label: 'z', value: acceleration.z};
+            history.addObjects([newXPoint, newYPoint, newZPoint]);
+            //console.log("accel vals: x: "+ acceleration.x+ " y: "+acceleration.y+" z: "+acceleration.z+" t: "+ Date.now());
+        }, function (error) {//error callback
+            console.log('error: ' + error);
+        });
+      }
+      catch(err){
+        console.log('error: '+err);
+      }
+      if(component.get('on')){
+        //keep running
+        component.updateAccelData(component); //recurse
+      }
+
+    }, 100);//run ever 100ms
+  }
+});
+
+```
+
+Now instead of just overwriting X, Y, and Z when the next point comes in, we are pushing those values into an array of 50 time points. When the array gets full, we shift off the first three points (x, y, z for a single time t) and add on the new ones. Pretty nifty. 
+
+#### Time to test it out
+I've added another dandy gif of the graph. Test it out yourself!
+
+![With graph](hybrid-app-tutorial-part2/accelerometer-graph.gif)
 
 [Top](#table-of-contents)
 
