@@ -29,10 +29,10 @@ ember cdv:serve --platform=android --verbose
 ```
 
 If all goes well you should see a terminal running ember (leave it running):
-![ember running](/hybrid-app-tutorial-part2/ember-server-running.png)
+![ember running](hybrid-app-tutorial-part2/ember-server-running.png)
 
 and then upon opening the app, the app running in the emulator:
-![ember running in emulator](/hybrid-app-tutorial-part2/ember-server-running2.png)
+![ember running in emulator](hybrid-app-tutorial-part2/ember-server-running2.png)
 
 [Top](#table-of-contents)
 
@@ -41,10 +41,10 @@ and then upon opening the app, the app running in the emulator:
 #### Android Tools
 Before we get started lets launch some dev tools. First and foremost, launch the Android emulator controls by clicking the '...' shown below. This will launch a panel of various controls that we can use to simulate GPS, accelerometer, and other types of data.
 
-![android-controls](/hybrid-app-tutorial-part2/android-controls.png)
+![android-controls](hybrid-app-tutorial-part2/android-controls.png)
 
 This will launch a window that should resemble this:
-![android-controls](/hybrid-app-tutorial-part2/android-controls2.png)
+![android-controls](hybrid-app-tutorial-part2/android-controls2.png)
 
 We will use this later to simulate some accelerometer activity.
 
@@ -57,11 +57,11 @@ chrome://inspect/#devices
 ```
 
 You should see something like this:
-![Chrome inspect](/hybrid-app-tutorial-part2/chrome-inspect.png)
+![Chrome inspect](hybrid-app-tutorial-part2/chrome-inspect.png)
 
 Clicking 'inspect' will give you a full visual + console toolset that you can use to interact directly with the running app.
 
-![Chrome inspect](/hybrid-app-tutorial-part2/chrome-inspect2.png)
+![Chrome inspect](hybrid-app-tutorial-part2/chrome-inspect2.png)
 
 Pretty neat!
 
@@ -102,7 +102,7 @@ ember generate component accelerometer-display
 ```
 
 open up and edit the ```/app/templates/application.hbs``` template to look like the following:
-![Application Template](/hybrid-app-tutorial-part2/application-template.png)
+![Application Template](hybrid-app-tutorial-part2/application-template.png)
 > raw code below
 
 ```
@@ -112,7 +112,7 @@ Demo Cordova Plugins For Days
 
 ```
 Now open the new component ```/app/templates/components/accelerometer-display.hbs``` and modify it to the following:
-![Accelerometer Component Template](/hybrid-app-tutorial-part2/accelerometer-display-template.png)
+![Accelerometer Component Template](hybrid-app-tutorial-part2/accelerometer-display-template.png)
 > raw code below
 
 ```
@@ -122,17 +122,17 @@ Accelerometer Z value: {{z}}<br>
 ```
 
 Saving your code you should see:
-![Empty Template](/hybrid-app-tutorial-part2/template-only.png)
+![Empty Template](hybrid-app-tutorial-part2/template-only.png)
 
 #### Making it actually work
 Now that we have some basic markup, we need to tell our ember component where to get its data from. This involves connecting the component to the cordova plugin data via the cordova API. Essentially we want our component to work as shown in the following diagram.
 
-![Component Architecture](/hybrid-app-tutorial-part2/component-architecture.png)
+![Component Architecture](hybrid-app-tutorial-part2/component-architecture.png)
 > The runloop is a function that will be responsible for invoking the Cordova API and getting and updating the current values of x, y, and z.
 
 To implement this, lets modify our component code in ```/app/components/accelerometer-display.js```
 
-![Component Code](/hybrid-app-tutorial-part2/accelerometer-display-component-code.png)
+![Component Code](hybrid-app-tutorial-part2/accelerometer-display-component-code.png)
 > Raw code below
 
 ```
@@ -183,11 +183,11 @@ There is a lot here, so lets unpack it. First, lines 4-7, setup some basic varia
 #### Testing it out
 Once you've saved the new code, try playing around with it using the Android controls. I started by 'sliding down' and turning off rotate display functionality on the emulated phone.
 
-![Turn off rotate](/hybrid-app-tutorial-part2/turn-off-rotate.png)
+![Turn off rotate](hybrid-app-tutorial-part2/turn-off-rotate.png)
 
 With rotate display off, I opened the Android emulator tools and started rotating the phone to get some readings.
 
-![Testing accelerometer](/hybrid-app-tutorial-part2/android-rotate-capture.png)
+![Testing accelerometer](hybrid-app-tutorial-part2/android-rotate-capture.gif)
 
 [Top](#table-of-contents)
 
