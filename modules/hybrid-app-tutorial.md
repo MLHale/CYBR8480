@@ -256,7 +256,7 @@ Now modify the application.hbs file in /app/templates to say ```Hello world! - o
 [Top](#table-of-contents)
 
 #### Exploring cordova packages
-We will stop here for today and pickup next time with cordova packages that give us access to native features on the device.
+The [next tutorial](hybrid-app-tutorial-part2.md) explores cordova packages that give us access to native features on the device.
 
 
 

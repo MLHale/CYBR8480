@@ -283,5 +283,20 @@ I've added another dandy gif of the graph. Test it out yourself!
 
 [Top](#table-of-contents)
 
+### Integrating other Cordova Plugins
+You can apply the same logic used for Accelerometer to other Cordova Plugins. The typical ember-cordova workflow is
+
+1. Install the cordova plugin using ember cdv:plugin add <name of plugin>
+1. Create an ember component to handle the data and manage the interaction with the plugin
+1. Invoke the Cordova API (Typically ```navigator.<name of plugin>```) according to the documentation and update the ember component accordingly.
+
+#### Try it
+Work with someone else in the class and add a feature to your app to use another component.
+When you've integrated it, type up the directions in markdown, fork this readme.md and make a pull request to add in your own directions to use other features. This way everyone can benefit!
+
+[Top](#table-of-contents)
+
+### Next we explore vulnerabilities and exploitations in hybrid apps.
+
 #### License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CYBER8480</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://faculty.ist.unomaha.edu/mlhale" property="cc:attributionName" rel="cc:attributionURL">Matt Hale</a> work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
