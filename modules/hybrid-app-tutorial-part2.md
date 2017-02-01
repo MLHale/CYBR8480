@@ -84,17 +84,17 @@ cd ./hybridapp/
 
 Now lets tell cordova to add a plugin to our app. In the new terminal type:
 
-```
+```bash
 ember cdv:plugin add cordova-plugin-device-motion
 ```
 Once this completes, rebuild your app and send the apk to the emulator.
 
-```
+```bash
 ember cdv run --platform=android --emulator
 ```
 
 Now with the app running in the emulator, switch back to the first terminal and re-run the ember livereload server.
-```
+```bash
 ember cdv:serve --platform=android --verbose
 ```
 
@@ -102,13 +102,12 @@ ember cdv:serve --platform=android --verbose
 
 ### Accelerometer display component
 Lets create a new component that will be responsible for displaying accelerometer data as it comes in.
-```
+```bash
 ember generate component accelerometer-display
 ```
 
 open up and edit the ```/app/templates/application.hbs``` template to look like the following:
 
-![Application Template](hybrid-app-tutorial-part2/application-template.png)
 > raw code below
 
 ```hbs
@@ -119,7 +118,7 @@ Demo Cordova Plugins For Days
 ```
 Now open the new component ```/app/templates/components/accelerometer-display.hbs``` and modify it to the following:
 
-```
+```hbs
 Accelerometer X value: {{x}}<br>
 Accelerometer Y value: {{y}}<br>
 Accelerometer Z value: {{z}}<br>
@@ -137,10 +136,9 @@ Now that we have some basic markup, we need to tell our ember component where to
 
 To implement this, lets modify our component code in ```/app/components/accelerometer-display.js```
 
-![Component Code](hybrid-app-tutorial-part2/accelerometer-display-component-code.png)
 > Raw code below
 
-```
+```js
 import Ember from 'ember';
 
 export default Ember.Component.extend({
@@ -199,7 +197,7 @@ With rotate display off, I opened the Android emulator tools and started rotatin
 ### Extending the app
 Just for kicks, lets extend this app and add a time-series chart from [http://opensource.addepar.com/ember-charts/#/time-series](http://opensource.addepar.com/ember-charts/#/time-series). We can store accelerometer data into an array of previous points and then graph them.
 
-```
+```bash
 ember install ember-charts
 ```
 
@@ -207,7 +205,7 @@ ember install ember-charts
 First open your template code ./app/templates/components/accelerometer-display.js
 edit it to the following to add our chart component in. 
 
-```
+```hbs
 Accelerometer X value: {{x}}<br>
 Accelerometer Y value: {{y}}<br>
 Accelerometer Z value: {{z}}<br>
@@ -219,10 +217,9 @@ This tells the chart library that our lineData is in a variable called 'accelHis
 #### Component Code
 Now open your component code ./app/components/accelerometer-display.js and modify it to the following, adding an array of data points and code to update the array as new points come in.
 
-![With graph](hybrid-app-tutorial-part2/component-code-with-graph.png)
 > Raw code below
 
-```
+```js
 import Ember from 'ember';
 
 export default Ember.Component.extend({
