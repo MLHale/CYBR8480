@@ -78,7 +78,7 @@ Lets get started with really using Cordova. The beauty of the platform is that i
 #### Adding the plugin
 Stop the ember cdv:serve command running in the original shell you opened (ctrl + c), open up a new shell and navigate to your ember project.
 
-```
+```bash
 cd ./hybridapp/
 ```
 
@@ -111,7 +111,7 @@ open up and edit the ```/app/templates/application.hbs``` template to look like 
 ![Application Template](hybrid-app-tutorial-part2/application-template.png)
 > raw code below
 
-```
+```hbs
 Demo Cordova Plugins For Days
 
 {{accelerometer-display currX=x currY=y}}
