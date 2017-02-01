@@ -122,15 +122,6 @@ There is a handy ember addon (built by [@poetic](https://github.com/poetic/ember
 ```
 ember install ember-cordova
 ```
-#### Confirming everything is installed
-Before we proceed with building our app, lets double check that all of the prereqs listed earlier are installed properly. Type:
-
-```
-ember cordova requirements
-```
-If you don't see all checks as shown below, you need to go back and installed the prereqs.
-![new repo](hybrid-app-tutorial/requirements-check.png)
-
 
 ### Adding platforms
 For this tutorial, lets tell Cordova to build the app for android. In general cordova supports almost all mobile operating systems. For more information see [http://cordova.apache.org/docs/en/latest/platform_plugin_versioning_ref/index.html](http://cordova.apache.org/docs/en/latest/platform_plugin_versioning_ref/index.html)
@@ -144,6 +135,16 @@ ember cdv:platform add android
 This effectively creates an Android ```Manifest File```- something we will talk about more later in the course. For now, just know that a Manifest file is what tells Android what the app's name is and what it needs access to.
 
 [Top](#table-of-contents)
+
+#### Confirming everything is installed
+Before we proceed with building our app, lets double check that all of the prereqs listed earlier are installed properly. Type:
+
+```
+ember cordova requirements
+```
+If you don't see all checks as shown below, you need to go back and installed the prereqs.
+![new repo](hybrid-app-tutorial/requirements-check.png)
+
 ### Building and Deploying the app
 To build the app (produce a .apk file) we just need to tell Ember-cordova to build it for us:
 
