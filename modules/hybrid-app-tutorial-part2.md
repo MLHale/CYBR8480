@@ -302,6 +302,18 @@ When you've integrated it, fork this repo and edit hybrid-app-tutorial-part2.md 
 ### Student Contributions
 The following plugin module directions are submitted by previous students in the course. 
 
+#### Authors
+
+(your names go here)
+
+#### Plugin Name (which plugin did you look at?)
+
+(Provide a link to the plugin and briefly describe it)
+
+#### Usage
+
+(your instructions go here)
+
 #### Authors 
 James Percival
 #### Plugin Name (which plugin did you look at?)
