@@ -303,11 +303,60 @@ When you've integrated it, fork this repo and edit hybrid-app-tutorial-part2.md 
 The following plugin module directions are submitted by previous students in the course. 
 
 #### Authors 
-(your names go here)
+James Percival
 #### Plugin Name (which plugin did you look at?)
-(Provide a link to the plugin and briefly describe it)
+cordova-plugin-contacts[https://www.npmjs.com/package/cordova-plugin-contacts]
+Interesting plugin that allows the adding, viewing, and searching of contacts.
 #### Usage
-(your instructions go here)
+1. Install the plugin [ember cdv:plugin add cordova-plugin-contacts]
+1. Generate the files [ember generate component contacts-display]
+1. Edit the neccesary files:
+
+3a. /app/templates/application.hbs
+
+> Raw code below
+
+  ```
+  {{contacts-display}}
+  ```
+3b. /app/templates/components/contacts-display.hbs
+
+> Raw code below
+
+  ```
+  Total Number of Contacts: {{q}}<br>
+  Names:Numbers
+  <div style="white-space: pre-wrap;">{{w}}</div>
+  ```
+3c. /app/components/contacts-display.js
+
+> Raw code below
+
+  ```
+  import Ember from 'ember';
+  export default Ember.Component.extend({
+    q:0,
+    w:"",
+    startLogging: function(){
+        //begin logging accelerometer data once the component launches
+        var component = this;
+        this.hi2(component);
+    }.on('init'),
+    hi2: function(component){
+      var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+      navigator.contacts.find(fields, function(contacts){
+        component.set('q',contacts.length);
+        var nameToNumStr = "";
+        contacts.forEach(function(ele){
+          nameToNumStr += ele.name.givenName+':'+
+            ele.phoneNumbers[0].value+'\n';
+        });
+        console.log(nameToNumStr);
+        component.set('w', nameToNumStr);
+      });
+    }
+  });
+  ```
 
 [Top](#table-of-contents)
 
