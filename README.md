@@ -56,6 +56,7 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
 1. Hybrid app development in Cordova
  * [Part 1 - Setup and Hello World](modules/hybrid-app-tutorial.md)
  * [Part 2 - Working with Cordova Plugins](modules/hybrid-app-tutorial-part2.md)
+ * [Part 3 - Attacking Hybrid apps](modules/hybrid-app-sandbox-attacks.md)
 1. Native App development in Android
  * TBA
 1. Wearable Development with Metawear
