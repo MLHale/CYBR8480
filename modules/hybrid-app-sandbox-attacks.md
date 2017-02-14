@@ -3,14 +3,11 @@
 ### Table of Contents
 [Introduction](#introduction)  
 [Getting started](#getting-started)  
-[Dev tool usage](#dev-tool-usage)  
-[Working with your first Cordova Plugin](#working-with-your-first-cordova-plugin)  
-[Accelerometer display component](#accelerometer-display-component)  
-[Extending the app](#extending-the-app)  
+
 
 
 ### Introduction
-In this module you will go behind a simple 'Hello World' app and interact with some of the native device features that Cordova gives you access too. It assumes you have completed the basic setup, configuration, and installation of Cordova, Android, and Ember as the [previous tutorial](hybrid-app-tutorial.md) discussed. 
+In this module you will go behind a simple 'Hello World' app and interact with some of the native device features that Cordova gives you access too. It assumes you have completed the basic setup, configuration, and installation of Cordova, Android, and Ember as the [1st tutorial](hybrid-app-tutorial.md) discussed. It also assumes you have completed the [previous tutorial](hybrid-app-tutorial-part2.md) 
 
 ### Getting Started
 Start by getting our development environment setup. For this tutorial, we will use the Android emulator we setup last time. If you want, you can replace the emulator portions with your actual Android device and use ADB.
@@ -134,7 +131,7 @@ Now that we have some basic markup, we need to tell our ember component where to
 ![Component Architecture](hybrid-app-tutorial-part2/component-architecture.png)
 > The runloop is a function that will be responsible for invoking the Cordova API and getting and updating the current values of x, y, and z.
 
-To implement this, lets modify our component code in ```/app/components/accelerometer-display.hbs```
+To implement this, lets modify our component code in ```/app/components/accelerometer-display.js```
 
 > Raw code below
 
