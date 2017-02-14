@@ -3,8 +3,9 @@
 ### Table of Contents
 [Introduction](#introduction)  
 [Getting started](#getting-started)  
-
-
+[Advert Integration](#advert-integration)  
+[Exploring Attacks](#exploring-attacks)  
+[Write your own attack](#write-your-own-attack)  
 
 ### Introduction
 In this module you will explore the increased vulnerability surface a hybrid app has compared to its web app cousins. The tutorial assumes you have completed the basic setup, configuration, and installation of Cordova, Android, and Ember as the [1st tutorial](hybrid-app-tutorial.md) discussed. It also assumes you have completed the [previous tutorial](hybrid-app-tutorial-part2.md) 
@@ -21,9 +22,7 @@ cd ./hybridapp/
 ember cdv run --platform=android --emulator
 ```
 
-and then upon opening the app, the app running in the emulator:
-
-![ember running in emulator](hybrid-app-tutorial-part2/accelerometer-graph.gif)
+and then upon opening the app, the app should be running in the emulator.
 
 #### Not using live reload
 For this tutorial, we will remove live reload - so we can work with an external API properly. Open ```/ember-cordova/cordova/config.xml``` and remove the line:
@@ -236,7 +235,7 @@ Here is a screenshot of the logs generate on my logging server
 [Top](#table-of-contents)
 
 ### Write your own attack
-You should be able to make POST requests (JSON or url encoded) to hybridapp.mlhale.com/api/adverts/ to store yo
+Write an attack to go along with the feature you worked on independently in lab 2. Ask me for access and I will provide you with credentials to access and deploy your attack on the ad server.
 
 #### License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CYBER8480</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://faculty.ist.unomaha.edu/mlhale" property="cc:attributionName" rel="cc:attributionURL">Matt Hale</a> work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
