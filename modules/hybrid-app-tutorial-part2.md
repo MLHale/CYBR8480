@@ -134,7 +134,7 @@ Now that we have some basic markup, we need to tell our ember component where to
 ![Component Architecture](hybrid-app-tutorial-part2/component-architecture.png)
 > The runloop is a function that will be responsible for invoking the Cordova API and getting and updating the current values of x, y, and z.
 
-To implement this, lets modify our component code in ```/app/components/accelerometer-display.hbs```
+To implement this, lets modify our component code in ```/app/components/accelerometer-display.js```
 
 > Raw code below
 
@@ -202,7 +202,7 @@ ember install ember-charts
 ```
 
 #### Template Code
-First open your template code ./app/templates/components/accelerometer-display.js
+First open your template code ./app/templates/components/accelerometer-display.hbs
 edit it to the following to add our chart component in. 
 
 ```hbs
