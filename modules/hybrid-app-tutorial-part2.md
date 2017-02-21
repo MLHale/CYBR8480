@@ -314,6 +314,65 @@ The following plugin module directions are submitted by previous students in the
 
 (your instructions go here)
 
+#### Author
+Jeff Dempsey
+
+#### Plugin Name (which plugin did you look at?)
+Device Orientation - https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-device-orientation/index.html
+This plugin gives access to the device compass to give a heading in degrees.
+
+#### Usage
+1. Install plugin [ember cdv:cordova plugin add cordova-plugin-device-orientation]
+1. Write necessary files to process and display data.
+
+2a. /app/templates/application.hbs
+>Calls out to orientation-display component to place its template here.
+>Code:
+```
+{{orientation-display currHead=heading}}
+```
+
+2b. /app/templates/components/orientation-display.hbs
+>Sets up the template within application.hbs and calls the javascript file to fill the {{heading}} value in degrees. Basically copied the format from in-class accelerometer example.
+>Code:
+```
+Orientation Heading: {{heading}}<br>
+```
+
+2c. /app/components/orientation-display.js
+>Queries Cordova for current device heading, in degrees, every 100ms. Since I'm new to all this, I again largely copied the format of the js file for the accelerometer-display. 
+>Code:
+```
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  heading: null,
+
+  //Begin collecting heading data
+  startLogging: function(){
+    var component = this;
+    this.get('updateHeading')(this);
+  }.on('init'),
+  updateHeading: function(component){
+    Ember.run.later(function(){
+      try {
+        navigator.compass.getCurrentHeading(function(heading) {//if successful
+          component.set('heading', heading.magneticHeading);
+          console.log('Compass heading:');
+          console.log(heading);
+        }, function(error){//if error
+          console.log('Compass heading error.');
+          console.log(error);
+        });
+      } catch (error) {
+        console.log('Compass heading error.');
+        console.log(error);
+      }
+      component.get('updateHeading')(component);
+    }, 100); //run after 100ms, recurses to effectively run every 100ms
+  }
+});
+```
 #### Authors 
 James Percival
 #### Plugin Name (which plugin did you look at?)
