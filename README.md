@@ -58,7 +58,7 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
  * [Part 2 - Working with Cordova Plugins](modules/hybrid-app-tutorial-part2.md)
  * [Part 3 - Attacking Hybrid apps](modules/hybrid-app-sandbox-attacks.md)
 1. Native App development in Android
- * TBA
+ * [Android Lab - Creating your first app and explore Android resources](modules/android.md)
 1. Wearable Development with Metawear
  * TBA
 
@@ -70,7 +70,7 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
  * Stats: Threat Vectors and vulnerabilities
  * Wearable and IoT Introduction
 1. Hybrid app Development Primer ([PDF Lecture 2](/lectures/lecture2.pdf))
-1. Native app Development Primer (PDF TBA)
+1. Native app Development Primer ([PDF - Credit Xin Yang, UC Santa Barbara](http://lbmedia.ece.ucsb.edu/member/uweb/Teaching/website/PPT/02_Intro_Android%20programming.pdf))
 1. IoT Development primer (PDF TBA)
 1. Test-driven Development (PDF TBA) 
  * Unit testing
