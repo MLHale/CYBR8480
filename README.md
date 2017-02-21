@@ -70,7 +70,7 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
  * Stats: Threat Vectors and vulnerabilities
  * Wearable and IoT Introduction
 1. Hybrid app Development Primer ([PDF Lecture 2](/lectures/lecture2.pdf))
-1. Native app Development Primer ([PDF - Credit Xin Yang, UC Santa Barbara](http://lbmedia.ece.ucsb.edu/member/uweb/Teaching/website/PPT/02_Intro_Android%20programming.pdf))
+1. Native app Development Primer ([PDF - Credit Xin Yang, UC Santa Barbara](http://lbmedia.ece.ucsb.edu/member/uweb/Teaching/website/PPT/01_Intro_Android_Basics.pdf))
 1. IoT Development primer (PDF TBA)
 1. Test-driven Development (PDF TBA) 
  * Unit testing
