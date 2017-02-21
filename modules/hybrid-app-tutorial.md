@@ -14,7 +14,7 @@
 
 Hybrid apps are what you get when web apps and native apps have a baby. The core limitation of web apps in mobile environments is there inability to access native device features (e.g. photo libraries, keyboard functions, and bluetooth capabilities - to name a few). The core strength of web apps is their ability to be deployed cross-platform. That is, a web app is the same for Android as it is for iOS or Windows phone. This means developers can iterate much quicker without the need to develop stand alone siloed code for different platforms. 
 
-On the flip side, native apps have all of the tight control of mobile operating system and hardware capabilities, but at the cost of being developed in platform specific languages and paradigms. This measn that developers supporting multiple native apps must individually change each code base if they wish to put out an update to their app.
+On the flip side, native apps have all of the tight control of mobile operating system and hardware capabilities, but at the cost of being developed in platform specific languages and paradigms. This means that developers supporting multiple native apps must individually change each code base if they wish to put out an update to their app.
 
 Hybrid apps get the best of both worlds - access to native features, while still being built as a cross-platform web-app. How does this work you ask? Well hybrid apps operate in a native platform-specific 'container.' This native container provides API access to native features to a web app core (where the majority of the app lives). So developers can write one app and just map it to many containers. 
 
@@ -122,15 +122,6 @@ There is a handy ember addon (built by [@poetic](https://github.com/poetic/ember
 ```
 ember install ember-cordova
 ```
-#### Confirming everything is installed
-Before we proceed with building our app, lets double check that all of the prereqs listed earlier are installed properly. Type:
-
-```
-ember cordova requirements
-```
-If you don't see all checks as shown below, you need to go back and installed the prereqs.
-![new repo](hybrid-app-tutorial/requirements-check.png)
-
 
 ### Adding platforms
 For this tutorial, lets tell Cordova to build the app for android. In general cordova supports almost all mobile operating systems. For more information see [http://cordova.apache.org/docs/en/latest/platform_plugin_versioning_ref/index.html](http://cordova.apache.org/docs/en/latest/platform_plugin_versioning_ref/index.html)
@@ -144,6 +135,16 @@ ember cdv:platform add android
 This effectively creates an Android ```Manifest File```- something we will talk about more later in the course. For now, just know that a Manifest file is what tells Android what the app's name is and what it needs access to.
 
 [Top](#table-of-contents)
+
+#### Confirming everything is installed
+Before we proceed with building our app, lets double check that all of the prereqs listed earlier are installed properly. Type:
+
+```
+ember cordova requirements
+```
+If you don't see all checks as shown below, you need to go back and installed the prereqs.
+![new repo](hybrid-app-tutorial/requirements-check.png)
+
 ### Building and Deploying the app
 To build the app (produce a .apk file) we just need to tell Ember-cordova to build it for us:
 
@@ -256,7 +257,7 @@ Now modify the application.hbs file in /app/templates to say ```Hello world! - o
 [Top](#table-of-contents)
 
 #### Exploring cordova packages
-We will stop here for today and pickup next time with cordova packages that give us access to native features on the device.
+The [next tutorial](hybrid-app-tutorial-part2.md) explores cordova packages that give us access to native features on the device.
 
 
 
