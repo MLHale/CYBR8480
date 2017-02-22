@@ -380,6 +380,11 @@ Vaibhav Ingle
 #### Plugin Name (which plugin did you look at?)
 cordova-plugin-geolocation[https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-geolocation/index.html]
 This plugin provides information about the device's location, such as latitude and longitude.
+Note: This plugin only works if you serve the app from a secure url. In order to do so you 
+wii have to setup the ember-cli to serve the index.html form a https domain. Following link guides you to generate your own self signed 
+ssl certificate:
+https://devcenter.heroku.com/articles/ssl-certificate-self
+
 #### Usage
 1. Install the plugin [ember cdv:plugin add cordova-plugin-geolocation]
 2. Generate the files [ember generate component geolocation-display]
