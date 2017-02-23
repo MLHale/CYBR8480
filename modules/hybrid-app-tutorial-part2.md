@@ -377,12 +377,12 @@ Interesting plugin that allows the adding, viewing, and searching of contacts.
   ```
 #### Authors 
 Vaibhav Ingle
+
 #### Plugin Name (which plugin did you look at?)
 cordova-plugin-geolocation[https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-geolocation/index.html]
 This plugin provides information about the device's location, such as latitude and longitude.
 Note: This plugin only works if you serve the app from a secure url. In order to do so you 
-wii have to setup the ember-cli to serve the index.html form a https domain. Following link guides you to generate your own self signed 
-ssl certificate:
+will need to setup the ember-cli to serve the index.html from an https domain. The following link guides you through the process of generating your own self signed ssl certificate:
 https://devcenter.heroku.com/articles/ssl-certificate-self
 
 #### Usage
@@ -392,11 +392,11 @@ https://devcenter.heroku.com/articles/ssl-certificate-self
 
 3a. /app/templates/application.hbs
 
->This calls geolocation-display component.
+>This calls the geolocation-display component.
 
 > Raw code below
 
-  ```
+  ```hbs
 Cordova Plugin For Geolocation 
 
 {{geolocation-display }}
@@ -407,7 +407,7 @@ Cordova Plugin For Geolocation
 
 > Raw code below
 
-  ```
+  ```hbs
 Latitude value: {{lat}}<br>
 Longitude value: {{lng}}<br>
   ```
@@ -418,7 +418,7 @@ lng,lat and alt are updated with the current GPS coordinates.
 
 > Raw code below
 
-  ```
+  ```javascript
 import Ember from 'ember';
 
 export default Ember.Component.extend({
