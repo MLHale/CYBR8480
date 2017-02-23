@@ -289,7 +289,7 @@ I've added another dandy gif of the graph. Test it out yourself!
 ### Integrating other Cordova Plugins
 You can apply the same logic used for Accelerometer to other Cordova Plugins. The typical ember-cordova workflow is
 
-1. Install the cordova plugin using ember cdv:plugin add <name of plugin>
+1. Install the cordova plugin using ```ember cdv:plugin add <name of plugin>```
 1. Create an ember component to handle the data and manage the interaction with the plugin
 1. Add the component somewhere in your App's template code
 1. Invoke the Cordova API (Typically ```navigator.<name of plugin>```) in your component code according to the documentation and update the component variables tracking the data accordingly.
@@ -326,23 +326,27 @@ This plugin gives access to the device compass to give a heading in degrees.
 1. Write necessary files to process and display data.
 
 2a. /app/templates/application.hbs
->Calls out to orientation-display component to place its template here.
->Code:
-```
+> Calls out to orientation-display component to place its template here.
+> Code:
+
+```hbs
 {{orientation-display currHead=heading}}
 ```
 
 2b. /app/templates/components/orientation-display.hbs
 >Sets up the template within application.hbs and calls the javascript file to fill the {{heading}} value in degrees. Basically copied the format from in-class accelerometer example.
 >Code:
-```
+
+```hbs
 Orientation Heading: {{heading}}<br>
 ```
 
 2c. /app/components/orientation-display.js
->Queries Cordova for current device heading, in degrees, every 100ms. Since I'm new to all this, I again largely copied the format of the js file for the accelerometer-display. 
->Code:
-```
+> Queries Cordova for current device heading, in degrees, every 100ms. Since I'm new to all this, I again largely copied the format of the js file for the accelerometer-display. 
+
+> Code:
+
+```javascript
 import Ember from 'ember';
 
 export default Ember.Component.extend({
@@ -373,11 +377,14 @@ export default Ember.Component.extend({
   }
 });
 ```
+
 #### Authors 
 James Percival
+
 #### Plugin Name (which plugin did you look at?)
 cordova-plugin-contacts[https://www.npmjs.com/package/cordova-plugin-contacts]
 Interesting plugin that allows the adding, viewing, and searching of contacts.
+
 #### Usage
 1. Install the plugin [ember cdv:plugin add cordova-plugin-contacts]
 1. Generate the files [ember generate component contacts-display]
@@ -389,7 +396,7 @@ Interesting plugin that allows the adding, viewing, and searching of contacts.
 
 > Raw code below
 
-  ```
+```
   {{contacts-display}}
   ```
 3b. /app/templates/components/contacts-display.hbs
@@ -466,10 +473,11 @@ Cordova Plugin For Geolocation
 
 > Raw code below
 
-  ```hbs
+```hbs
 Latitude value: {{lat}}<br>
 Longitude value: {{lng}}<br>
-  ```
+```
+
 3c. /app/components/geolocation-display.js
 
 >This javascript Queries Cordova and accepts a Position object, which contains the current GPS coordinates. Then the variables 
@@ -477,7 +485,7 @@ lng,lat and alt are updated with the current GPS coordinates.
 
 > Raw code below
 
-  ```javascript
+```javascript
 import Ember from 'ember';
 
 export default Ember.Component.extend({
@@ -522,7 +530,7 @@ export default Ember.Component.extend({
     }, 10000);//run ever 10000ms
   }
 });
-  ```  
+```  
 
 [Top](#table-of-contents)
 
