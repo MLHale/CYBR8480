@@ -434,6 +434,95 @@ Interesting plugin that allows the adding, viewing, and searching of contacts.
     }
   });
   ```
+#### Authors 
+Vaibhav Ingle
+
+#### Plugin Name (which plugin did you look at?)
+cordova-plugin-geolocation[https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-geolocation/index.html]
+This plugin provides information about the device's location, such as latitude and longitude.
+Note: This plugin only works if you serve the app from a secure url. In order to do so you 
+will need to setup the ember-cli to serve the index.html from an https domain. The following link guides you through the process of generating your own self signed ssl certificate:
+https://devcenter.heroku.com/articles/ssl-certificate-self
+
+#### Usage
+1. Install the plugin [ember cdv:plugin add cordova-plugin-geolocation]
+2. Generate the files [ember generate component geolocation-display]
+3. Edit the neccesary files:
+
+3a. /app/templates/application.hbs
+
+>This calls the geolocation-display component.
+
+> Raw code below
+
+  ```hbs
+Cordova Plugin For Geolocation 
+
+{{geolocation-display }}
+  ```
+3b. /app/templates/components/geolocation-display.hbs
+
+>This template takes values from javascript file and assigns the values to the lat and lng. 
+
+> Raw code below
+
+  ```hbs
+Latitude value: {{lat}}<br>
+Longitude value: {{lng}}<br>
+  ```
+3c. /app/components/geolocation-display.js
+
+>This javascript Queries Cordova and accepts a Position object, which contains the current GPS coordinates. Then the variables 
+lng,lat and alt are updated with the current GPS coordinates.
+
+> Raw code below
+
+  ```javascript
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  lng: 0,
+  lat: 0,
+  alt: 0,
+  
+  on: true,
+  startLogging: function(){
+    //begin logging geolocation data once the component launches
+
+    var component = this;
+    this.computeGPS(component);
+
+  }.on('init'),
+  computeGPS: function(component){
+    Ember.run.later(function(){
+      //wrapper to preserve binding satistfaction
+      try {
+        //invoke cordova geolocation Plugin and get geolocation data
+        navigator.geolocation.getCurrentPosition(function (position) {//success callback
+            //console.log('acceleration setvars called');
+            component.set('lng', position.coords.longitude);
+			console.log(position.coords);
+            component.set('lat', position.coords.latitude);
+            component.set('alt', position.coords.altitude);
+
+           
+        }, function (error) {//error callback	
+			
+            console.log(error);
+        });
+      }
+      catch(err){
+        console.log('error: '+err);
+      }
+      if(component.get('on')){
+        //keep running
+        component.computeGPS(component); //recurse
+      }
+
+    }, 10000);//run ever 10000ms
+  }
+});
+  ```  
 
 [Top](#table-of-contents)
 
