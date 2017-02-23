@@ -392,31 +392,31 @@ Interesting plugin that allows the adding, viewing, and searching of contacts.
 
 3a. /app/templates/application.hbs
 
->Calls out to the contacts-display component to place its template here.
+> Calls out to the contacts-display component to place its template here.
 
 > Raw code below
 
-```
+```hbs
   {{contacts-display}}
-  ```
+```
 3b. /app/templates/components/contacts-display.hbs
 
 >Sets up its template inside application.hbs and then calls out to the javascript file to fill in {{q}} and {{w}}. Had to use the pre-wrap/pre-line style in order to preserve and display the newlines.
 
 > Raw code below
 
-  ```
+```hbs
   Total Number of Contacts: {{q}}<br>
   Names:Numbers
   <div style="white-space: pre-wrap;">{{w}}</div>
-  ```
+```
 3c. /app/components/contacts-display.js
 
 >Queries Cordova and asks for an array of contact objects. We then list the number that was returned, their name, and finally their phone number. We then update q and w accordingly with the above information. Bad variable names... I know... This was all just messing around with it and once it worked I left it alone.
 
 > Raw code below
 
-  ```
+```js
   import Ember from 'ember';
   export default Ember.Component.extend({
     q:0,
@@ -440,7 +440,8 @@ Interesting plugin that allows the adding, viewing, and searching of contacts.
       });
     }
   });
-  ```
+```
+
 #### Authors 
 Vaibhav Ingle
 
