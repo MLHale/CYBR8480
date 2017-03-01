@@ -531,17 +531,16 @@ export default Ember.Component.extend({
 
 #### Authors
 James Nyiok
-#### Plugin Name 
-Geolocation - https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-geolocation/index.html
-This plugin provides location information from Global Positioning System (GPS) about the device's location, such as latitude and longitude.
 
+#### Plugin Name 
+Geolocation - https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-geolocation/index.html This plugin provides location information from Global Positioning System (GPS) about the device's location, such as latitude and longitude.
 
 #### Usage
-
-1. Install plugin: ember cdv:cordova plugin add cordova-plugin--geolocation
-2. Edit and tweak accelerometer necessary files to development and display geolocation data
+1.Install plugin: ember cdv:cordova plugin add cordova-plugin--geolocation
+2.Edit and tweak accelerometer necessary files to development and display geolocation data.
 
 2.Create an ember component to handle the data and manage the interaction with the plugin
+
 2a. /app/templates/application.hbs raw code below that display geolocation
 {{geolocation-display}}
 
