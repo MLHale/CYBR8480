@@ -539,54 +539,8 @@ Geolocation - https://cordova.apache.org/docs/en/latest/reference/cordova-plugin
 1.Install plugin: ember cdv:cordova plugin add cordova-plugin--geolocation
 2.Edit and tweak accelerometer necessary files to development and display geolocation data.
 
-2.Create an ember component to handle the data and manage the interaction with the plugin
 
-2a. /app/templates/application.hbs raw code below that display geolocation
-{{geolocation-display}}
 
-2b. /app/templates/components/geolocation-display.hbs
-
-Geolocation Latitude value: {{lat}}
-Geolocation Longitude value: {{lon}}
-Geolocation Altitude value: {{alt}}
-Geolocation Accuracy value: {{acc}}
-
-3.Add the component somewhere in your App's template code /app/components/geolocation-display.js
-
-import Ember from 'ember';
-export default Ember.Component.extend({ 
-lat: 0,
-lon: 0,
-alt: 0,
-acc: 0,
-on: true,
-startLogging: function(){ 
-//begin logging Geolocation data once the component launches
-var component = this;
-this.computeGPS(component);
-}.on('init'), 
-computeGPS: function(component){
-Ember.run.later(function(){ //wrapper to preserve binding satistfaction  
-try {
-    //invoke cordova Geolocation Plugin and get position data
-    navigator.geolocation.getCurrentPosition(function (position) {//success callback
-      console.log(position.coords);
-        component.set('Lat', position.coords.latitude);
-        component.set('Lon', position.coords.longitude);
-        component.set('Alt', position.coords.altitude);
-        component.set('Acc', position.coords.accuracy);
-}, function (error) {//error callback 
-console.log('error: ' + error); 
-}); 
-}
-catch(err){
-console.log('error: '+err); 
-}
-if(component.get('on')){
-//keep running 
-component.computeGPS(component); //recurse 
-}}, 100);//run ever 100ms
-}});
 (#table-of-contents)
 
 ### Next time we explore vulnerabilities and exploitations in hybrid apps.
