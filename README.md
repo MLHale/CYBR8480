@@ -60,7 +60,7 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
 1. Native App development in Android
  * [Android Lab - Creating your first app and explore Android resources](modules/android.md)
 1. Wearable Development with Metawear
- * TBA
+ * [Working with Metawear](modules/metawear-hybrid.md)
 
 ## Class Topics
 1. Getting up to speed
