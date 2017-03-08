@@ -289,7 +289,7 @@ I've added another dandy gif of the graph. Test it out yourself!
 ### Integrating other Cordova Plugins
 You can apply the same logic used for Accelerometer to other Cordova Plugins. The typical ember-cordova workflow is
 
-1. Install the cordova plugin using ember cdv:plugin add <name of plugin>
+1. Install the cordova plugin using ```ember cdv:plugin add <name of plugin>```
 1. Create an ember component to handle the data and manage the interaction with the plugin
 1. Add the component somewhere in your App's template code
 1. Invoke the Cordova API (Typically ```navigator.<name of plugin>```) in your component code according to the documentation and update the component variables tracking the data accordingly.
@@ -314,11 +314,77 @@ The following plugin module directions are submitted by previous students in the
 
 (your instructions go here)
 
+#### Author
+Jeff Dempsey
+
+#### Plugin Name (which plugin did you look at?)
+Device Orientation - https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-device-orientation/index.html
+This plugin gives access to the device compass to give a heading in degrees.
+
+#### Usage
+1. Install plugin [ember cdv:cordova plugin add cordova-plugin-device-orientation]
+1. Write necessary files to process and display data.
+
+2a. /app/templates/application.hbs
+> Calls out to orientation-display component to place its template here.
+> Code:
+
+```hbs
+{{orientation-display currHead=heading}}
+```
+
+2b. /app/templates/components/orientation-display.hbs
+>Sets up the template within application.hbs and calls the javascript file to fill the {{heading}} value in degrees. Basically copied the format from in-class accelerometer example.
+>Code:
+
+```hbs
+Orientation Heading: {{heading}}<br>
+```
+
+2c. /app/components/orientation-display.js
+> Queries Cordova for current device heading, in degrees, every 100ms. Since I'm new to all this, I again largely copied the format of the js file for the accelerometer-display. 
+
+> Code:
+
+```javascript
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  heading: null,
+
+  //Begin collecting heading data
+  startLogging: function(){
+    var component = this;
+    this.get('updateHeading')(this);
+  }.on('init'),
+  updateHeading: function(component){
+    Ember.run.later(function(){
+      try {
+        navigator.compass.getCurrentHeading(function(heading) {//if successful
+          component.set('heading', heading.magneticHeading);
+          console.log('Compass heading:');
+          console.log(heading);
+        }, function(error){//if error
+          console.log('Compass heading error.');
+          console.log(error);
+        });
+      } catch (error) {
+        console.log('Compass heading error.');
+        console.log(error);
+      }
+      component.get('updateHeading')(component);
+    }, 100); //run after 100ms, recurses to effectively run every 100ms
+  }
+});
+```
+
 #### Authors 
 James Percival
+
 #### Plugin Name (which plugin did you look at?)
 cordova-plugin-contacts[https://www.npmjs.com/package/cordova-plugin-contacts]
 Interesting plugin that allows the adding, viewing, and searching of contacts.
+
 #### Usage
 1. Install the plugin [ember cdv:plugin add cordova-plugin-contacts]
 1. Generate the files [ember generate component contacts-display]
@@ -326,31 +392,31 @@ Interesting plugin that allows the adding, viewing, and searching of contacts.
 
 3a. /app/templates/application.hbs
 
->Calls out to the contacts-display component to place its template here.
+> Calls out to the contacts-display component to place its template here.
 
 > Raw code below
 
-  ```
+```hbs
   {{contacts-display}}
-  ```
+```
 3b. /app/templates/components/contacts-display.hbs
 
 >Sets up its template inside application.hbs and then calls out to the javascript file to fill in {{q}} and {{w}}. Had to use the pre-wrap/pre-line style in order to preserve and display the newlines.
 
 > Raw code below
 
-  ```
+```hbs
   Total Number of Contacts: {{q}}<br>
   Names:Numbers
   <div style="white-space: pre-wrap;">{{w}}</div>
-  ```
+```
 3c. /app/components/contacts-display.js
 
 >Queries Cordova and asks for an array of contact objects. We then list the number that was returned, their name, and finally their phone number. We then update q and w accordingly with the above information. Bad variable names... I know... This was all just messing around with it and once it worked I left it alone.
 
 > Raw code below
 
-  ```
+```js
   import Ember from 'ember';
   export default Ember.Component.extend({
     q:0,
@@ -374,15 +440,16 @@ Interesting plugin that allows the adding, viewing, and searching of contacts.
       });
     }
   });
-  ```
+```
+
 #### Authors 
 Vaibhav Ingle
+
 #### Plugin Name (which plugin did you look at?)
 cordova-plugin-geolocation[https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-geolocation/index.html]
 This plugin provides information about the device's location, such as latitude and longitude.
 Note: This plugin only works if you serve the app from a secure url. In order to do so you 
-wii have to setup the ember-cli to serve the index.html form a https domain. Following link guides you to generate your own self signed 
-ssl certificate:
+will need to setup the ember-cli to serve the index.html from an https domain. The following link guides you through the process of generating your own self signed ssl certificate:
 https://devcenter.heroku.com/articles/ssl-certificate-self
 
 #### Usage
@@ -392,11 +459,11 @@ https://devcenter.heroku.com/articles/ssl-certificate-self
 
 3a. /app/templates/application.hbs
 
->This calls geolocation-display component.
+>This calls the geolocation-display component.
 
 > Raw code below
 
-  ```
+  ```hbs
 Cordova Plugin For Geolocation 
 
 {{geolocation-display }}
@@ -407,10 +474,11 @@ Cordova Plugin For Geolocation
 
 > Raw code below
 
-  ```
+```hbs
 Latitude value: {{lat}}<br>
 Longitude value: {{lng}}<br>
-  ```
+```
+
 3c. /app/components/geolocation-display.js
 
 >This javascript Queries Cordova and accepts a Position object, which contains the current GPS coordinates. Then the variables 
@@ -418,7 +486,7 @@ lng,lat and alt are updated with the current GPS coordinates.
 
 > Raw code below
 
-  ```
+```javascript
 import Ember from 'ember';
 
 export default Ember.Component.extend({
@@ -463,7 +531,7 @@ export default Ember.Component.extend({
     }, 10000);//run ever 10000ms
   }
 });
-  ```  
+```  
 
 [Top](#table-of-contents)
 
