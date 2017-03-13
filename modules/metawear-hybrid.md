@@ -349,9 +349,17 @@ In the template ```app/templates/components/metawear-control.hbs``` modify it to
 {{#if metawearConnected}}
 	<div class="row">
 		<div class="col-xs-12">
-			<h4>Metawear LED Control</h4>
+			<h4>Metawear LED Controls</h4>
 			<button type="button" class="btn red btn-sm" {{action 'playLED'}}>Turn on LED </button><br>
 			<button type="button" class="btn red btn-sm" {{action 'stopLED'}}>Turn off LEDs </button>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<h4>Metawear Accelerometer Controls</h4>
+			<button type="button" class="btn red btn-sm" {{action 'accelON'}}>Turn on LED </button><br>
+			<button type="button" class="btn red btn-sm" {{action 'accelOFF'}}>Turn off LEDs </button>
 		</div>
 	</div>
 
