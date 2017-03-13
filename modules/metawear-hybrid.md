@@ -1,10 +1,10 @@
 # Building a Hybrid App to talk to Metawear
 
-[Introduction](#introduction)
-[Getting started](#getting-started)
-[Adding support for metawear](#adding-support-for-metawear)
-[Working with accelerometer data](#working-with-accelerometer-data)
-[Extending this app](#extending-this-app)
+[Introduction](#introduction)  
+[Getting started](#getting-started)  
+[Adding support for metawear](#adding-support-for-metawear)  
+[Working with accelerometer data](#working-with-accelerometer-data)  
+[Extending this app](#extending-this-app)  
 
 ## Introduction
 This lab will introduce you to the world of Bluetooth LE and allow you to connect to Metawear and turn an LED on or off.
