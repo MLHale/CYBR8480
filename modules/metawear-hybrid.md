@@ -11,9 +11,7 @@ This lab will introduce you to the world of Bluetooth LE and allow you to connec
 
 ### Getting started
 We will start by working on the previous hybrid app you worked on.
-First things first you need to re-enable Live-reload. To fix it, modify ```ember-cordova/cordova/config.xml``` by adding the flag ```<allow-navigation href="*"/>```
-
-Next install the cordova plugin for Metawear.
+Install the cordova plugin for Metawear.
 
 You can read more about this plugin at [https://github.com/mbientlab-projects/MetaWearCordova-Plugin](https://github.com/mbientlab-projects/MetaWearCordova-Plugin).
 
@@ -41,9 +39,10 @@ Now rebuild and redeploy your app and then run ember server
 
 ```bash
 ember cdv:build --platform android
-ember cdv run --platform=android --emulator
-ember cdv:serve --platform=android
+ember cdv run --platform=android --device
 ```
+
+Note that the previous command assumes you have ADB installed and your phone or tablet is connected to your machine.
 
 ### Adding support for metawear
 The basic concept here is that our android cordova app will talk to metwear and invoke some of the hybrid app API functionalities using Bluetooth LE. Our app will be very simple - connect, disconnect, and turn on/off an LED on the device.
@@ -103,165 +102,8 @@ export default Ember.Component.extend({
 				//wrapper to preserve binding satistfaction
 				try {
 				//invoke metawear connection
-					console.log('attempting to connect to: ' + this.get('macAddressOfBoard'));
-					metawear.mwdevice.connect(macAddressOfBoard,
-						function(){//success
-							console.log('connected');
-							component.set('metawearConnected', true);
-						}, function(error){//failure
-							console.log('connection failed' +error);
-						});
-				}
-				catch(err){
-					console.log('error: '+err);
-					alert('error: '+err);
-				}
-
-			}, 100);//run after 100ms
-		},
-		disconnect: function(){
-			var component = this;
-			Ember.run.later(function(){
-				//wrapper to preserve binding satistfaction
-				try {
-				//invoke metawear connection
-					console.log('Disconnecting from: ' + this.get('macAddressOfBoard'));
-					metawear.mwdevice.disconnect();
-					component.set('metawearConnected', false);
-				}
-				catch(err){
-					console.log('error: '+err);
-					alert('error: '+err);
-				}
-
-			}, 100);//run after 100ms
-		},
-		playLED: function(){
-
-			Ember.run.later(function(){
-				//wrapper to preserve binding satistfaction
-				try {
-				//invoke metawear connection
-					console.log('Turning on Blue Light: ' + this.get('macAddressOfBoard'));
-					metawear.mwdevice.playLED({channel:"BLUE",
-                           riseTime: 750, pulseDuration: 2000,
-                           repeatCount: -1, highTime: 500,
-                           fallTime: 750, lowIntensity: 0,
-                           highIntensity: 31});
-				}
-				catch(err){
-					console.log('error: '+err);
-					alert('error: '+err);
-				}
-
-			}, 100);//run after 100ms
-		},
-		stopLED: function(){
-			Ember.run.later(function(){
-				//wrapper to preserve binding satistfaction
-				try {
-				//invoke metawear connection
-					console.log('Shutting off Blue Light: ' + this.get('macAddressOfBoard'));
-					metawear.mwdevice.stopLED();
-				}
-				catch(err){
-					console.log('error: '+err);
-					alert('error: '+err);
-				}
-
-			}, 100);//run after 100ms
-		}
-	}
-});
-```
-
-This code provides 4 actions that the template can use. Each references the ```metawear``` namespace (similar to how previous cordova plugins referenced ```navigator.<plugin-name>```). Each action invokes the relevant function and handles any errors that may occur. If the connection action completes, a flag is set in the component to allow the user to press the light buttons. 
-
-Do note that you will need to set the ```macAddressOfBoard``` variable to be the mac address of your Metawear device.
-
-Test the code by connecting your device to your development machine and deploying to your device.
-
-```bash
-ember cdv run --platform=android --device
-```
-
-You will need to ensure the Android ADB is working properly for this. For a helpful windows-based how-to, see: [https://www.howtogeek.com/125769/how-to-install-and-use-abd-the-android-debug-bridge-utility/](https://www.howtogeek.com/125769/how-to-install-and-use-abd-the-android-debug-bridge-utility/)
-
-### Working with accelerometer data
-Below, I show some additional methods for actually starting and stoping the accelerometer and displaying the data you get in an ember-chart like we did before.
-
-In the ```app/components/metawear-control.js``` change the file to the following:
-
-```js
-import Ember from 'ember';
-
-export default Ember.Component.extend({
-	metawearConnected: false,
-	macAddressOfBoard: '',
-	MWaccelHistory: [],
-	updateAccelData: function(component, result){
-		component.set('x', result.x);
-		component.set('y', result.y);
-		component.set('z', result.z);
-
-		//update history, maintain 50 points max
-		var history=component.get('MWaccelHistory');
-		if(history.length === 150){
-			history.shiftObject();//shift an x off
-			history.shiftObject();//shift a y off
-			history.shiftObject();//shift a z off
-		}
-		var t = Date.now();
-		var newXPoint = {time: t, label: 'x', value: result.x};
-		var newYPoint = {time: t, label: 'y', value: result.y};
-		var newZPoint = {time: t, label: 'z', value: result.z};
-		history.addObjects([newXPoint, newYPoint, newZPoint]);
-	},
-	actions: {
-		accelON: function(){
-			var component = this;
-			Ember.run.later(function(){
-				//wrapper to preserve binding satistfaction
-				try {
-				//invoke metawear connection
-					console.log('attempting to start accelerometer on: ' + this.get('macAddressOfBoard'));
-					metawear.mwdevice.startAccelerometer(
-						function(result){ //success
-							this.get('updateAccelData')(component,result);
-						}, function(error){//fail
-							console.log(error);
-							alert('error: '+error);
-						}
-					);
-				}
-				catch(err){
-					console.log('error: '+err);
-					alert('error: '+err);
-				}
-			}, 100);//run after 100ms
-		},
-		accelOFF: function(){
-			Ember.run.later(function(){
-				//wrapper to preserve binding satistfaction
-				try {
-				//invoke metawear connection
-					console.log('attempting to stop accelerometer on: ' + this.get('macAddressOfBoard'));
-					metawear.mwdevice.stopAccelerometer();
-				}
-				catch(err){
-					console.log('error: '+err);
-					alert('error: '+err);
-				}
-			}, 100);//run after 100ms
-		},
-		connect: function(){
-			var component = this;
-			Ember.run.later(function(){
-				//wrapper to preserve binding satistfaction
-				try {
-				//invoke metawear connection
 					console.log('attempting to connect to: ' + component.get('macAddressOfBoard'));
-					metawear.mwdevice.connect(macAddressOfBoard,
+					metawear.mwdevice.connect(component.get('macAddressOfBoard'),
 						function(){//success
 							console.log('connected');
 							component.set('metawearConnected', true);
@@ -295,16 +137,16 @@ export default Ember.Component.extend({
 			}, 100);//run after 100ms
 		},
 		playLED: function(){
-
+			var component = this;
 			Ember.run.later(function(){
 				//wrapper to preserve binding satistfaction
 				try {
 				//invoke metawear connection
 					console.log('Turning on Blue Light: ' + component.get('macAddressOfBoard'));
 					metawear.mwdevice.playLED({channel:"BLUE",
-						riseTime: 750, pulseDuration: 2000,
-						repeatCount: -1, highTime: 500,
-						fallTime: 750, lowIntensity: 0,
+						riseTime: 0, pulseDuration: 1000,
+						repeatCount: 5, highTime: 500,
+						fallTime: 750, lowIntensity: 16,
 						highIntensity: 31});
 				}
 				catch(err){
@@ -315,6 +157,175 @@ export default Ember.Component.extend({
 			}, 100);//run after 100ms
 		},
 		stopLED: function(){
+			var component = this;
+			Ember.run.later(function(){
+				//wrapper to preserve binding satistfaction
+				try {
+				//invoke metawear connection
+					console.log('Shutting off Blue Light: ' + component.get('macAddressOfBoard'));
+					metawear.mwdevice.stopLED();
+				}
+				catch(err){
+					console.log('error: '+err);
+					alert('error: '+err);
+				}
+
+			}, 100);//run after 100ms
+		}
+	}
+});
+```
+
+Now Rebuild and redeploy your app:
+
+```bash
+ember cdv:build --platform=android
+ember cdv run --platform=android --device
+```
+
+This code provides 4 actions that the template can use. Each references the ```metawear``` namespace (similar to how previous cordova plugins referenced ```navigator.<plugin-name>```). Each action invokes the relevant function and handles any errors that may occur. If the connection action completes, a flag is set in the component to allow the user to press the light buttons. 
+
+Do note that you will need to set the ```macAddressOfBoard``` variable to be the mac address of your Metawear device.
+
+Test the code by connecting your device to your development machine and deploying to your device.
+
+```bash
+ember cdv run --platform=android --device
+```
+
+You will need to ensure the Android ADB is working properly for this. For a helpful windows-based how-to, see: [https://www.howtogeek.com/125769/how-to-install-and-use-abd-the-android-debug-bridge-utility/](https://www.howtogeek.com/125769/how-to-install-and-use-abd-the-android-debug-bridge-utility/)
+
+### Working with accelerometer data
+Below, I show some additional methods for actually starting and stoping the accelerometer and displaying the data you get in an ember-chart like we did before.
+
+In the ```app/components/metawear-control.js``` change the file to the following:
+
+```js
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+	metawearConnected: false,
+	macAddressOfBoard: 'D9:30:6C:DF:E0:A9',
+	MWaccelHistory: [],
+	updateAccelData: function(component, result){
+		component.set('x', result.x);
+		component.set('y', result.y);
+		component.set('z', result.z);
+
+		//update history, maintain 50 points max
+		var history=component.get('MWaccelHistory');
+		if(history.length === 150){
+			history.shiftObject();//shift an x off
+			history.shiftObject();//shift a y off
+			history.shiftObject();//shift a z off
+		}
+		var t = Date.now();
+		var newXPoint = {time: t, label: 'x', value: result.x};
+		var newYPoint = {time: t, label: 'y', value: result.y};
+		var newZPoint = {time: t, label: 'z', value: result.z};
+		history.addObjects([newXPoint, newYPoint, newZPoint]);
+		console.log('Added point: x=' + result.x + ', y='+result.y+', z='+result.z)
+	},
+	actions: {
+		accelON: function(){
+			var component = this;
+			Ember.run.later(function(){
+				//wrapper to preserve binding satistfaction
+				try {
+				//invoke metawear connection
+					console.log('attempting to start accelerometer on: ' + component.get('macAddressOfBoard'));
+					metawear.mwdevice.startAccelerometer(
+						function(result){ //success
+							component.get('updateAccelData')(component,result);
+						}, function(error){//fail
+							console.log(error);
+							alert('error: '+error);
+						}
+					);
+				}
+				catch(err){
+					console.log('error: '+err);
+					alert('error: '+err);
+				}
+			}, 100);//run after 100ms
+		},
+		accelOFF: function(){
+			var component = this;
+			Ember.run.later(function(){
+				//wrapper to preserve binding satistfaction
+				try {
+				//invoke metawear connection
+					console.log('attempting to stop accelerometer on: ' + component.get('macAddressOfBoard'));
+					metawear.mwdevice.stopAccelerometer();
+				}
+				catch(err){
+					console.log('error: '+err);
+					alert('error: '+err);
+				}
+			}, 100);//run after 100ms
+		},
+		connect: function(){
+			var component = this;
+			Ember.run.later(function(){
+				//wrapper to preserve binding satistfaction
+				try {
+				//invoke metawear connection
+					console.log('attempting to connect to: ' + component.get('macAddressOfBoard'));
+					metawear.mwdevice.connect(component.get('macAddressOfBoard'),
+						function(){//success
+							console.log('connected');
+							component.set('metawearConnected', true);
+						}, function(error){//failure
+							console.log('connection failed' +error);
+							alert('error: '+error);
+						});
+				}
+				catch(err){
+					console.log('error: '+err);
+					alert('error: '+err);
+				}
+
+			}, 100);//run after 100ms
+		},
+		disconnect: function(){
+			var component = this;
+			Ember.run.later(function(){
+				//wrapper to preserve binding satistfaction
+				try {
+				//invoke metawear connection
+					console.log('Disconnecting from: ' + component.get('macAddressOfBoard'));
+					metawear.mwdevice.disconnect();
+					component.set('metawearConnected', false);
+				}
+				catch(err){
+					console.log('error: '+err);
+					alert('error: '+err);
+				}
+
+			}, 100);//run after 100ms
+		},
+		playLED: function(){
+			var component = this;
+			Ember.run.later(function(){
+				//wrapper to preserve binding satistfaction
+				try {
+				//invoke metawear connection
+					console.log('Turning on Blue Light: ' + component.get('macAddressOfBoard'));
+					metawear.mwdevice.playLED({channel:"BLUE",
+						riseTime: 0, pulseDuration: 1000,
+						repeatCount: 5, highTime: 500,
+						fallTime: 750, lowIntensity: 16,
+						highIntensity: 31});
+				}
+				catch(err){
+					console.log('error: '+err);
+					alert('error: '+err);
+				}
+
+			}, 100);//run after 100ms
+		},
+		stopLED: function(){
+			var component = this;
 			Ember.run.later(function(){
 				//wrapper to preserve binding satistfaction
 				try {
@@ -358,12 +369,12 @@ In the template ```app/templates/components/metawear-control.hbs``` modify it to
 	<div class="row">
 		<div class="col-xs-12">
 			<h4>Metawear Accelerometer Controls</h4>
-			<button type="button" class="btn red btn-sm" {{action 'accelON'}}>Turn on LED </button><br>
-			<button type="button" class="btn red btn-sm" {{action 'accelOFF'}}>Turn off LEDs </button>
+			<button type="button" class="btn red btn-sm" {{action 'accelON'}}>Turn on Accelerometer </button><br>
+			<button type="button" class="btn red btn-sm" {{action 'accelOFF'}}>Turn off Accelerometer </button>
 		</div>
 	</div>
 
-	{{time-series-chart lineData=MWAccelHistory}}
+	{{time-series-chart lineData=MWaccelHistory}}
 {{/if}}
 ```
 
