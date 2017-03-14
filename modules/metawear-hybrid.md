@@ -195,6 +195,10 @@ ember cdv run --platform=android --device
 
 You will need to ensure the Android ADB is working properly for this. For a helpful windows-based how-to, see: [https://www.howtogeek.com/125769/how-to-install-and-use-abd-the-android-debug-bridge-utility/](https://www.howtogeek.com/125769/how-to-install-and-use-abd-the-android-debug-bridge-utility/)
 
+When it is working, clicking the 'LED on' button should cause your metawear to blink a blue light.
+
+![metawear light](metawear-hybrid/metawear.gif)
+
 ### Working with accelerometer data
 Below, I show some additional methods for actually starting and stoping the accelerometer and displaying the data you get in an ember-chart like we did before.
 
@@ -379,6 +383,9 @@ In the template ```app/templates/components/metawear-control.hbs``` modify it to
 ```
 
 This should allow the app to listen for the 'success' callback received by the metawear accelerometer functionality. When the handler receives data and fires off the event, the event calls 'updateAccel' passing it the result and the component reference. This function, logs the data to the history variable, similar to how we logged data before in Lab 2.
+
+When you have it working, test it out by pressing the accelerometer on button. You should see:
+![metawear accelerometer](metawear-hybrid/app-ss.png)
 
 ### Extending this app
 Feel free to play with and customize the app to serve some of the capabilities that Metawear provides in their hybrid app API. Visit [https://github.com/mbientlab-projects/MetaWearCordova-Plugin](https://github.com/mbientlab-projects/MetaWearCordova-Plugin) for more information. Do note that code referring to ```mbientlab``` should really refer to ```metawear```. This was a namespace change awhile back and their documentation isn't the best
