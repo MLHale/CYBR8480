@@ -8,11 +8,11 @@ Mobile devices are already pervasive fixtures of 21st century culture and increa
 [Online discussion area](#online-discussion-area)  
 [Location](#location)	 
 [Supplies](#supplies)	 
-[Projects](#projects)
-[Labs](#labs)
+[Projects](#projects)  
+[Labs](#labs)  
 [Class topics](#class-topics)  
 [Syllabus](#syllabus)  
-[License](#license)  
+[License](#license)
 
 ## Online Discussion Area
 I have setup an online discussion board on slack.com for usage in this class. If you decide to work on a group project, I can create some private channels for you to work on, but I want to be able to participate in your conversations - so please use the space on slack. 
@@ -33,9 +33,6 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
 * IoT Device of your choice for your project (something you can select later when you choose a project)
 
 
-### Texts
-* TBA
-
 ## Projects
 [Project Milestone 1 rubric]() - TBA
 
@@ -51,37 +48,37 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
 
 ## Labs
 1. Introduction to the course
- * [Virtualization primer](/modules/virtualization-primer.md)
- * [Github primer](/modules/github-primer.md)
+  * [Virtualization primer](/modules/virtualization-primer.md)
+  * [Github primer](/modules/github-primer.md)
 1. Hybrid app development in Cordova
- * [Part 1 - Setup and Hello World](modules/hybrid-app-tutorial.md)
- * [Part 2 - Working with Cordova Plugins](modules/hybrid-app-tutorial-part2.md)
- * [Part 3 - Attacking Hybrid apps](modules/hybrid-app-sandbox-attacks.md)
+  * [Part 1 - Setup and Hello World](modules/hybrid-app-tutorial.md)
+  * [Part 2 - Working with Cordova Plugins](modules/hybrid-app-tutorial-part2.md)
+  * [Part 3 - Attacking Hybrid apps](modules/hybrid-app-sandbox-attacks.md)
 1. Native App development in Android
- * [Android Lab - Creating your first app and explore Android resources](modules/android.md)
+  * [Android Lab - Creating your first app and explore Android resources](modules/android.md)
 1. Wearable Development with Metawear
- * [Working with Metawear](modules/metawear-hybrid.md)
+  * [Working with Metawear](modules/metawear-hybrid.md)
 
 ## Class Topics
 1. Getting up to speed
- * Virtualization and Github Labs
+  * Virtualization and Github Labs
 1. Introduction to Mobile app Ecosystem ([PDF Lecture 1](/lectures/lecture1.pdf))
- * Types of mobile apps
- * Stats: Threat Vectors and vulnerabilities
- * Wearable and IoT Introduction
+  * Types of mobile apps
+  * Stats: Threat Vectors and vulnerabilities
+  * Wearable and IoT Introduction
 1. Hybrid app Development ([PDF Lecture 2](/lectures/lecture2.pdf))
 1. Native app Development ([PDF - Credit Xin Yang, UC Santa Barbara](http://lbmedia.ece.ucsb.edu/member/uweb/Teaching/website/PPT/01_Intro_Android_Basics.pdf))
- * Android Security Reading ([http://ieeexplore.ieee.org/abstract/document/6999911/](http://ieeexplore.ieee.org/abstract/document/6999911/))
+  * Android Security Reading ([http://ieeexplore.ieee.org/abstract/document/6999911/](http://ieeexplore.ieee.org/abstract/document/6999911/))
 1. IoT Development primer (PDF TBA)
-1. Test-driven Development (PDF TBA) 
- * Unit testing
- * Acceptance critera
- * think-test-build-test-repeat
+1. Test-driven Development (PDF TBA)
+  * Unit testing
+  * Acceptance critera
+  * think-test-build-test-repeat
 1. Time to be creative
- * Come up with your own project idea or implement something for a friend/family member or community organization
- * [Milestone 1](#projects): TBA
- * [Milestone 2](#projects): TBA
- * [Final Milestone](#projects): TBA
+  * Come up with your own project idea or implement something for a friend/family member or community organization
+  * [Milestone 1](#projects): TBA
+  * [Milestone 2](#projects): TBA
+  * [Final Milestone](#projects): TBA
 
 ## Syllabus
 ### Date/Time: Tuesday 5:30pm – 8:10pm
