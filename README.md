@@ -47,38 +47,38 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
 * Your work goes here
 
 ## Labs
-1. Introduction to the course
-  * [Virtualization primer](/modules/virtualization-primer.md)
-  * [Github primer](/modules/github-primer.md)
-1. Hybrid app development in Cordova
-  * [Part 1 - Setup and Hello World](modules/hybrid-app-tutorial.md)
-  * [Part 2 - Working with Cordova Plugins](modules/hybrid-app-tutorial-part2.md)
-  * [Part 3 - Attacking Hybrid apps](modules/hybrid-app-sandbox-attacks.md)
-1. Native App development in Android
-  * [Android Lab - Creating your first app and explore Android resources](modules/android.md)
-1. Wearable Development with Metawear
-  * [Working with Metawear](modules/metawear-hybrid.md)
+- Introduction to the course
+  - [Virtualization primer](/modules/virtualization-primer.md)
+  - [Github primer](/modules/github-primer.md)
+- Hybrid app development in Cordova
+  - [Part 1 - Setup and Hello World](modules/hybrid-app-tutorial.md)
+  - [Part 2 - Working with Cordova Plugins](modules/hybrid-app-tutorial-part2.md)
+  - [Part 3 - Attacking Hybrid apps](modules/hybrid-app-sandbox-attacks.md)
+- Native App development in Android
+  - [Android Lab - Creating your first app and explore Android resources](modules/android.md)
+- Wearable Development with Metawear
+  - [Working with Metawear](modules/metawear-hybrid.md)
 
 ## Class Topics
-1. Getting up to speed
-  * Virtualization and Github Labs
-1. Introduction to Mobile app Ecosystem ([PDF Lecture 1](/lectures/lecture1.pdf))
-  * Types of mobile apps
-  * Stats: Threat Vectors and vulnerabilities
-  * Wearable and IoT Introduction
-1. Hybrid app Development ([PDF Lecture 2](/lectures/lecture2.pdf))
-1. Native app Development ([PDF - Credit Xin Yang, UC Santa Barbara](http://lbmedia.ece.ucsb.edu/member/uweb/Teaching/website/PPT/01_Intro_Android_Basics.pdf))
-  * Android Security Reading ([http://ieeexplore.ieee.org/abstract/document/6999911/](http://ieeexplore.ieee.org/abstract/document/6999911/))
-1. IoT Development primer (PDF TBA)
-1. Test-driven Development (PDF TBA)
-  * Unit testing
-  * Acceptance critera
-  * think-test-build-test-repeat
-1. Time to be creative
-  * Come up with your own project idea or implement something for a friend/family member or community organization
-  * [Milestone 1](#projects): TBA
-  * [Milestone 2](#projects): TBA
-  * [Final Milestone](#projects): TBA
+- Getting up to speed
+  - Virtualization and Github Labs
+- Introduction to Mobile app Ecosystem ([PDF Lecture 1](/lectures/lecture1.pdf))
+  - Types of mobile apps
+  - Stats: Threat Vectors and vulnerabilities
+  - Wearable and IoT Introduction
+- Hybrid app Development ([PDF Lecture 2](/lectures/lecture2.pdf))
+- Native app Development ([PDF - Credit Xin Yang, UC Santa Barbara](http://lbmedia.ece.ucsb.edu/member/uweb/Teaching/website/PPT/01_Intro_Android_Basics.pdf))
+  - Android Security Reading ([http://ieeexplore.ieee.org/abstract/document/6999911/](http://ieeexplore.ieee.org/abstract/document/6999911/))
+- IoT Development primer ([PDF Lecture 4](/lectures/lecture4.pdf))
+- Test-driven Development
+  - Unit testing
+  - Acceptance critera
+  - think-test-build-test-repeat
+- Time to be creative
+  - Come up with your own project idea or implement something for a friend/family member or community organization
+  - [Milestone 1](#projects): TBA
+  - [Milestone 2](#projects): TBA
+  - [Final Milestone](#projects): TBA
 
 ## Syllabus
 ### Date/Time: Tuesday 5:30pm – 8:10pm
@@ -88,19 +88,19 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
 ### E-mail:  mlhale@unomaha.edu
 
 ### Grading Breakdown (due dates are tentative)
- * (10%) Participation score (meetings, short tutorial participation, etc)
- * (10%) Introduction to Hybrid Apps (Ember/Cordova) (Lab 1 - no rubric)
- * (10%) Introduction to Native Apps (Android Studio) (Lab 2 - no rubric)
- * (10%) Introduction to Wearables (Metawear) (Lab 3 - no rubric)
- * (15%) Semester Project Milestone 1 - (rubric TBA)
- * (20%) Semester Project Milestone 2 - (rubric TBA)
- * (25%) Semester Project Milestone Final - (rubric TBA)
+- (10%) Participation score (meetings, short tutorial participation, etc)
+- (10%) Introduction to Hybrid Apps (Ember/Cordova) (Lab 1 - no rubric)
+- (10%) Introduction to Native Apps (Android Studio) (Lab 2 - no rubric)
+- (10%) Introduction to Wearables (Metawear) (Lab 3 - no rubric)
+- (15%) Semester Project Milestone 1 - (rubric TBA)
+- (20%) Semester Project Milestone 2 - (rubric TBA)
+- (25%) Semester Project Milestone Final - (rubric TBA)
 
 Each project milestone will have a specific grading rubric that includes the core requirements for the project (i.e. what the application must do), any required intermediate milestone goals (such as short progress meetings with the instructor), the project due date, and the list of items that must be submitted. Each project will include a presentation component to be presented in class on the project due date. Projects build upon each other. The final Project is considered to be comprehensive. This means that <i>there is no final exam</i>. Final Project presentations will be presented on the day of the Final.
 
 ### Attendance
-* Class Attendance: You do not have to attend class except on presentation days (see below). Given the course is one day a week, attendance is highly recommended. Missing a single class is equivalent to missing 2-3 classes of a normal course. If you miss class, you are responsible for getting the material – including any assigned project work.
-* Presentation Attendance (Mandatory): If you miss class on a presentation day you will receive a 0 on the presentation portion of the project grade unless you have a university-approved excuse or an approved extension (see below). 
+- Class Attendance: You do not have to attend class except on presentation days (see below). Given the course is one day a week, attendance is highly recommended. Missing a single class is equivalent to missing 2-3 classes of a normal course. If you miss class, you are responsible for getting the material – including any assigned project work.
+- Presentation Attendance (Mandatory): If you miss class on a presentation day you will receive a 0 on the presentation portion of the project grade unless you have a university-approved excuse or an approved extension (see below). 
 
 ### Group Work
 Students may choose (or be compelled) to work in groups. Group projects will include an individual participation grade worth 40% of the total group points, e.g. a group may make a 100% on a particular project, but an individual with low participation in the group may make a 60%. Participation will be anonymously rated by other group team members and the instructor. 
