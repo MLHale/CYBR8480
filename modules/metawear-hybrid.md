@@ -389,3 +389,7 @@ When you have it working, test it out by pressing the accelerometer on button. Y
 
 ### Extending this app
 Feel free to play with and customize the app to serve some of the capabilities that Metawear provides in their hybrid app API. Visit [https://github.com/mbientlab-projects/MetaWearCordova-Plugin](https://github.com/mbientlab-projects/MetaWearCordova-Plugin) for more information. Do note that code referring to ```mbientlab``` should really refer to ```metawear```. This was a namespace change awhile back and their documentation isn't the best
+
+#### License
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CYBER8480 and related works</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://faculty.ist.unomaha.edu/mlhale" property="cc:attributionName" rel="cc:attributionURL">Matt Hale</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+
