@@ -8,15 +8,15 @@ Monday April 3rd (4/3/17) at 11:59PM, Discuss idea at Meeting with Dr. Hale 4/4/
 This project milestone tasks you with developing a project idea, identifying project requirements, and then analyzing them to determine needed resources and a project management plan for the rest of the semester. Towards this goal, you will be required to submit the following by the due date:
 
 * [Executive Project Summary](#executive-project-summary) - What are you doing and why?
- * Goals and Objectives
- * Merit of the Project
+  * Goals and Objectives
+  * Merit of the Project
 * [Project timeline](#proposed-project-timeline) - When will you do it?
- * Define the major tasks and expected time to completion
- * Create and submit a Gantt chart
+  * Define the major tasks and expected time to completion
+  * Create and submit a Gantt chart
 * [Project-oriented risk list](#risk-list) - What could go wrong in the project and why?
 * [Application requirements](#application-requirements) - What does your app/product do?
- * User stories
- * Misuser stories
+  * User stories
+  * Misuser stories
 * [Discussion](#discussion) - Talk to Dr. Hale about your idea
 
 **All materials will be submitted on GitHub, be sure to slack message me with your GitHub Repo link.**
