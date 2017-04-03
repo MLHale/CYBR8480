@@ -34,9 +34,9 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
 
 
 ## Projects
-[Project Milestone 1 rubric]() - TBA
+[Project Milestone 1 rubric](/projects/milestone1.md)
 
-[Project Milestone 2 rubric]() - TBA
+[Project Milestone 2 rubric](/projects/milestone2.md)
 
 [Project Final Milestone rubric]() - TBA
 
@@ -93,7 +93,7 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
 - (10%) Introduction to Native Apps (Android Studio) (Lab 2 - no rubric)
 - (10%) Introduction to Wearables (Metawear) (Lab 3 - no rubric)
 - (15%) Semester Project Milestone 1 - ([Rubric](/projects/milestone1.md))
-- (20%) Semester Project Milestone 2 - (rubric TBA)
+- (20%) Semester Project Milestone 2 - ([Rubric](/projects/milestone2.md))
 - (25%) Semester Project Milestone Final - (rubric TBA)
 
 Each project milestone will have a specific grading rubric that includes the core requirements for the project (i.e. what the application must do), any required intermediate milestone goals (such as short progress meetings with the instructor), the project due date, and the list of items that must be submitted. Each project will include a presentation component to be presented in class on the project due date. Projects build upon each other. The final Project is considered to be comprehensive. This means that <i>there is no final exam</i>. Final Project presentations will be presented on the day of the Final.
