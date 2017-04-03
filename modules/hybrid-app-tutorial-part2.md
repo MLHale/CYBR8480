@@ -202,7 +202,7 @@ ember install ember-charts
 ```
 
 #### Template Code
-First open your template code ./app/templates/components/accelerometer-display.js
+First open your template code ./app/templates/components/accelerometer-display.hbs
 edit it to the following to add our chart component in. 
 
 ```hbs
@@ -289,7 +289,7 @@ I've added another dandy gif of the graph. Test it out yourself!
 ### Integrating other Cordova Plugins
 You can apply the same logic used for Accelerometer to other Cordova Plugins. The typical ember-cordova workflow is
 
-1. Install the cordova plugin using ember cdv:plugin add <name of plugin>
+1. Install the cordova plugin using ```ember cdv:plugin add <name of plugin>```
 1. Create an ember component to handle the data and manage the interaction with the plugin
 1. Add the component somewhere in your App's template code
 1. Invoke the Cordova API (Typically ```navigator.<name of plugin>```) in your component code according to the documentation and update the component variables tracking the data accordingly.
@@ -301,6 +301,18 @@ When you've integrated it, fork this repo and edit hybrid-app-tutorial-part2.md 
 
 ### Student Contributions
 The following plugin module directions are submitted by previous students in the course. 
+
+#### Authors
+
+(your names go here)
+
+#### Plugin Name (which plugin did you look at?)
+
+(Provide a link to the plugin and briefly describe it)
+
+#### Usage
+
+(your instructions go here)
 
 #### Authors 
 Gabi Wethor 
@@ -345,9 +357,228 @@ export default Ember.Component.extend({
 	}
 });
 
+#### Author
+Jeff Dempsey
+
+#### Plugin Name (which plugin did you look at?)
+Device Orientation - https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-device-orientation/index.html
+This plugin gives access to the device compass to give a heading in degrees.
+
+#### Usage
+1. Install plugin [ember cdv:cordova plugin add cordova-plugin-device-orientation]
+1. Write necessary files to process and display data.
+
+2a. /app/templates/application.hbs
+> Calls out to orientation-display component to place its template here.
+> Code:
+
+```hbs
+{{orientation-display currHead=heading}}
+```
+
+2b. /app/templates/components/orientation-display.hbs
+>Sets up the template within application.hbs and calls the javascript file to fill the {{heading}} value in degrees. Basically copied the format from in-class accelerometer example.
+>Code:
+
+```hbs
+Orientation Heading: {{heading}}<br>
+```
+
+2c. /app/components/orientation-display.js
+> Queries Cordova for current device heading, in degrees, every 100ms. Since I'm new to all this, I again largely copied the format of the js file for the accelerometer-display. 
+
+> Code:
+
+```javascript
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  heading: null,
+
+  //Begin collecting heading data
+  startLogging: function(){
+    var component = this;
+    this.get('updateHeading')(this);
+  }.on('init'),
+  updateHeading: function(component){
+    Ember.run.later(function(){
+      try {
+        navigator.compass.getCurrentHeading(function(heading) {//if successful
+          component.set('heading', heading.magneticHeading);
+          console.log('Compass heading:');
+          console.log(heading);
+        }, function(error){//if error
+          console.log('Compass heading error.');
+          console.log(error);
+        });
+      } catch (error) {
+        console.log('Compass heading error.');
+        console.log(error);
+      }
+      component.get('updateHeading')(component);
+    }, 100); //run after 100ms, recurses to effectively run every 100ms
+  }
+});
+```
+
+#### Authors 
+James Percival
+
+#### Plugin Name (which plugin did you look at?)
+cordova-plugin-contacts[https://www.npmjs.com/package/cordova-plugin-contacts]
+Interesting plugin that allows the adding, viewing, and searching of contacts.
+
+#### Usage
+1. Install the plugin [ember cdv:plugin add cordova-plugin-contacts]
+1. Generate the files [ember generate component contacts-display]
+1. Edit the neccesary files:
+
+3a. /app/templates/application.hbs
+
+> Calls out to the contacts-display component to place its template here.
+
+> Raw code below
+
+```hbs
+  {{contacts-display}}
+```
+3b. /app/templates/components/contacts-display.hbs
+
+>Sets up its template inside application.hbs and then calls out to the javascript file to fill in {{q}} and {{w}}. Had to use the pre-wrap/pre-line style in order to preserve and display the newlines.
+
+> Raw code below
+
+```hbs
+  Total Number of Contacts: {{q}}<br>
+  Names:Numbers
+  <div style="white-space: pre-wrap;">{{w}}</div>
+```
+3c. /app/components/contacts-display.js
+
+>Queries Cordova and asks for an array of contact objects. We then list the number that was returned, their name, and finally their phone number. We then update q and w accordingly with the above information. Bad variable names... I know... This was all just messing around with it and once it worked I left it alone.
+
+> Raw code below
+
+```js
+  import Ember from 'ember';
+  export default Ember.Component.extend({
+    q:0,
+    w:"",
+    startLogging: function(){
+        //begin logging accelerometer data once the component launches
+        var component = this;
+        this.hi2(component);
+    }.on('init'),
+    hi2: function(component){
+      var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name];
+      navigator.contacts.find(fields, function(contacts){
+        component.set('q',contacts.length);
+        var nameToNumStr = "";
+        contacts.forEach(function(ele){
+          nameToNumStr += ele.name.givenName+':'+
+            ele.phoneNumbers[0].value+'\n';
+        });
+        console.log(nameToNumStr);
+        component.set('w', nameToNumStr);
+      });
+    }
+  });
+```
+
+#### Authors 
+Vaibhav Ingle
+
+#### Plugin Name (which plugin did you look at?)
+cordova-plugin-geolocation[https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-geolocation/index.html]
+This plugin provides information about the device's location, such as latitude and longitude.
+Note: This plugin only works if you serve the app from a secure url. In order to do so you 
+will need to setup the ember-cli to serve the index.html from an https domain. The following link guides you through the process of generating your own self signed ssl certificate:
+https://devcenter.heroku.com/articles/ssl-certificate-self
+
+#### Usage
+1. Install the plugin [ember cdv:plugin add cordova-plugin-geolocation]
+2. Generate the files [ember generate component geolocation-display]
+3. Edit the neccesary files:
+
+3a. /app/templates/application.hbs
+
+>This calls the geolocation-display component.
+
+> Raw code below
+
+  ```hbs
+Cordova Plugin For Geolocation 
+
+{{geolocation-display }}
+  ```
+3b. /app/templates/components/geolocation-display.hbs
+
+>This template takes values from javascript file and assigns the values to the lat and lng. 
+
+> Raw code below
+
+```hbs
+Latitude value: {{lat}}<br>
+Longitude value: {{lng}}<br>
+```
+
+3c. /app/components/geolocation-display.js
+
+>This javascript Queries Cordova and accepts a Position object, which contains the current GPS coordinates. Then the variables 
+lng,lat and alt are updated with the current GPS coordinates.
+
+> Raw code below
+
+```javascript
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  lng: 0,
+  lat: 0,
+  alt: 0,
+  
+  on: true,
+  startLogging: function(){
+    //begin logging geolocation data once the component launches
+
+    var component = this;
+    this.computeGPS(component);
+
+  }.on('init'),
+  computeGPS: function(component){
+    Ember.run.later(function(){
+      //wrapper to preserve binding satistfaction
+      try {
+        //invoke cordova geolocation Plugin and get geolocation data
+        navigator.geolocation.getCurrentPosition(function (position) {//success callback
+            //console.log('acceleration setvars called');
+            component.set('lng', position.coords.longitude);
+			console.log(position.coords);
+            component.set('lat', position.coords.latitude);
+            component.set('alt', position.coords.altitude);
+
+           
+        }, function (error) {//error callback	
+			
+            console.log(error);
+        });
+      }
+      catch(err){
+        console.log('error: '+err);
+      }
+      if(component.get('on')){
+        //keep running
+        component.computeGPS(component); //recurse
+      }
+
+    }, 10000);//run ever 10000ms
+  }
+});
+```  
+
 [Top](#table-of-contents)
 
 ### Next time we explore vulnerabilities and exploitations in hybrid apps.
 
 #### License
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CYBER8480</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://faculty.ist.unomaha.edu/mlhale" property="cc:attributionName" rel="cc:attributionURL">Matt Hale</a> work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CYBER8480 and related works</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://faculty.ist.unomaha.edu/mlhale" property="cc:attributionName" rel="cc:attributionURL">Matt Hale</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
