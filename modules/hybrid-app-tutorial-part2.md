@@ -581,13 +581,15 @@ Gib Filter
 
 #### Plugin Name (which plugin did you look at?)
 Media - https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-media/index.html
+
 This plugin provides the ability to record and play back audio files on a device.
 
 #### Usage
 1. Install plugin [ember cdv:cordova plugin add cordova-plugin-media]
 2. Create new componenent in ember for our view [ember generate component gif-mash]
+3. Update Files
 
-2a. /app/templates/application.hbs
+3a. /app/templates/application.hbs
 > Call our new component from the main application
 > Code:
 
@@ -596,7 +598,7 @@ This plugin provides the ability to record and play back audio files on a device
 {{gif-mash}}
 ```
 
-2b. /app/templates/components/gif-mash.hbs
+3b. /app/templates/components/gif-mash.hbs
 >Set up the gif-mash home screen
 >Code:
 
@@ -613,7 +615,7 @@ URL of music: {{input value=musicUrl}}<br>
 {{/if}}
 ```
 
-2c. /app/components/gif-mash.js
+3c. /app/components/gif-mash.js
 > Background stuff for the gif-mash
 
 > Code:
