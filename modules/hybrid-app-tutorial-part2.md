@@ -576,6 +576,93 @@ export default Ember.Component.extend({
 });
 ```  
 
+#### Author
+Gib Filter
+
+#### Plugin Name (which plugin did you look at?)
+Media - https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-media/index.html
+This plugin provides the ability to record and play back audio files on a device.
+
+#### Usage
+1. Install plugin [ember cdv:cordova plugin add cordova-plugin-media]
+2. Create new componenent in ember for our view [ember generate component gif-mash]
+
+2a. /app/templates/application.hbs
+> Call our new component from the main application
+> Code:
+
+```hbs
+.gif mashup machine!
+{{gif-mash}}
+```
+
+2b. /app/templates/components/gif-mash.hbs
+>Set up the gif-mash home screen
+>Code:
+
+```hbs
+<br>
+URL of .gif: {{input value=gifUrl}}<br>
+URL of music: {{input value=musicUrl}}<br>
+
+{{#if isPlaying}}
+	<button {{action "stopMus"}}>Stop!</button>
+	<img src={{gifUrl}}>
+{{else}}
+	<button {{action "playMus" musicUrl}}>Play!</button>
+{{/if}}
+```
+
+2c. /app/components/gif-mash.js
+> Background stuff for the gif-mash
+
+> Code:
+
+```javascript
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+	isPlaying: false,
+	my_media: null,
+	genMash: null,
+	loadCode: null,
+	musicUrl: "http://www.midiworld.com/download/4726",
+	gifUrl: "http://i1090.photobucket.com/albums/i363/scooterr98/Icons/170422_dancing_banana.gif",
+	apiUrl: "https://is.gd/create.php?format=simple&url=",
+	ajax : function(getIt) {
+		return Em.$.ajax({url: getIt});
+	},
+
+	actions: {
+		playMus : function (musUrl) {
+
+			this.my_media = new Media(musUrl, 
+				 // success callback
+		        function () {
+		            console.log("playAudio():Audio Success");
+		        },
+		        // error callback
+		        function (err) {
+		            console.log("playAudio():Audio Error: " + err);
+		            console.log(err);
+		        });
+
+		   	//play the song
+			this.my_media.play();
+			//set playing to true, to toggle the view in the template
+			this.set('isPlaying', true);
+		},
+		stopMus : function () {
+			//stop music, toggle the is playing
+			this.my_media.stop();
+			this.my_media.release();
+			this.set('isPlaying', false);
+		},
+	}
+
+});
+```
+
 [Top](#table-of-contents)
 
 ### Next time we explore vulnerabilities and exploitations in hybrid apps.
