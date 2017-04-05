@@ -23,7 +23,7 @@ ember cdv:plugin add https://github.com/mbientlab-projects/MetaWearCordova-Plugi
 
 Since this plugin requires Android SDK 18+, lets tell cordova to only use 18+.
 
-open ```/ember-cordova/config.xml``` and add the following line:
+open ```/ember-cordova/cordova/config.xml``` and add the following line:
 
 ```bash
 <preference name="android-minSdkVersion" value="18" />
