@@ -40,11 +40,13 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
 
 [Project Final Milestone rubric](/projects/milestone3.md)
 
-2016 Projects and Final Presentations:
-* Student work goes here
-
 2017 Projects and Final Presentations
-* Your work goes here
+* [E-notifier](https://github.com/vingle1/E-Notifier) - Vaibhav Ingle
+* [FishBright](https://github.com/Append/CYBR8480_Project) - Gib Filter
+* [FlyDry](https://github.com/gewethor/FlyDry) - Gabi Wethor
+* [KeyboardDetect](https://github.com/JMPercival/8480Project) - James Percival
+* [KeyFinder](https://github.com/jnyiok/KeyFinder) - James Nyiok
+* [OpenSesame](https://github.com/jeffreysdempsey/OpenSesame) - Jeff Dempsey
 
 ## Labs
 - Introduction to the course
