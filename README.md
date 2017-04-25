@@ -6,8 +6,8 @@ Mobile devices are already pervasive fixtures of 21st century culture and increa
 
 ### Table of contents
 [Online discussion area](#online-discussion-area)  
-[Location](#location)	 
-[Supplies](#supplies)	 
+[Location](#location)  
+[Supplies](#supplies)  
 [Projects](#projects)  
 [Labs](#labs)  
 [Class topics](#class-topics)  
