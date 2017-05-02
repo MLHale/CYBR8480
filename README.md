@@ -42,7 +42,7 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
 
 2017 Projects and Final Presentations
 * [E-notifier](https://github.com/vingle1/E-Notifier) - Vaibhav Ingle
-* [FishBright](https://github.com/Append/CYBR8480_Project) - Gib Filter
+* [FishBright](https://github.com/Append/fishingapp) - Gib Filter
 * [FlyDry](https://github.com/gewethor/FlyDry) - Gabi Wethor
 * [KeyboardDetect](https://github.com/JMPercival/8480Project) - James Percival
 * [KeyFinder](https://github.com/jnyiok/KeyFinder) - James Nyiok
