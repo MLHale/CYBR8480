@@ -53,7 +53,7 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
   - [Virtualization primer](/modules/virtualization-primer.md)
   - [Github primer](/modules/github-primer.md)
 - Hybrid app development in Cordova
-  - [Part 1 - Setup and Hello World](modules/hybrid-app-tutorial.md)
+  - [Part 1 - Setup and Hello World](modules/hybrid-app-tutorial/README.md)
   - [Part 2 - Working with Cordova Plugins](modules/hybrid-app-tutorial-part2.md)
   - [Part 3 - Attacking Hybrid apps](modules/hybrid-app-sandbox-attacks.md)
 - Native App development in Android
