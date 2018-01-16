@@ -35,7 +35,10 @@ This guide assumes you have already installed git (github desktop for windows us
 
 ```
 sudo apt-get install git
+npm install -g n
+sudo n latest
 ```
+> Windows users should make sure to install the latest versions of npm and node
 
 To install node and npm (the node package manager), visit [https://nodejs.org/en/](https://nodejs.org/en/)
 
@@ -129,6 +132,7 @@ git push -u origin master
 There is a handy ember addon (built by [@poetic](https://github.com/poetic/ember-cli-cordova) and [@isleofcode](https://github.com/isleofcode/ember-cordova)) that makes cordova cli and ember cli seamlessly (and I mean really seamlessly) work together. Lets install it.
 
 ```
+npm install -g yarn
 npm install -g corber
 ```
 
@@ -138,131 +142,100 @@ For this tutorial, lets tell Cordova to build the app for android. In general co
 Using ember cordova, lets add android as a supported platform:
 
 ```
-ember cdv:platform add android
+corber init
 ```
+- Select `android` from the available options by pressing down and then spacebar
 
-This effectively creates an Android ```Manifest File```- something we will talk about more later in the course. For now, just know that a Manifest file is what tells Android what the app's name is and what it needs access to.
+![](assets/README-227c5.png)
+
+This effectively creates an Android ```Manifest File``` and initializes our ember project by defining a WebView - something we will talk about more later in the course. For now, just know that a Manifest file is what tells Android what the app's name is and what it needs access to.
+
+> Mac user note: For MacOS you also need to install gradle. Installing via brew requires the xcode-select commandline tools. You can install using the following:
+```
+xcode-select --install
+brew update && brew install gradle
+```
 
 [Top](#table-of-contents)
 
-#### Confirming everything is installed
-Before we proceed with building our app, lets double check that all of the prereqs listed earlier are installed properly. Type:
-
-```
-ember cordova requirements
-```
-If you don't see all checks as shown below, you need to go back and installed the prereqs.
-![new repo](hybrid-app-tutorial/requirements-check.png)
-
 ### Building and Deploying the app
-To build the app (produce a .apk file) we just need to tell Ember-cordova to build it for us:
+To build the app (produce a .apk file) we just need to tell Corber to build and run it for us:
 
 ```
-ember cdv:build --platform android
+corber build --platform=android
 ```
+> This may take awhile the first time, since Cordova will need to download a bunch of stuff.
+
 > You will get an error saying you need to change {{rootURL}}. Essentially, cordova creates a localhost app and runs it using your phone's interal web browser. We just need to change a configuration file in ember to make it happy with this setup.
 
-```
-nano config/environment.js
-```
+To fix it:
+edit `hybridapp/config/envrionment.js` to change:
 
-![fix root url](hybrid-app-tutorial/fix-root-url.png)
+```
+    rootURL: '/',
+    locationType: 'auto',
+```
+to
+
+```
+    rootURL: '',
+    locationType: 'hash',
+```
 
 Now rebuild the app:
 ```
-ember cdv:build --platform android
+corber build --platform=android
 ```
-
-> This may take awhile the first time, since Cordova will need to download a bunch of stuff.
 
 You should see a process such as:
-![cordova-build-first-time](hybrid-app-tutorial/cordova-build-first-time.png)
+![cordova-build-first-time](assets/README-f4a17.png)
 
-Once done, this should produce a .apk file that you can copy/paste to your phone. If you want to test it out, navigate to the following folder:
+Once done, this should produce a .apk file that you can copy/paste to your phone. If you want to test it out, navigate to `corber/platforms/android/app/build/outputs/apk/debug/`
 
-```
-cd ember-cordova/cordova/platforms/android/build/outputs/apk
-ls
-```
-> You should see a file called something like ```android-x86-debug.apk```
+> You should see a file called something like ```app-debug.apk``` that you can copy to your android phone.
 
-Since this is tedious, the CLI provides us with another command to do it.
+Since this is tedious, we can use an emulator for this.
+
+- Open android studio.
+- select `open an existing android studio project`
+- select `hybridapp/corber/cordova/platforms/android/` as the base folder
+- wait for android to load and update the project workspace
+- once done, click the `play icon` in android studio to launch the app
+- select create virtual device (or connect your phone)
+- on the virtual device menu, select your favorite phone version (e.g. 6P) and then select Oreo (API V26)
+- click finish
+- now launch your app from the emulator toolbar
+
+![](assets/README-a4140.png)
+
+With your emulator running, we can now put corber in serve mode - which makes it operate just like ember-cli except for apps.
+
+Type:
 ```
-ember cdv run --platform=android --emulator
+corber serve --platform=android --emulator
 ```
 > This deploys to a previously configured emulator (you can set this up in android studio). Before you run the command, lets setup an emulator
 
 To make this work, we need to setup an emulator. Open Android studio, select SDK manager, and then launch the standalone SDK manager. Select the 5 packages show below for a variety of emulated hardware.
 
-![SDK Manager](hybrid-app-tutorial/sdk-emulator-images.png)
+> Windows users can use android avd command to setup emulator
 
-Once installed, lets setup our emulator image
-
-```
-android avd
-```
-
-![Android AVD](hybrid-app-tutorial/android-avd-1.png)
-![Android AVD](hybrid-app-tutorial/android-avd-2.png)
-
-> Wait a few moments for the emulator to load, eventually your app will launch
-
-![Android AVD](hybrid-app-tutorial/android-avd-3.png)
-
-> Tip #1 If you are going to develop on an emulator, it is good to leave the emulator open after the initial launch, it only takes a few seconds to reload an app, but it can take a minute to launch the emulator the first time.
-> Tip #2 You can always launch the emulator yourself using ```emulator.exe -avd Nexus7``` on the command line (the nexus7 part would be whatever you called your emulator avd)
-
-To deploy to an Android device, you can instead use:
-```
-ember cdv run --platform=android --device
-```
+To deploy to an Android device, you can instead run the app in the android device instead of the emulator.
 > note this requires that you have previously installed and configured ADB (the Android Device Bridge) and that your phone is connected to your computer.
 
-### Live Reload
-#### Configuring it
-Those familiar with Ember probably are asking themselves - what about the awesome auto-refresh ability? Well ember-cordova supports live reload:
-
-```
-ember cdv:serve --platform=android
-```
-
-You will get an error (at first):
-![Ember error](hybrid-app-tutorial/ember-server-error.png)
-
-To fix it it, modify ```ember-cordova/cordova/config.xml``` by adding the flag ```<allow-navigation href="*"/>```
-
-> Security Note: This is to be used in development only, you should configure your build environment to allow this, but not your production environment.
-
-Rerunning the command, we see the familiar live-reload ember server, but now with all of the cordova features AND the ability to stream to your phone as a native app. Cool huh?
-![Ember cordova server running](hybrid-app-tutorial/ember-cordova-server.png)
-
 ### Trying it out
-Lets try it out. Create a new application template. Then we will deploy the live reload build and then run ember cdv server.
+Lets try it out. In a new terminal (other than where corber is running) create a new application template. Then we will deploy the live reload build and then run ember cdv server.
 
 ```
 ember generate template application
 ```
 
 Lets just type 'Hello World!' in our new template.
-
-Now rebuild and deploy the app to the emulator
-
-```
-ember cdv run --platform=android --emulator
-```
-
 > After it has finished building, the app will restart in the emulator and you should see hello world.
 
-Now, run ember cdv server:
-```
-ember cdv:serve --platform=android --verbose
-```
-![Hello World](hybrid-app-tutorial/hello-world.png)
+Now modify the application.hbs file in `hybridapp/app/templates to say` `Hello world! - oh look it changed`
 
-Now modify the application.hbs file in /app/templates to say ```Hello world! - oh look it changed```
-
-![Hello World changed](hybrid-app-tutorial/hello-world2.png)
-
+Pretty cool!
 [Top](#table-of-contents)
 
 #### Exploring cordova packages
