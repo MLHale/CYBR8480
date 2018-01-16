@@ -70,10 +70,7 @@ All classroom activities will take place in PKI room 361 unless otherwise noted 
 - Native app Development ([PDF - Credit Xin Yang, UC Santa Barbara](http://lbmedia.ece.ucsb.edu/member/uweb/Teaching/website/PPT/01_Intro_Android_Basics.pdf))
   - Android Security Reading ([http://ieeexplore.ieee.org/abstract/document/6999911/](http://ieeexplore.ieee.org/abstract/document/6999911/))
 - IoT Development primer ([PDF Lecture 4](/lectures/lecture4.pdf))
-- Test-driven Development
-  - Unit testing
-  - Acceptance criteria
-  - think-test-build-test-repeat
+- Open Discussions on student-driven topic areas
 - Time to be creative
   - Come up with your own project idea or implement something for a friend/family member or community organization
   - Project Milestone 1 - Rubric TBA : In this project you will define your idea and discuss it with Dr. Hale to get some initial feedback.
@@ -95,9 +92,10 @@ All classroom activities will take place in PKI room 361 unless otherwise noted 
   - Part 3 - Attacking Hybrid apps (5%)
 - (10%) Introduction to Native Apps (Android Studio) (Lab 2 - no rubric)
 - (10%) Introduction to Wearables (Metawear) (Lab 3 - no rubric)
+- (10%) Topic Centric Discussions (Short reading assignments)
 - (15%) Semester Project Milestone 1 - ([Rubric](/projects/milestone1.md))
-- (20%) Semester Project Milestone 2 - ([Rubric](/projects/milestone2.md))
-- (20%) Semester Project Milestone Final - ([Rubric](/projects/milestone3.md))
+- (15%) Semester Project Milestone 2 - ([Rubric](/projects/milestone2.md))
+- (15%) Semester Project Milestone Final - ([Rubric](/projects/milestone3.md))
 
 Each project milestone will have a specific grading rubric that includes the core requirements for the project (i.e. what the application must do), any required intermediate milestone goals (such as short progress meetings with the instructor), the project due date, and the list of items that must be submitted. Each project will include a presentation component to be presented in class on the project due date. Projects build upon each other. The final Project is considered to be comprehensive. This means that <i>there is no final exam</i>. Final Project presentations will be presented on the day of the Final.
 
