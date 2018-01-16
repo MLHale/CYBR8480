@@ -47,8 +47,16 @@ Cordova (and anything android related) requires the Java Development Kit (JDK) a
 
 - First install JAVA JDK and set your `JAVA_HOME` path parameter
 - Next, install Android Studio.
+  - Set `ANDROID_HOME` and `PATH` to include the needed files
   - In the installation process select custom and install the `Android Virtual Device`
-  - See below for further instructions
+  - See the cordova link for platform specific directions
+
+> Mac users will need to add the following to your bash profile:
+```
+export JAVA_HOME=`/usr/libexec/java_home`
+export ANDROID_HOME=/Library/Android/sdk/
+export PATH=${PATH}:/Library/Android/sdk/platform-tools:/Library/Android/sdk/to$
+```
 
 ###### Installing latest Android SDK latest build
 In addition to installing the SDK and Java and configuring your path appropriately, you will also need to use Android Studio to install the latest versions of the Android build files. At the time of writing this tutorial, the latest Android version was Android 7.1 Nougat (API v25). You should use whatever is latest version of Android.
