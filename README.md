@@ -20,13 +20,11 @@ I have setup an online discussion board on slack.com for usage in this class. If
 Go to [https://drhale8480.slack.com](https://drhale8480.slack.com) and use your unomaha email address to register an account. This will give you access to the course discussion and project collaboration spaces. Use the the general channel or create a new one for your team.
 
 ## Location
-All classroom activities will take place in PKI room 261 unless otherwise noted ahead of time.
+All classroom activities will take place in PKI room 361 unless otherwise noted ahead of time.
 
 ## Supplies
 
 ### Hardware/software
-* [Virtualbox](http://www.virtualbox.org) or [VMWare Workstation (windows) or Fusion (mac)](/vmware/vmware.pdf)
-* [UNO Cloud Deployment Environments](http://view.unomaha.edu)
 * Your laptop - capable of running android studio (Win7+/MacOSX10.10+ 8GB Ram, 2GB disk space, 1280x800 min, 64bit (pref))
 * [Metawear](https://store.mbientlab.com/) Any of the R, RPRO, RG, C, or CPRO models will work. If you are just using it in the class, the R version is the cheapest and recommended ($40).
 * Android 4.3+ (API level 18+) Bluetooth LE capable phone or tablet
@@ -74,13 +72,13 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
 - IoT Development primer ([PDF Lecture 4](/lectures/lecture4.pdf))
 - Test-driven Development
   - Unit testing
-  - Acceptance critera
+  - Acceptance criteria
   - think-test-build-test-repeat
 - Time to be creative
   - Come up with your own project idea or implement something for a friend/family member or community organization
-  - [Project Milestone 1](/projects/milestone1.md) : In this project you will define your idea and discuss it with Dr. Hale to get some initial feedback.
-  - Project Milestone 2 Rubric TBA : In this milestone you will work to create an initial basic prototype of your product.
-  - Final Milestone Rubric TBA : In this milestone you will polish your product and realize your user stories.
+  - Project Milestone 1 - Rubric TBA : In this project you will define your idea and discuss it with Dr. Hale to get some initial feedback.
+  - Project Milestone 2 - Rubric TBA : In this milestone you will work to create an initial basic prototype of your product.
+  - Final Milestone - Rubric TBA : In this milestone you will polish your product and realize your user stories.
 
 ## Syllabus
 ### Date/Time: Tuesday 5:30pm – 8:10pm
@@ -91,12 +89,15 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
 
 ### Grading Breakdown (due dates are tentative)
 - (10%) Participation score (meetings, short tutorial participation, etc)
-- (10%) Introduction to Hybrid Apps (Ember/Cordova) (Lab 1 - no rubric)
+- (15%) Introduction to Hybrid Apps (Ember/Cordova) (Lab 1 - no rubric)
+  - Part 1 - Setup and Hello World (5%)
+  - Part 2 - Working with Cordova Plugins (5%)
+  - Part 3 - Attacking Hybrid apps (5%)
 - (10%) Introduction to Native Apps (Android Studio) (Lab 2 - no rubric)
 - (10%) Introduction to Wearables (Metawear) (Lab 3 - no rubric)
 - (15%) Semester Project Milestone 1 - ([Rubric](/projects/milestone1.md))
 - (20%) Semester Project Milestone 2 - ([Rubric](/projects/milestone2.md))
-- (25%) Semester Project Milestone Final - ([Rubric](/projects/milestone3.md))
+- (20%) Semester Project Milestone Final - ([Rubric](/projects/milestone3.md))
 
 Each project milestone will have a specific grading rubric that includes the core requirements for the project (i.e. what the application must do), any required intermediate milestone goals (such as short progress meetings with the instructor), the project due date, and the list of items that must be submitted. Each project will include a presentation component to be presented in class on the project due date. Projects build upon each other. The final Project is considered to be comprehensive. This means that <i>there is no final exam</i>. Final Project presentations will be presented on the day of the Final.
 
