@@ -12,17 +12,20 @@
 
 ### Introduction
 
-Hybrid apps are what you get when web apps and native apps have a baby. The core limitation of web apps in mobile environments is there inability to access native device features (e.g. photo libraries, keyboard functions, and bluetooth capabilities - to name a few). The core strength of web apps is their ability to be deployed cross-platform. That is, a web app is the same for Android as it is for iOS or Windows phone. This means developers can iterate much quicker without the need to develop stand alone siloed code for different platforms. 
+Hybrid apps are what you get when web apps and native apps have a baby. The core limitation of web apps in mobile environments is there inability to access native device features (e.g. photo libraries, keyboard functions, and bluetooth capabilities - to name a few). The core strength of web apps is their ability to be deployed cross-platform. That is, a web app is the same for Android as it is for iOS or Windows phone. This means developers can iterate much quicker without the need to develop stand alone siloed code for different platforms.
 
 On the flip side, native apps have all of the tight control of mobile operating system and hardware capabilities, but at the cost of being developed in platform specific languages and paradigms. This means that developers supporting multiple native apps must individually change each code base if they wish to put out an update to their app.
 
-Hybrid apps get the best of both worlds - access to native features, while still being built as a cross-platform web-app. How does this work you ask? Well hybrid apps operate in a native platform-specific 'container.' This native container provides API access to native features to a web app core (where the majority of the app lives). So developers can write one app and just map it to many containers. 
+Hybrid apps get the best of both worlds - access to native features, while still being built as a cross-platform web-app. How does this work you ask? Well hybrid apps operate in a native platform-specific 'container.' This native container provides API access to native features to a web app core (where the majority of the app lives). So developers can write one app and just map it to many containers.
 
 The content of this lesson explores these concepts and helps you build your first cross-platform hybrid app using Apache Cordova and Ember JS.
 
 Our entire setup uses Free and Open Source Software (FOSS). When using FOSS, respect its copyright and license restrictions. These obligations and rights are typically conveyed in a LICENSE file.
 
 [Top](#table-of-contents)
+
+### Updates
+- Last updated Tuesday Jan. 16th to use corber instead of ember-cordova
 
 ### Installing Cordova and Ember
 #### Pre-requisites
@@ -37,10 +40,15 @@ sudo apt-get install git
 To install node and npm (the node package manager), visit [https://nodejs.org/en/](https://nodejs.org/en/)
 
 ##### Android SDK and Java JDK
-Cordova (and anything android related) requires the Java Development Kit (JDK) and the Android SDK. To install those follow the guide here: [http://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#requirements-and-support](http://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#requirements-and-support)
+Cordova (and anything android related) requires the Java Development Kit (JDK) and the Android SDK. The specific Cordova installation guide can be found here: [http://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#requirements-and-support](http://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html#requirements-and-support). Open it now in another tab. It will walk you through the following.
 
-##### Installing latest Android SDK latest build 
-In addition to installing the SDK and Java and configuring your path appropriately, you will also need to use Android Studio to install the latest versions of the Android build files. At the time of writing this tutorial, the latest Android version was Android 7.1 Nougat (API v25).
+- First install JAVA JDK and set your `JAVA_HOME` path parameter
+- Next, install Android Studio.
+  - In the installation process select custom and install the `Android Virtual Device`
+  - See below for further instructions
+
+###### Installing latest Android SDK latest build
+In addition to installing the SDK and Java and configuring your path appropriately, you will also need to use Android Studio to install the latest versions of the Android build files. At the time of writing this tutorial, the latest Android version was Android 7.1 Nougat (API v25). You should use whatever is latest version of Android.
 
 ![SDK Manager](hybrid-app-tutorial/sdk-manager.png)
 ![SDK Manager 25](hybrid-app-tutorial/sdk-manager2.png)
@@ -67,6 +75,7 @@ Cordova supports basically all major mobile platforms and operating systems. See
 See [https://cordova.apache.org/docs/en/latest/guide/support/index.html](https://cordova.apache.org/docs/en/latest/guide/support/index.html) for a full list of supported platforms and features.
 
 [Top](#table-of-contents)
+
 #### Installing Ember
 Since we will be building our app in Ember, lets also install the Ember CLI you worked with before in sec. web dev.
 
@@ -74,7 +83,7 @@ Since we will be building our app in Ember, lets also install the Ember CLI you 
 npm install -g ember-cli
 ```
 
-Now you should be able to interact on the command line and see the cordova and ember build tools functioning:
+Now you should be able to interact on the command line and see the Cordova and ember build tools functioning:
 
 ```
 cordova help
@@ -120,7 +129,7 @@ git push -u origin master
 There is a handy ember addon (built by [@poetic](https://github.com/poetic/ember-cli-cordova) and [@isleofcode](https://github.com/isleofcode/ember-cordova)) that makes cordova cli and ember cli seamlessly (and I mean really seamlessly) work together. Lets install it.
 
 ```
-ember install ember-cordova
+npm install -g corber
 ```
 
 ### Adding platforms
@@ -177,7 +186,7 @@ ls
 ```
 > You should see a file called something like ```android-x86-debug.apk```
 
-Since this is tedious, the CLI provides us with another command to do it. 
+Since this is tedious, the CLI provides us with another command to do it.
 ```
 ember cdv run --platform=android --emulator
 ```
