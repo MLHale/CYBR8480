@@ -64,7 +64,7 @@ All classroom activities will take place in PKI room 261 unless otherwise noted 
 ## Class Topics
 - Getting up to speed
   - Virtualization and Github Labs
-- Introduction to Mobile app Ecosystem ([PDF Lecture 1](/lectures/lecture1.pdf))
+- Introduction to Mobile app Ecosystem ([PDF Lecture 1](/lectures/1.pdf))
   - Types of mobile apps
   - Stats: Threat Vectors and vulnerabilities
   - Wearable and IoT Introduction
