@@ -193,7 +193,7 @@ We also need to fix one small versioning issue with the current corber version.
 Currently, as of 1.1.13, corber place the www folder in the android project in the wrong spot. 
 
 To fix this:
-copy files from `hybridapp/corber/cordova/platforms/android/build/platform_www/` to `hybridapp/corber/cordova/platforms/android/assets/`
+copy files from `hybridapp/corber/cordova/platforms/android/platform_www/` to `hybridapp/corber/cordova/platforms/android/assets/www/`
 
 Now rebuild the app:
 ```
