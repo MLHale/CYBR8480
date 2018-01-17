@@ -225,7 +225,7 @@ With your emulator running, we can now put corber in serve mode - which makes it
 
 Type:
 ```
-corber serve --platform=android
+corber serve --platform=android --emulator
 ```
 > This deploys to a previously configured emulator (you can set this up in android studio). Before you run the command, lets setup an emulator
 
