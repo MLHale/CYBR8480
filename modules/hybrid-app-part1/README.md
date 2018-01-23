@@ -54,8 +54,8 @@ Cordova (and anything android related) requires the Java Development Kit (JDK) a
 > Mac users will need to add the following to your bash profile:
 ```
 export JAVA_HOME=`/usr/libexec/java_home`
-export ANDROID_HOME=/Library/Android/sdk/
-export PATH=${PATH}:/Library/Android/sdk/platform-tools:/Library/Android/sdk/to$
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH=${PATH}:$ANDROID_HOME/platform-tools:ANDROID_HOME/tools
 ```
 
 ###### Installing latest Android SDK latest build
@@ -190,7 +190,7 @@ to
     locationType: 'hash',
 ```
 We also need to fix one small versioning issue with the current corber version.
-Currently, as of 1.1.13, corber place the www folder in the android project in the wrong spot. 
+Currently, as of 1.1.13, corber place the www folder in the android project in the wrong spot.
 
 To fix this:
 copy files from `hybridapp/corber/cordova/platforms/android/platform_www/` to `hybridapp/corber/cordova/platforms/android/assets/www/`
