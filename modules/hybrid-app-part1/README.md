@@ -220,21 +220,26 @@ Since this is tedious, we can use an emulator for this.
 - now launch your app from the emulator toolbar
 
 ![](assets/README-a4140.png)
+To deploy to an Android device, you can instead run the app in the android device instead of the emulator.
+> note this requires that you have previously installed and configured ADB (the Android Device Bridge) and that your phone is connected to your computer.
 
 With your emulator running, we can now put corber in serve mode - which makes it operate just like ember-cli except for apps.
 
 Type:
 ```
-corber serve --platform=android --emulator
+corber serve --platform=android
 ```
 > This deploys to a previously configured emulator (you can set this up in android studio). Before you run the command, lets setup an emulator
 
-To make this work, we need to setup an emulator. Open Android studio, select SDK manager, and then launch the standalone SDK manager. Select the 5 packages show below for a variety of emulated hardware.
+With corber's live reload feature running, we just need to tell corber to deploy our app for live reload to the emulator.
 
-> Windows users can use android avd command to setup emulator
+```
+corber proxy run android --emulator --nobuild
+```
 
-To deploy to an Android device, you can instead run the app in the android device instead of the emulator.
-> note this requires that you have previously installed and configured ADB (the Android Device Bridge) and that your phone is connected to your computer.
+This should deploy the apk we built earlier to the emulator to be run.
+
+
 
 ### Trying it out
 Lets try it out. In a new terminal (other than where corber is running) create a new application template. Then we will deploy the live reload build and then run ember cdv server.
