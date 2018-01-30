@@ -33,7 +33,7 @@ Make sure the following is in your path, (linux/mac paths shown below).
 ```
 export JAVA_HOME=`/usr/libexec/java_home`
 export ANDROID_HOME=~/Library/Android/sdk
-export PATH=${PATH}:$ANDROID_HOME/platform-tools:ANDROID_HOME/tools
+export PATH=${PATH}:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
 ```
 
 check to make sure the android tools are accessible from the command line using the command:
