@@ -1,12 +1,12 @@
 # Building a Hybrid App in Android and Ember
 
 ### Table of Contents
-[Introduction](#introduction)  
-[Getting started](#getting-started)  
-[Dev tool usage](#dev-tool-usage)  
-[Working with your first Cordova Plugin](#working-with-your-first-cordova-plugin)  
-[Accelerometer display component](#accelerometer-display-component)  
-[Extending the app](#extending-the-app)  
+[Introduction](#introduction)
+[Getting started](#getting-started)
+[Dev tool usage](#dev-tool-usage)
+[Working with your first Cordova Plugin](#working-with-your-first-cordova-plugin)
+[Accelerometer display component](#accelerometer-display-component)
+[Extending the app](#extending-the-app)
 
 
 ### Introduction
@@ -598,7 +598,7 @@ export default Ember.Component.extend({
     }, 10000);//run ever 10000ms
   }
 });
-```  
+```
 
 #### Author
 Gib Filter
@@ -689,16 +689,16 @@ export default Ember.Component.extend({
 });
 ```
 
-Authors
--------
+#### Authors
+
 Glenn Anderson
 
-Plugin Name (which plugin did you look at?)
-------
+#### Plugin Name (which plugin did you look at?)
+
 Dialogs & Network Information
 
-Usage
-------
+#### Usage
+
 #### 1. Install Cordova Plugin
 ```bash
 cordova plugin add cordova-plugin-network-information
@@ -768,6 +768,157 @@ export default Component.extend({
 });
 
 ````
+
+#### Authors
+
+Dan Lucier
+
+#### Plugin Name (which plugin did you look at?)
+
+Dialogs - https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-dialogs/
+
+This plugin provides the ability to access and customize native dialog boxes.
+
+#### Usage
+
+#### 1. Install plugin
+```bash
+corber plugin add cordova-plugin-dialogs
+```
+
+#### 2. Generate Ember files
+
+##### 2a. Generate Ember application template
+```bash
+ember generate template application
+```
+
+##### 2b. Generate Ember component
+```bash
+ember generate component dialogs-display
+```
+
+#### 3. Edit necessary files
+
+##### 3a. Edit /app/templates/application.hbs
+Although this app will be presenting pop-up display boxes, any text in this file will be shown on the screen in the background.
+```hbs
+Demo: cordova-plugin-dialogs
+<br />Methods used:
+<br />navigator.notification.prompt
+<br />navigator.notification.confirm
+
+{{dialogs-display}}
+```
+
+##### 3b. Edit /app/templates/components/dialogs-display.hbs
+This display is intended for QA testing only.
+```hbs
+<!-- This display is for QA testing only
+Comment out the below lines prior to final deployment -->
+<br />Player's Name: {{playerName}}
+<br />Number To Guess: {{numGuess}}
+<br />Player Guess: {{playerGuess}}
+```
+
+##### 3c. Modify /app/components/dialogs-display.js
+This app implements the prompt and confirm methods of the dialogs plugin as a simple number guessing game.
+```javascript
+import Component from '@ember/component';
+
+export default Component.extend({
+  playerName: 'Player One',
+  numGuess: 0,
+  playerGuess: 0,
+  init(){
+    this._super(...arguments);
+    this.introduction(this)
+  },
+
+introduction(component){
+  navigator.notification.prompt(
+    "Please, enter your first name", //Introduction - prompt message
+    function setPlayerName (results){ //Introduction - prompt callback
+      component.set('playerName', results.input1);
+      navigator.notification.confirm(
+        "Would you like to play a game?", //Greetings - confirm message
+        function( index ) { //Greetings - confirm callback
+          switch( index ) {
+            case 1: //Greetings - if button one was pressed
+              component.numberGuessGame(component);
+              break;
+            case 2: //Greetings - if button two was pressed
+              break;
+          }
+        },
+        "Greetings " + component.get('playerName'), //Greetings - confirm title
+        ["Yes", "No"] //Greetings - confirm button text
+      );
+    },
+    "Introduction", //Introduction - prompt title
+    ["Hello!"], //Introduction - prompt button text
+    ""
+  );
+},
+
+numberGuessGame(component){
+  component.set('numGuess', Math.floor((Math.random() *10) +1)); //randomly set number to be guessed
+  navigator.notification.prompt(
+    "What is your guess?", //Number Guess Game - prompt message
+    function playerGuess (results){ //Number Guess Game - prompt callback
+      component.set('playerGuess', results.input1);
+      //Correct Player Guess
+      if (component.get('playerGuess') == component.get('numGuess')){
+        navigator.notification.confirm(
+          "Would you like to play again?", //Correct Player Guess - confirm message
+          function( index ) { //Correct Player Guess - confirm callback
+            switch ( index ) {
+              case 1: //Correct Player Guess - if button one is pressed
+                component.numberGuessGame(component);
+                break;
+              case 2: //Correct Player Guess - if button two is pressed
+                break;
+            }
+          },
+          "Congratulations!! " + component.get('numGuess') + " is the number I was thinking of!", //Correct Player Guess - confirm title
+          ["Play Again", "Exit"] //Correct Player Guess - confirm button text
+        );
+      }
+      else {
+        //Incorrect Player Guess
+        navigator.notification.confirm(
+        "Better luck next time!", //Incorrect Player Guess - prompt message
+        function( index ) { ////Incorrect Player Guess - prompt callback
+          switch ( index ) {
+            case 1: //Incorrect Player Guess - if button one is pressed
+              component.numberGuessGame(component);
+              break;
+            case 2: //Incorrect Player Guess - if button two is pressed
+              break;
+          }
+        },
+        "Sorry, the number I was thinking of is " + component.get('numGuess') + ".", //Incorrect Player Guess - prompt title
+        ["Play Again", "Exit"] //Incorrect Player Guess - prompt button text
+      );
+    }
+  },
+  "I'm thinking of a number between 1 and 10...", //Number Guess Game - prompt title
+  ["Guess"] //Number Guess Game - prompt button text
+  );
+},
+
+});
+```
+
+##### 3d. Modify /app/tmeplates/dialogs-display.hbs
+This modification is just to completely comment out the display.
+```hbs
+<!-- This display is for QA testing only
+Comment out the below lines prior to final deployment
+<br />Player's Name: {{playerName}}
+<br />Number To Guess: {{numGuess}}
+<br />Player Guess: {{playerGuess}} -->
+```
 
 [Top](#table-of-contents)
 
