@@ -704,6 +704,7 @@ This plugin allows an application to examine the network information of the devi
 1. Install plugin [corber plugin add cordova-plugin-network-information]
 2. Generate ember files [ember generate component display-netwk-status]
 3. Update necessary files
+
 3a. /app/templates/application.hbs
 
 Add the new component to the home page.
