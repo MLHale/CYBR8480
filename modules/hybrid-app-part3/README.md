@@ -1,4 +1,4 @@
-# Building a Hybrid App in Android and Ember
+# Attacking a Hybrid App in Android and Ember
 
 ### Table of Contents
 [Introduction](#introduction)  
