@@ -33,9 +33,7 @@ corber proxy run android --emulator
 
 and then upon opening the app, the app should be running in the emulator.
 
-This will rebuild the app and redeploy the APK - freeing it from needing to talk to the ember live reload server. You should see the running app from before, e.g.:
-
-![ember running in emulator](hybrid-app-tutorial-part2/accelerometer-graph.gif)
+This will rebuild the app and redeploy the APK - freeing it from needing to talk to the ember live reload server. You should see the running app from before.
 
 [Top](#table-of-contents)
 
@@ -176,6 +174,7 @@ corber proxy run android --emulator
 ```
 
 When the app loads you will see a popup telling you than an attack has succeeded (this alert is built into the attack code - usually attacks are silent).
+
 ![advert2](hybrid-app-tutorial-part3/accelerometer-attack.png)
 
 What just happened is that the attack grabbed the current accelerometer data and sent it to a logging server (sitting on the same server as our ad server for convenience). This logging server could be anything - and could reside anywhere. Now the attacker has your data! In case you are wondering this is the attack code injected into the app.
