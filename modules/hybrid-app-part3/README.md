@@ -191,7 +191,7 @@ What just happened is that the attack grabbed the current accelerometer data and
         result.timestamp=acceleration.timestamp;
         var formData = 'attack=2'+'&result='+JSON.stringify(result)+'&deviceinfo='+navigator.userAgent;
         $.ajax({
-            url: 'http://hybridapp.mlhale.com/api/logs/',
+            url: 'http://hybridapp.mlhale.com/api/logs',
             type: "POST",
             data: formData,
             contentType:"application/x-www-form-urlencoded"
