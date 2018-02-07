@@ -16,11 +16,7 @@ Start by getting our development environment setup. For this tutorial, we will u
 >!!! It is very important that you are on the UNO VPN for this lab. It will not work otherwise!!!
 
 #### Not using live reload
-For this tutorial, we will remove live reload - so we can work with an external API properly. Open `/ember-cordova/cordova/config.xml` and remove the line:
-
-```XML
-    <allow-navigation href="*" />
-```
+For this tutorial, we will not be using the live reload feature - so we can work with an external API properly. Basically, don't start the corber server, since the live reload feature only works when it is running. Without it running, your app runs based off whatever is in the .apk package.
 
 #### New workflow
 Open a new shell (power shell or CMD if windows), navigate to your code repository, and launch the emulator.
