@@ -689,9 +689,126 @@ export default Ember.Component.extend({
 });
 ```
 
+#### Authors
+
+Nate Wood
+
+#### Plugin Name (which plugin did you look at?)
+
+Dialogs plugin - this will have notificatons for alert, prompt, confirm or beep.  
+https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-dialogs/index.html#methods 
+
+#### Usage
+
+#### 1. Install Cordova Plugin
+```bash
+cordova plugin add cordova-plugin-dialogs
+```
+
+#### 2. Generate Ember Component
+```bash
+ember g component test-button
+```
+
+#### 3. Edit the following files:
+#### 3a. application.hbs
+Calls the battery-display component.
+```hbs
+Test Buttons for dialogs
+{{test-button}}
+```
+
+#### 3b. test-button.hbs
+Call the three button functions from test-button.js
+```hbs
+<button {{action "buttonPress"}}>Confirm</button>
+<button {{action "buttonPress2"}}>Alert</button>
+<button {{action "buttonPress3"}}>Prompt</button>
+```
+
+#### 3c. test-button.js
+Declaring our variables and utilizing the navigator to call the current battery status. Then multiplied by 100 to convert to a whole number.
+Declare variables for buttonPress(s) for each dialog and define the actions.
+
+```javascript
+import Component from '@ember/component';
+import { later } from '@ember/runloop';
+
+export default Component.extend({
+  actions: {
+    buttonPress() {
+      later(function(){
+        try {
+          console.log('button was pressed!!!');
+
+          function onConfirm(buttonIndex) {
+            //alert("test alert");
+            console.log('onConfirm dismissed was called');
+
+          }
+
+          navigator.notification.confirm(
+            'You are the winner!');
+
+        }
+        catch(err){
+          console.log('error: '+err);
+        }
+      },100);
+    },
+    buttonPress2(){
+      try {
+        console.log('button 2 was pressed!!!');
+
+        function alertDismissed() {
+          // do something
+          console.log('alert dismissed was called');
+          // Beep twice!
+          navigator.notification.beep(1);
+        }
+
+        navigator.notification.alert(
+          'You pressed the alert button!',  // message
+          alertDismissed,       // callback
+          'Alert title',            // title
+          'Beep!'                  // buttonName
+        );
+
+      }
+      catch(err){
+        console.log('error: '+err);
+      }
+    },
+    buttonPress3(){
+      try {
+        console.log('button 3  was pressed!!!');
+
+        function onPrompt(results) {
+            alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
+        }
+
+        navigator.notification.prompt(
+            'Please enter your name',  // message
+            onPrompt,                  // callback to invoke
+            'Name Prompt',             // title
+            ['Submit','Cancel'],       // buttonLabels
+            'Jane Doe'                 // defaultText
+        );
+
+      }
+      catch(err){
+        console.log('error: '+err);
+      }
+    }
+  }
+
+});
+```
 [Top](#table-of-contents)
 
 ### Next time we explore vulnerabilities and exploitations in hybrid apps.
 
 #### License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CYBER8480 and related works</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://faculty.ist.unomaha.edu/mlhale" property="cc:attributionName" rel="cc:attributionURL">Matt Hale</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+
+
