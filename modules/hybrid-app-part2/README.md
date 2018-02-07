@@ -688,6 +688,91 @@ export default Ember.Component.extend({
 
 });
 ```
+#### Authors
+Dan Ritter
+
+#### Plugin Name (which plugin did you look at?)
+[cordova-plugin-globalization](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-globalization/)
+
+#### Usage
+1. Install the plugin [corber plugin add cordova-plugin-globalization]
+1. ember generate component globalization-content
+1. Edit the neccesary files:
+
+3a. /app/templates/application.hbs
+
+> Say we want to view this on main application page
+
+```hbs
+  {{globalization-content}}
+```
+3b. /app/templates/components/globalization-content.hbs
+
+> Grab value of each variable and display it
+
+```hbs
+  lang value: {{lang}}<br>
+  locale value: {{locale}}<br>
+  date_pattern: {{date_pattern}}<br>
+  date: {{date}} <br>
+```
+3c. /app/components/contacts-display.js
+> Update lang, locale, date_pattern, and date with appropriate values.
+
+```js
+export default Component.extend({
+  lang: 0,
+  locale: 0,
+  date_pattern: 0,
+  date: 0,
+  on: true,
+  init(){
+    //begin logging accelerometer data once the component launches
+    this._super(...arguments);
+    this.updateAccelData(this)
+
+  },
+  updateAccelData(component){
+    later(function(){
+      //wrapper to preserve binding satistfaction
+        try {
+        navigator.globalization.getPreferredLanguage(
+                function (language) {component.set('lang', language.value);},
+                function (error) {console.log('error: ' + error);}
+        );
+        navigator.globalization.getLocaleName(
+                function (locale) {component.set('locale',locale.value);},
+                function () {alert('Error getting locale\n');}
+        );
+        navigator.globalization.dateToString(
+                new Date(),
+                function (date) { component.set('date',date.value); },
+                function () { console.log('Error getting dateString\n'); },
+                { formatLength: 'short', selector: 'date and time' }
+        );
+        navigator.globalization.getDatePattern(
+                function (date) { component.set('date_pattern', date.pattern); },
+                function () { console.log('Error getting pattern\n'); },
+                {formatLength: 'short', selector: 'date and time' }
+        );
+
+      }
+      catch(err){
+        console.log('error: '+err);
+      }
+      if(component.get('on')){
+        //keep running
+        component.updateAccelData(component); //recurse
+      }
+
+    }, 100);//run ever 100ms
+  }
+});
+```
+
+
+
+
 
 [Top](#table-of-contents)
 
