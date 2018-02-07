@@ -342,8 +342,7 @@ export default Component.extend({
 			navigator.camera.getPicture(
 			function(imageData){ 
 				//do something if succesfull
-				//imageData = 'data:image/jpeg;base64,'+imageData;
-				//imageData = imageData.replace(/^file:\/\//, '');
+				
 				componentscope.set('photo',imageData);	
 
 			}, function(message){
