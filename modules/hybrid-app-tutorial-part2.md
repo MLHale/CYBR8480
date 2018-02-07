@@ -304,15 +304,85 @@ The following plugin module directions are submitted by previous students in the
 
 #### Authors
 
-(your names go here)
+Olivier Avande
 
 #### Plugin Name (which plugin did you look at?)
-
-(Provide a link to the plugin and briefly describe it)
+Cordova Camera API Plugin 
+https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-camera/
 
 #### Usage
 
-(your instructions go here)
+Instruction to use this plugin
+### 1. Install the cordova plugin
+[corber plugin add cordova-plugin-camera]
+
+### 2. Generate Ember component
+[ember generate component take-picture]
+
+### 3. Modify the component context and template as follow:
+### 3.a .../app/components/take-picture.js
+```js
+import Component from '@ember/component';
+
+export default Component.extend({
+
+	photo:null,
+
+	init() {
+		
+		this._super(arguments);
+		
+	},
+	
+	 cameraTakePict(){
+
+	 	var componentscope = this;
+
+	 	try{
+			navigator.camera.getPicture(
+			function(imageData){ 
+				//do something if succesfull
+				//imageData = 'data:image/jpeg;base64,'+imageData;
+				//imageData = imageData.replace(/^file:\/\//, '');
+				componentscope.set('photo',imageData);	
+
+			}, function(message){
+				//handle error if not
+				alert("The operation failed because: "+message);
+
+			},	{quality:50,destinationType:Camera.DestinationType.FILE_URI,correctOrientation:true,targetHeight:500,targetWidth:500}
+		)
+	 	}catch(err){
+	 		console.log('Error: '+err)
+	 	}
+
+	},
+
+	actions:{
+		takePicture(){
+			console.log('In action ')
+			this.cameraTakePict();
+		}
+	}
+	
+});
+```
+
+### 3.b .../app/templates/components/take-picture.hbs
+
+```hbs
+<button {{action 'takePicture'}}> Take Picture </button><br>
+<div class="capturePhoto">
+<img src= {{photo}}  >	
+</div>
+```
+
+### 3.c ../app/templates/application.hbs
+Calls the take-picture component by:
+
+```hbs
+{{take-picture}}
+```
 
 #### Authors 
 Gabi Wethor 
