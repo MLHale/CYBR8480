@@ -708,7 +708,7 @@ This plugin provides the ability to create, edit and delete files on the device
 > Raw code below
 
   ```hbs
-Cordova Plugin For File
+Cordova Plugin For file-creation
 
 {{file-creation}}
   ```
@@ -724,6 +724,7 @@ Cordova Plugin For File
 ```
 
 3c. /app/components/file-creation.js
+> This javascript code creates or deletes a .txt file in the application root folder. 
 
 > Raw code below
 
