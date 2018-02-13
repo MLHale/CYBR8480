@@ -17,7 +17,7 @@ Make sure to push your final code to the github repo you create and **share it w
 Once you complete the basic how-to tutorial. Take a look at the various available options available to you [http://www.vogella.com/tutorials/android.html](http://www.vogella.com/tutorials/android.html). Notice there is a nice step-by-step tutorial for virtually everything you will need to know about Android programming. If you find that you need a particular class, feel free to read up about the class and see it in use.
 
 ### Third Task
-Lastly, Android development doesn't need to happen in a vacuum. There are numerous resources available to the enterprising developer that prevent you front needing to start from scratch. I've collected a few resources here that I think you mind beneficial. Please look over and familiarize yourself with what they have to offer.
+Lastly, Android development doesn't need to happen in a vacuum. There are numerous resources available to the enterprising developer that prevent you front needing to start from scratch. I've collected a few resources here that I think you find beneficial. Please look over and familiarize yourself with what they have to offer.
 
 ### Resources
 * [Android Developer API portal](https://developer.android.com/guide/index.html). I would be remiss to not list the official docs first in this list. There are lots of good conceptual and programmatic examples on the offical docs. Check them out.
