@@ -1278,6 +1278,89 @@ export default ember.Component.extend({
 
 ```
 
+#### Authors
+Taraka Vishnumolakala
+
+#### Plugin Name (which plugin did you look at?)
+cordova-plugin-file[https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-file/index.html]
+This plugin provides the ability to create, edit and delete files on the device
+
+#### Usage
+1. Install the plugin [corber plugin add cordova-plugin-file]
+2. Generate the files [ember generate component file-creation]
+3. Edit the neccesary files:
+
+3a. /app/templates/application.hbs
+
+>This calls the file-creation component.
+
+> Raw code below
+
+  ```hbs
+Cordova Plugin For file-creation
+
+{{file-creation}}
+  ```
+3b. /app/templates/components/file-creation.hbs
+
+>This template takes values from javascript file-creation to create and delete files.
+
+> Raw code below
+
+```hbs
+<h1><button {{action "createFile"}}>CREATE FILE</button></h1>
+<h1><button {{action "removeFile"}}>REMOVE FILE</button></h1>
+```
+
+3c. /app/components/file-creation.js
+> This javascript code creates or deletes a .txt file in the application root folder. 
+
+> Raw code below
+
+```javascript
+import Component from '@ember/component';
+
+export default Component.extend({
+
+  actions: {
+    createFile() {
+      var type = window.TEMPORARY;
+      var size = 5 * 1024 * 1024;
+      window.requestFileSystem(type, size, successCallback, errorCallback)
+
+      function successCallback(fs) {
+        fs.root.getFile('swrp.txt', {create: true, exclusive: true}, function (fileEntry) {
+          alert('File creation successfull!')
+        }, errorCallback);
+      }
+
+      function errorCallback(error) {
+        alert("ERROR: " + error.code)
+      }
+    },
+
+    removeFile() {
+      var type = window.TEMPORARY;
+      var size = 5 * 1024 * 1024;
+      window.requestFileSystem(type, size, successCallback, errorCallback)
+
+      function successCallback(fs) {
+        fs.root.getFile('swrp.txt', {create: false}, function (fileEntry) {
+
+          fileEntry.remove(function () {
+            alert('File removed.');
+          }, errorCallback);
+        }, errorCallback);
+      }
+
+      function errorCallback(error) {
+        alert("ERROR: " + error.code)
+      }
+    },
+  }
+});
+```  
+
 [Top](#table-of-contents)
 
 ### Next time we explore vulnerabilities and exploitations in hybrid apps.
