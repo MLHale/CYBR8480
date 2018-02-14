@@ -1424,6 +1424,56 @@ alert("Cordova version: " + device.cordova + "\n" +
 }	
 });
 ```
+###Author
+Kendrick Urbaniak
+
+###Plugin Name
+
+Cordova Plugin Vibration - https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-vibration/index.html. This plug-in allows for the control of the vibration motors on the phone.  This only works if the userhas interacted with the current view in some way since Google disabled the functionality due to malicious uses on webpages.
+
+###Usage
+
+1. Install Cordova Plugin
+``` corber plugin add cordova-plugin-vibration```
+
+2. Use the previously generated component files from accelerometer
+
+3. Edit only one file to add the functionality we need/want:
+	3a. /app/templates/application.hbs
+```
+	Accelerometer with Vibration
+
+	{{accelerometer-display currX=x currY=y}}
+```
+	3b. /app/templates/components/accelerometer-display.hbs
+```	Accelerometer X value: {{x}}<br>
+	Accelerometer Y value: {{y}}<br>
+	Accelerometer Z value: {{z}}<br>
+
+	{{time-series-chart lineData=accelHistory}}
+```
+	3c. /app/components/accelerometer-display.js
+	> Modifies the original accelerometer to add-in vibration of the coordinates with a 1ms pause between coordinates.
+```javascript
+		updateVibrateData: function(component){
+		later(function() {
+			try {
+				navigator.accelerometer.getCurrentAcceleration(function (acceleration) {
+					navigator.vibrate([acceleration.x, acceleration.y, acceleration.z]);
+					console.log("vibrating");
+					}, function (error) {
+						console.log('error: ' + error);
+					});
+			}
+			catch(err){
+				console.log('error: '+err);
+			}
+			if(component.get('on')){
+				component.updateVibrateData(component);
+			}
+		}, 400);
+	};
+```
 
 [Top](#table-of-contents)
 
