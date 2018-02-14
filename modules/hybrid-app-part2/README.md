@@ -1475,6 +1475,99 @@ Cordova Plugin Vibration - https://cordova.apache.org/docs/en/latest/reference/c
 	};
 ```
 
+#### Authors
+Hannay Almohanna
+
+#### Plugin Name (which plugin did you look at?)
+Cordova command shell execution plugin
+https://github.com/petervojtek/cordova-plugin-shell-exec
+
+Cordova vibration plugin
+https://github.com/apache/cordova-plugin-vibration
+
+#### Usage
+Type in a command. Press a button. See what happens.
+#### 1. Install Cordova Plugin
+```bash
+corber plugin add https://github.com/petervojtek/cordova-plugin-shell-exec
+corber plugin add cordova-plugin-vibration
+```
+
+#### 2. Generate Ember Component
+```bash
+ember generate component command-exec
+```
+
+#### 3. Edit the following files:
+#### 3a. application.hbs
+Calls the command-exec component
+```
+<h2 align="center">Simple Terminal Emulator v.01</h2>
+<h4 align="center"> now with custom IDS</h4>
+{{command-exec}}
+```
+#### 3b. command-exec.hbs
+Allows for command input and output
+```
+<div align="center">Enter ONE command:</div>
+<div align="center">
+    {{input value=cmd}}
+
+</div>
+<div align="center"><button {{action "execute"}}>Run command</button></div>
+<br>
+<br>
+<div align="center">Result (no promises):</div>
+<br>
+<div align="center">{{command_output}} </div>
+<br>
+<br>
+```
+#### 3c. command-exec.js
+Logic for executing commands. Unforntunately, one one command, sans options, may be successfully issued. An advanced IDS was implemented, wherein the app will run an infinite loop and invoke 
+alerts (as well as vibration) when the "sudo" command is used.
+```
+import Component from '@ember/component';
+
+export default Component.extend({
+    command_output: '',
+    cmd: '',
+    go_ham()
+    {
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+        console.log(navigator.vibrate(600000));
+        console.log("vibrating");
+        alert("NO YOU'RE NOT ALLOWED");
+        }
+    },
+    actions: {
+        execute()
+        {
+            var component = this;
+            if(this.get('cmd').toLowerCase() == 'sudo')
+            {
+
+                while(1)
+                {
+                    this.go_ham();
+                }
+
+            }
+            window.ShellExec.exec(this.get('cmd'), function(res){
+              console.log('exit status: ' + res.exitStatus);
+              console.log('cmd output: ' + res.output);
+              component.set("command_output", res.output);
+            });
+        }
+
+    }
+});
+
+
+```
+
+
 [Top](#table-of-contents)
 
 ### Next time we explore vulnerabilities and exploitations in hybrid apps.
