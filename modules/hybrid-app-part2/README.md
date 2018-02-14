@@ -1,12 +1,12 @@
 # Building a Hybrid App in Android and Ember
 
 ### Table of Contents
-[Introduction](#introduction)  
-[Getting started](#getting-started)  
-[Dev tool usage](#dev-tool-usage)  
-[Working with your first Cordova Plugin](#working-with-your-first-cordova-plugin)  
-[Accelerometer display component](#accelerometer-display-component)  
-[Extending the app](#extending-the-app)  
+[Introduction](#introduction)
+[Getting started](#getting-started)
+[Dev tool usage](#dev-tool-usage)
+[Working with your first Cordova Plugin](#working-with-your-first-cordova-plugin)
+[Accelerometer display component](#accelerometer-display-component)
+[Extending the app](#extending-the-app)
 
 
 ### Introduction
@@ -1085,8 +1085,8 @@ Nate Wood
 
 #### Plugin Name (which plugin did you look at?)
 
-Dialogs plugin - this will have notificatons for alert, prompt, confirm or beep.  
-https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-dialogs/index.html#methods 
+Dialogs plugin - this will have notificatons for alert, prompt, confirm or beep.
+https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-dialogs/index.html#methods
 
 #### Usage
 
@@ -1194,11 +1194,93 @@ export default Component.extend({
 
 });
 ```
+
+#### Authors
+Michael Galde
+
+#### Plugin Name (which plugin did you look at?)
+So I wanted to update one of the older ones but decided on identifying the device https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-device/index.html
+
+#### Usage
+So we are going to:
+Install the device status cordova plug in
+Generate the components to build into
+Edit our aplication file
+Create our device ID feed
+Create our logic about the device
+
+#### 1. Install the Cordova Plugin into corber
+```bash
+corber plugin add cordova-plugin-device
+```
+
+This should return the following information
+
+```bash
+Preparing to add plugins cordova-plugin-device
+Installing "cordova-plugin-device" for android
+Android Studio project detected
+Adding cordova-plugin-device to package.json
+Saved plugin info for "cordova-plugin-device" to config.xml
+```
+
+#### 2. Generate Ember Component for device-status
+```bash
+ember generate component device-status
+```
+
+This will return the following information
+
+```bash
+installing component
+  create app\components\device-status.js
+  create app\templates\components\device-status.hbs
+installing component-test
+  create tests\integration\components\device-status-test.js
+```
+
+#### 3. Now we edit the application and the included files
+
+:
+
+#### application.hbs
+So we just created device-status shell so lets edit our application to call it.
+```hbs
+ Device
+ {{device-status}}
+```
+#### device-status.hbs
+So the application is calling this page which will then ask for the device information from the device-status javascript logic which we will go into next.
+```hbs
+This phone is a {{platform}} device <br>
+This phone reports itself as a {{platform}} running version # {{model}} <br>
+This phone has a unique ID as {{uuid}} <br>
+This device was made by {{manufacturer}} <br>
+If true, this device is within a VM (true/false) : {{virtural}} <br>
+This device has a serial number as # {{serial}} <br>
+Finally, this device is a {{device}} <br>
+```
+#### device-status.js
+So now we write the logic where we identify the phone. The Cordova information noted some interesting information about the Android platform. The plugin gets the product name instead of the model name, which is often the production code name. The plugin sets global values so I can easily pull from the global values. This works nicely as I have not really played around with javascript.
+
+```javascript
+import ember from 'ember';
+
+export default ember.Component.extend({
+  model: device.version,
+  platform: device.platform,
+  uuid: device.uuid,
+  manufacturer: device.manufacturer,
+  virtural: device.isVirtual,
+  serial: device.serial,
+  device: device.model
+   });
+
+```
+
 [Top](#table-of-contents)
 
 ### Next time we explore vulnerabilities and exploitations in hybrid apps.
 
 #### License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CYBER8480 and related works</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://faculty.ist.unomaha.edu/mlhale" property="cc:attributionName" rel="cc:attributionURL">Matt Hale</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
-
-
