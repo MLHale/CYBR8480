@@ -704,7 +704,7 @@ Type in a command. Press a button. See what happens.
 #### 1. Install Cordova Plugin
 ```bash
 corber plugin add https://github.com/petervojtek/cordova-plugin-shell-exec
-cordova plugin add cordova-plugin-vibration
+corber plugin add cordova-plugin-vibration
 ```
 
 #### 2. Generate Ember Component
