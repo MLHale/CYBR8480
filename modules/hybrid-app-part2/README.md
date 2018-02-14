@@ -1361,6 +1361,70 @@ export default Component.extend({
 });
 ```  
 
+#### Authors
+
+Sai Guru Karthik Damuluri
+
+#### Plugin Name (which plugin did you look at?)
+
+Cordova-plugin-device [https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-device/index.html]
+
+This plugin provides information about device such as the device model, device platform, operating system version. Also provides the device Universal Unique Identifier (UUID) and device manufacture details.
+
+
+#### Usage
+
+1. Install the plugin [ corber plugin add cordova-plugin-device]
+2. Generate the files [ ember generate component device-properties]
+3. Edit the necessary files:
+
+3a. /app/templates/application.hbs
+
+> Calls out the device-properties component 
+
+> Raw code below:
+
+```hbs
+Device Properties
+{{device-properties}}
+```
+
+3b. /app/templates/components/device-properties.hbs
+
+> Set up a button to display the device properties
+
+> Raw code below:
+
+```hbs
+<h1><button {{action "deviceInfo"}}>Device Info</button></h1>
+```
+
+3c. /app/component/device-properties.js
+
+> This JavaScript queries Cordova and get the information for the device object and display the device information as an alert.
+
+> Code below:
+
+```javascript
+import Component from '@ember/component';
+
+export default Component.extend({
+
+actions:{
+  deviceInfo() {
+alert("Cordova version: " + device.cordova + "\n" +
+  "Device model: " + device.model + "\n" +
+  "Device platform: " + device.platform + "\n" +
+  "Device UUID: " + device.uuid + "\n" +
+  "Device version: " + device.version + "\n" +
+  "Device Manufacturer: " + device.manufacturer + "\n" +
+  "Device IsVirtual: " + device.isVirtual + "\n" +
+  "Device H/W serial.no: " + device.serial); 
+}
+}	
+});
+```
+
 [Top](#table-of-contents)
 
 ### Next time we explore vulnerabilities and exploitations in hybrid apps.
