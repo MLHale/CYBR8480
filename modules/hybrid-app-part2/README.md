@@ -691,6 +691,82 @@ export default Ember.Component.extend({
 
 #### Authors
 
+Sarah Noles
+
+#### Plugin Name (which plugin did you look at?)
+
+cordova-plugin-network-information - https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-network-information/index.html#connectiontype
+
+This plugin allows an application to examine the network information of the device, including what kind of network it is connected to, if any.  This proof of concept demonstrates how you can view the network information.  This could be expanded to perform different behaviors based on the strength or performance of the network.
+
+#### Usage
+
+1. Install plugin [corber plugin add cordova-plugin-network-information]
+2. Generate ember files [ember generate component display-netwk-status]
+3. Update necessary files
+
+3a. /app/templates/application.hbs
+   
+Add the new component to the home page.
+
+```hbs
+{{netwk-status}}<br>
+```
+3b. /app/templates/components/netwk-status.hbs
+
+Add the display text to the component template.
+
+```hbs
+Current network status: {{status}}
+```
+
+3c. /app/components/netwk-status.js
+   
+Add logic to determine the network status using the Network Information plugin.
+> When running in the emulator, the network connection will usually default to a specific value, but we know the plugin is working because the displayed value changes from the default status of 'init'.
+
+```javascript
+import Component from '@ember/component';
+import { later } from '@ember/runloop';
+
+export default Component.extend({
+  status: 'init',
+  on: true,
+  init: function() {
+    //determine network status upon component launch
+    this._super(...arguments);
+    this.getNtwkStatus(this);
+  },
+  getNtwkStatus(component) {
+    later(function() {
+      try {
+        var states = {};
+        states[Connection.UNKNOWN]  = 'Unknown connection';
+        states[Connection.ETHERNET] = 'Ethernet connection';
+        states[Connection.WIFI]     = 'WiFi connection';
+        states[Connection.CELL_2G]  = 'Cell 2G connection';
+        states[Connection.CELL_3G]  = 'Cell 3G connection';
+        states[Connection.CELL_4G]  = 'Cell 4G connection';
+        states[Connection.CELL]     = 'Cell generic connection';
+        states[Connection.NONE]     = 'No network connection';
+
+        var conn = navigator.connection.type;
+        component.set('status', states[conn]);
+      }
+      catch(err) {
+        console.log('error: ' + err);
+      }
+      if(component.get('on')){
+        //keep running
+        component.getNtwkStatus(component); //recurse
+      }
+    }, 100);
+  }
+});
+```
+
+#### Authors
+
 Dan Lucier
 
 #### Plugin Name (which plugin did you look at?)
