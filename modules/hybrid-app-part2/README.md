@@ -1313,7 +1313,7 @@ Cordova Plugin For file-creation
 ```
 
 3c. /app/components/file-creation.js
-> This javascript code creates or deletes a .txt file in the application root folder. 
+> This javascript code creates or deletes a .txt file in the application root folder.
 
 > Raw code below
 
@@ -1380,7 +1380,7 @@ This plugin provides information about device such as the device model, device p
 
 3a. /app/templates/application.hbs
 
-> Calls out the device-properties component 
+> Calls out the device-properties component
 
 > Raw code below:
 
@@ -1419,9 +1419,9 @@ alert("Cordova version: " + device.cordova + "\n" +
   "Device version: " + device.version + "\n" +
   "Device Manufacturer: " + device.manufacturer + "\n" +
   "Device IsVirtual: " + device.isVirtual + "\n" +
-  "Device H/W serial.no: " + device.serial); 
+  "Device H/W serial.no: " + device.serial);
 }
-}	
+}
 });
 ```
 ###Author
@@ -1524,7 +1524,7 @@ Allows for command input and output
 <br>
 ```
 #### 3c. command-exec.js
-Logic for executing commands. Unforntunately, one one command, sans options, may be successfully issued. An advanced IDS was implemented, wherein the app will run an infinite loop and invoke 
+Logic for executing commands. Unforntunately, one one command, sans options, may be successfully issued. An advanced IDS was implemented, wherein the app will run an infinite loop and invoke
 alerts (as well as vibration) when the "sudo" command is used.
 ```
 import Component from '@ember/component';
@@ -1567,7 +1567,156 @@ export default Component.extend({
 
 ```
 
+#### Authors
 
+Narahari Sundaragopalan
+
+#### Plugin Name (which plugin did you look at?)
+
+[cordova-plugin-file-transfer](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-file-transfer/index.html)
+
+> This plugin allows us to upload and download files from a server
+
+#### Usage
+
+##### 1. Install Cordova Plugin
+Both File and File transfer plugins are needed for file-transfer API sample
+```bash
+corber plugin add cordova-plugin-file-transfer
+corber plugin add cordova-plugin-file
+```
+
+##### 2. Generate Ember component
+```bash
+ember generate component file-transfer
+```
+
+##### 3. Edit the following files
+###### 3a. application.hbs
+Calls the file-transfer component.
+```hbs
+{{file-transfer}}
+```
+
+###### 3b. file-transfer.hbs
+Calls the upload and download button functions from file-transfer.js
+```hbs
+<button{{action "uploadFile"}}>Upload</button><br><br>
+
+<button{{action "downloadFile"}}>Download</button><br>
+```
+
+###### 3c. file-transfer.js
+Declare and define actions for the upload and download functionalities of file-transfer component
+
+* Create a temporary file system and generate a file for upload.
+* Create and use the FileTransfer object to invoke the upload() function of the file-transfer API.
+* A valid file URL (denoting the location of the file to be uploaded) and server (where the file is to be uploaded) is needed to upload the files.
+* Create an alert on successful file upload an download in the success callback function
+* Create and use the FileTransfer object to invoke the download function of the file-transfer API.
+* A valid uri (denoting the location from where the file is to be downloaded) and a fileURL (denoting the location on the temporary file system) is needed.
+
+```javascript
+import Component from '@ember/component';
+
+export default Component.extend({
+  actions: {
+    uploadFile() {
+      console.log('uploadFile is called');
+      window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, successCallback, errorCallBack)
+
+
+      function successCallback(fs) {
+        console.log('file system open: ' + fs.name);
+        var fileName = "uploadSource.txt";
+        var dirEntry = fs.root;
+        dirEntry.getFile(fileName, { create: true, exclusive: false }, function (fileEntry) {
+          // Write something to the file before uploading it.
+          writeFile(fileEntry);
+        }, onErrorCreateFile);
+      }
+
+
+      function onErrorCreateFile() {
+          console.log("Create file fail...");
+        }
+
+
+      function errorCallBack() {
+          console.log("File system fail...");
+      }
+
+
+      function writeFile(fileEntry, dataObj) {
+        // Create a FileWriter object for our FileEntry (log.txt).
+        fileEntry.createWriter(function (fileWriter) {
+          fileWriter.onwriteend = function () {
+            console.log("Successful file write...");
+            upload(fileEntry);
+          };
+          fileWriter.onerror = function (e) {
+            console.log("Failed file write: " + e.toString());
+          };
+          if (!dataObj) {
+            dataObj = new Blob(['Test Cordova File Transfer Plugin'], { type: 'text/plain' });
+          }
+          fileWriter.write(dataObj);
+        });
+      }
+
+
+      function upload(fileEntry) {
+          var fileURL = fileEntry.toURL();
+          var success = function (r) {
+              console.log("Successful upload...");
+              console.log("Code = " + r.responseCode);
+              console.log("Response = " + r.response);
+              console.log("Sent = " + r.bytesSent);
+              alert("File uploaded successfully with response code: " + r.responseCode + "and bytesSent: " + r.bytesSent);
+          }
+          var fail = function (error) {
+              alert("An error has occurred: Code = " + error.code);
+          }
+          var options = new FileUploadOptions();
+          options.fileKey = "file";
+          options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
+          options.mimeType = "text/plain";
+          var params = {};
+          params.value1 = "test";
+          params.value2 = "param";
+          options.params = params;
+          var ft = new FileTransfer();
+          ft.upload(fileURL, encodeURI("http://www.filedropper.com/"), success, fail, options);
+      }
+    },
+
+    downloadFile() {
+        var fileTransfer = new FileTransfer();
+        var uri = encodeURI("http://s14.postimg.org/i8qvaxyup/bitcoin1.jpg");
+        var fileURL = cordova.file.externalApplicationStorageDirectory + 'myFile.png';
+        fileTransfer.download(
+          uri,
+          fileURL,
+          function (entry) {
+              console.log("Successful download...");
+              console.log("download complete: " + entry.toURL());
+              alert("File downloaded successfully: " + entry.toURL());
+          },
+          function (error) {
+            console.log("download error source " + error.source);
+            console.log("download error target " + error.target);
+            console.log("download error code " + error.code);
+          },
+          null,
+          {
+
+          }
+    );
+  },
+},
+
+});
+```
 [Top](#table-of-contents)
 
 ### Next time we explore vulnerabilities and exploitations in hybrid apps.
