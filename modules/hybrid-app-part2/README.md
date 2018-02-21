@@ -381,7 +381,7 @@ export default Ember.Component.extend({
 	}
 });
 ```
-#### Author
+### Author
 Jeff Dempsey
 
 #### Plugin Name (which plugin did you look at?)
@@ -1799,7 +1799,63 @@ Calls the take-picture component by:
 ```hbs
 {{take-picture}}
 ```
+### Author
+Mounika Addagada
 
+#### Plugin Name (which plugin did you look at?)
+Contacts - https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html
+This plugin will create contacts in the device.
+
+#### Usage
+1. Install plugin [corber plugin add cordova-plugin-contacts]
+2. Generate the files[ember generate component contacts-display]
+3. Edit the necessary files. 
+3a. /app/templates/application.hbs
+> Calls out to contact-display component to place its template here.
+> Code:
+
+```hbs
+ 
+{{contacts-display}}
+```
+
+3b. /app/templates/components/contacts-display.hbs
+>Sets up the template within application.hbs and calls the javascript file.
+>Code:
+
+```hbs
+
+Please enter First Name: <input type="text" size="20" id="fn"/>
+Please enter Last Name: <input type="text" size="20" id="ln"/>
+<h1><button {{action "vibrate"}}>Create Contact</button></h1>
+```
+
+3c. /app/components/contacts-display.js
+> Code:
+
+```javascript
+import Component from '@ember/component';
+
+export default Component.extend({
+	
+actions:{
+contacts()
+{
+	try{
+// create a new contact object
+var contact = navigator.contacts.create();
+contact.displayName = document.getElementById("fn").value + document.getElementById("ln").value;
+contact.nickname = "MA";            // specify both to support all devices
+contact.name = {givenName:document.getElementById("fn").value,familyName:document.getElementById("ln").value};
+
+// save to device
+contact.save(function(contact){alert("Save Success"+contact);},function(error){alert("Error = " + error.code);});
+	}
+catch(error){alert("failed"+error)}
+}
+}});
+
+```
 [Top](#table-of-contents)
 
 ### Next time we explore vulnerabilities and exploitations in hybrid apps.
