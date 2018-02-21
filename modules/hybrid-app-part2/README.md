@@ -1827,7 +1827,7 @@ This plugin will create contacts in the device.
 
 Please enter First Name: <input type="text" size="20" id="fn"/>
 Please enter Last Name: <input type="text" size="20" id="ln"/>
-<h1><button {{action "vibrate"}}>Create Contact</button></h1>
+<h1><button {{action "contact"}}>Create Contact</button></h1>
 ```
 
 3c. /app/components/contacts-display.js
