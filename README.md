@@ -5,13 +5,13 @@ This repo contains a digitized version of the course content for IA8470 Secure M
 Mobile devices are already pervasive fixtures of 21st century culture and increasingly the internet of things (IoT) and wearables are proliferating throughout the world. As this proliferation occurs, numerous vendor-centric and third party mobile, wearable, and internet of things apps are being created by developers and downloaded by end-users with little to no thought about the security and privacy of the information used and collected by the apps. This course examines this issue from a development point of view to a) introduce mobile/wearable/IoT architectures and technologies, b) increase developer application development competencies with these technologies, and c) integrate secure design principles into the ideation, design, and testing phases during development.
 
 ### Table of contents
-[Online discussion area](#online-discussion-area)  
-[Location](#location)  
-[Supplies](#supplies)  
-[Projects](#projects)  
-[Labs](#labs)  
-[Class topics](#class-topics)  
-[Syllabus](#syllabus)  
+[Online discussion area](#online-discussion-area)
+[Location](#location)
+[Supplies](#supplies)
+[Projects](#projects)
+[Labs](#labs)
+[Class topics](#class-topics)
+[Syllabus](#syllabus)
 [License](#license)
 
 ## Online Discussion Area
@@ -29,22 +29,6 @@ All classroom activities will take place in PKI room 361 unless otherwise noted 
 * [Metawear](https://store.mbientlab.com/) Any of the R, RPRO, RG, C, or CPRO models will work. If you are just using it in the class, the R version is the cheapest and recommended ($40).
 * Android 4.3+ (API level 18+) Bluetooth LE capable phone or tablet
 * IoT Device of your choice for your project (something you can select later when you choose a project)
-
-
-## Projects
-[Project Milestone 1 rubric](/projects/milestone1.md)
-
-[Project Milestone 2 rubric](/projects/milestone2.md)
-
-[Project Final Milestone rubric](/projects/milestone3.md)
-
-2017 Projects and Final Presentations
-* [E-notifier](https://github.com/vingle1/E-Notifier) - Vaibhav Ingle
-* [FishBright](https://github.com/Append/fishingapp) - Gib Filter
-* [FlyDry](https://github.com/gewethor/FlyDry) - Gabi Wethor
-* [KeyboardDetect](https://github.com/JMPercival/8480Project) - James Percival
-* [KeyFinder](https://github.com/jnyiok/KeyFinder) - James Nyiok
-* [OpenSesame](https://github.com/jeffreysdempsey/OpenSesame) - Jeff Dempsey
 
 ## Labs
 - Introduction to the course
@@ -73,9 +57,21 @@ All classroom activities will take place in PKI room 361 unless otherwise noted 
 - Open Discussions on student-driven topic areas
 - Time to be creative
   - Come up with your own project idea or implement something for a friend/family member or community organization
-  - Project Milestone 1 - Rubric TBA : In this project you will define your idea and discuss it with Dr. Hale to get some initial feedback.
+  - [Project Milestone 1 rubric](/projects/milestone1.md) : In this project you will define your idea and discuss it with Dr. Hale to get some initial feedback.
   - Project Milestone 2 - Rubric TBA : In this milestone you will work to create an initial basic prototype of your product.
   - Final Milestone - Rubric TBA : In this milestone you will polish your product and realize your user stories.
+
+## Projects
+2018 Projects TBA
+
+2017 Projects and Final Presentations
+* [E-notifier](https://github.com/vingle1/E-Notifier) - Vaibhav Ingle
+* [FishBright](https://github.com/Append/fishingapp) - Gib Filter
+* [FlyDry](https://github.com/gewethor/FlyDry) - Gabi Wethor
+* [KeyboardDetect](https://github.com/JMPercival/8480Project) - James Percival
+* [KeyFinder](https://github.com/jnyiok/KeyFinder) - James Nyiok
+* [OpenSesame](https://github.com/jeffreysdempsey/OpenSesame) - Jeff Dempsey
+
 
 ## Syllabus
 ### Date/Time: Tuesday 5:30pm – 8:10pm
@@ -130,7 +126,7 @@ The instructor may retain a copy of your exams (with names and any other identif
 
 In addition, the instructor retains the right to use any code or project artifacts developed in the course for pedagogy, research, or service learning purposes. Student web project code developed in the course may be used in future secure project development courses, by the instructor for research purposes, or by designated stakeholders.
 
-## License  
+## License
 Secure Mobile / IoT Development
 Copyright (C) 2016-2017  Dr. Matthew L. Hale
 

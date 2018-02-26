@@ -4,6 +4,9 @@
 ## Due Date
 Monday March (3/12/18) at 11:59PM, Discuss idea at Meeting with Dr. Hale 3/13/17 at assigned time block.
 
+## Points
+180 Project points (15% of overall grade), 40 Participation Points
+
 ## Overview
 This project milestone tasks you with developing and expressing a project idea, identifying its requirements, and then analyzing them to determine needed resources and a project management plan for the rest of the semester. Towards this goal, you will be required to submit the following by the due date:
 
@@ -108,13 +111,13 @@ As a **misuser/misuser-role**, I want to **misuse goal** so I can **bad rational
 User stories and use cases will be graded as follows.
 
 #### User stories
-| Each user story (x3) | Meets expectations (9-10) | Some Issues (6-8) | Does not meet expectations (0-5)|
+| Each user story (x3) | Meets expectations (4-5) | Some Issues (2-3) | Does not meet expectations (0-1)|
 |---|---|---|---|
 | Stated correctly | The user story identifies a user role, goal, and rationale that dictates a user behavior in the product to be created. | A role, goal, or rationale is missing. | Many issues with role, goal, or rationale identification |
 | Acceptance Criteria | The user story has a reasonable, well thought out, set of acceptance criteria that dictate when the story is satisfied. | Some criteria are ill defined or ambiguous. Not enough criteria defined. | Many ill-defined or missing criteria.|
 
 #### Misuser stories
-| Each misuser story (x2) | Meets expectations (9-10) | Some Issues (6-8) | Does not meet expectations (0-5)|
+| Each misuser story (x2) | Meets expectations (4-5) | Some Issues (2-3) | Does not meet expectations (0-1)|
 |---|---|---|---|
 | Stated correctly | The misuser story identifies a user type, goal, and rationale that dictates a potential misuser behavior in the product to be created. | A role, goal, or rationale is missing. | Many issues with role, goal, or rationale identification |
 | Mitigation | The user story has a reasonable, well thought out, mitigation plan that dictates how the story will be thwarted. | Mitigation is ill defined or ambiguous. | Mitigation is extremely ill-defined, poorly thought out, and/or unrealistic.|
