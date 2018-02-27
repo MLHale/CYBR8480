@@ -41,7 +41,9 @@ All classroom activities will take place in PKI room 361 unless otherwise noted 
 - Native App development in Android
   - [Android Lab - Creating your first app and explore Android resources](modules/android.md)
 - Wearable Development with Metawear
-  - [Working with Metawear](modules/metawear-hybrid.md)
+  - [MetaWear Android Lab](https://mbientlab.com/tutorials/SDKs.html#java)
+  - (cordova library no longer open source)[Working with Metawear](modules/metawear-hybrid.md)
+  - Javascript example replacing Cordova lab - TBA
 
 ## Class Topics
 - Getting up to speed
@@ -52,16 +54,22 @@ All classroom activities will take place in PKI room 361 unless otherwise noted 
   - Wearable and IoT Introduction
 - Hybrid app Development ([PDF Lecture 2](/lectures/lecture2.pdf))
 - Native app Development ([PDF - Credit Xin Yang, UC Santa Barbara](http://lbmedia.ece.ucsb.edu/member/uweb/Teaching/website/PPT/01_Intro_Android_Basics.pdf))
-  - Android Security Reading ([http://ieeexplore.ieee.org/abstract/document/6999911/](http://ieeexplore.ieee.org/abstract/document/6999911/))
 - IoT Development primer ([PDF Lecture 4](/lectures/lecture4.pdf))
+- Android / IoT Security Readings
+  - P. Faruki et al., "Android Security: A Survey of Issues, Malware Penetration, and Defenses," in IEEE Communications Surveys & Tutorials, vol. 17, no. 2, pp. 998-1022, Secondquarter 2015. doi: [https://doi.org/10.1109/COMST.2014.2386139](https://doi.org/10.1109/COMST.2014.2386139)
+  - M. M. Hossain, M. Fotouhi and R. Hasan, "Towards an Analysis of Security Issues, Challenges, and Open Problems in the Internet of Things," 2015 IEEE World Congress on Services, New York City, NY, 2015, pp. 21-28. doi: [https://doi.org/10.1109/SERVICES.2015.12](https://doi.org/10.1109/SERVICES.2015.12)
+  - M. L. Hale, D. Ellis, R. Gamble, C. Waler and J. Lin, "Secu Wear: An Open Source, Multi-component Hardware/Software Platform for Exploring Wearable Security," 2015 IEEE International Conference on Mobile Services, New York, NY, 2015, pp. 97-104. doi: [https://doi.org/10.1109/MobServ.2015.23](https://doi.org/10.1109/MobServ.2015.23)
+  - Farooq, Muhammad Umar, et al. "A critical analysis on the security concerns of internet of things (IoT)." International Journal of Computer Applications 111.7 (2015). [http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.681.4342&rep=rep1&type=pdf](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.681.4342&rep=rep1&type=pdf)
 - Open Discussions on student-driven topic areas
 - Time to be creative
   - Come up with your own project idea or implement something for a friend/family member or community organization
-  - [Project Milestone 1 rubric](/projects/milestone1.md) : In this project you will define your idea and discuss it with Dr. Hale to get some initial feedback.
-  - Project Milestone 2 - Rubric TBA : In this milestone you will work to create an initial basic prototype of your product.
-  - Final Milestone - Rubric TBA : In this milestone you will polish your product and realize your user stories.
+
 
 ## Projects
+- [Project Milestone 1 rubric](/projects/milestone1.md) : In this project you will define your idea and discuss it with Dr. Hale to get some initial feedback.
+- Project Milestone 2 - Rubric TBA : In this milestone you will work to create an initial basic prototype of your product.
+- Final Milestone - Rubric TBA : In this milestone you will polish your product and realize your user stories.
+
 2018 Projects TBA
 
 2017 Projects and Final Presentations
