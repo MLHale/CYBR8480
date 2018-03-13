@@ -1802,6 +1802,83 @@ Calls the take-picture component by:
 
 #### Authors
 
+Bhawini Tripathi
+#### Plugin Name (which plugin did you look at?)
+
+Cordova Plugin Battery Status (https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-battery-status/index.html)
+
+#### Usage
+
+1. Install Cordova plugin [corber plugin add cordova-plugin-battery-status]
+2. Generate Ember Component [ ember generate component device-properties]
+3. Edit the necessary files:
+3a. app/templates/application.hbs
+```hbs
+Battery Status:
+ {{battery-display}}
+
+```
+3b. /app/templates/components/battery-display.hbs
+```hbs
+Battery Level: {{batteryLevel}} % <br>
+```
+3c. /app/component/battery-display.js
+Code below:
+```javascript
+import Ember from 'ember';
+export default Ember.Component.extend({
+ batteryLevel: 0,
+ on: true,
+ startLogging: function(){
+     var component = this;
+     this.onBatteryStatus(component);
+     this.onBatteryCritical(component);
+ }.on('init'),
+
+ onBatteryStatus: function (component) {
+Ember.run.later(function(){
+     try {
+       navigator.getBattery().then(function(battery){
+       component.set('batteryLevel', battery.level * 100);
+         console.log('Battery Level');
+         console.log(battery.level * 100);
+       }, function(error){
+         console.log('status error.');
+         console.log(error);
+       });
+     } catch (error) {
+       console.log('status error.');
+       console.log(error);
+     }
+     component.get('onBatteryStatus')(component);
+   }, 100);
+
+ },
+ 
+ onBatteryCritical: function (component) {
+Ember.run.later(function(){
+     try {
+       navigator.getBattery().then(function(battery){
+       if((battery.level*100)<15){
+       alert("Battery Level Critical " + (battery.level*100) + "%\nRecharge Soon!");
+       }
+       }, function(error){
+         console.log('status error.');
+         console.log(error);
+       });
+     } catch (error) {
+       console.log('status error.');
+       console.log(error);
+     }
+     component.get('onBatteryCritical')(component);
+   }, 100);
+
+ }
+ 
+});
+```
+
+#### Authors
 Mounika Chowdary Addagada
 
 #### Plugin Name (which plugin did you look at?)
