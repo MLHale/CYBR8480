@@ -1877,6 +1877,100 @@ Ember.run.later(function(){
  
 });
 ```
+
+#### Authors
+Mounika Chowdary Addagada
+
+#### Plugin Name (which plugin did you look at?)
+
+cordova-plugin-contacts [https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/index.html]
+
+This plugin provides information about how many number of saved contacts are there in the device.
+
+
+#### Usage
+
+1. Install the plugin
+
+   corber plugin add cordova-plugin-contacts
+
+2. Generate the files
+
+   ember generate component contacts-display
+
+3. Edit the necessary files:
+
+3a. /app/templates/application.hbs
+
+ Calls out the contacts-display component 
+
+ Raw code below:
+
+```hbs
+ 
+{{contacts-display}}
+```
+
+3b. /app/templates/components/contacts-display.hbs
+
+    Set up a button to get all contacts(Total number of saved contacts in device)
+
+    Raw code below:
+
+```hbs
+
+<h4>Get all contacts</h4>
+<h1><button {{action "contact"}}>Get All Contacts</button></h1>
+<div id="test">{{list}}</div>
+```
+
+3c. /app/component/contacts-display.js
+
+ This JavaScript queries Cordova and get the number of contacts information in the device.
+
+ Code below:
+
+```javascript
+import Component from '@ember/component';
+
+export default Component.extend({
+	list:"",
+	actions:{
+		contact()
+		{
+			try{
+				var result={'contactscount':''};
+				navigator.contacts.find([navigator.contacts.fieldType.displayName],
+				function (contacts) {
+								result.contactscount= contacts.length;
+								var str = "gotContacts \nNumber of contacts "+contacts.length+"\n\n";
+								for(var i=0, len=contacts.length; i<len; i++) {
+									
+									//alert(c[i].displayName);
+									str = str + contacts[i].displayName+"\n";
+								}
+								alert(str);
+								//component.set("list",str);
+								//document.getElementById("test").innerHTML=str;
+							
+				},  function(e) {
+				alert("errorHandler: "+e);
+				}	
+			);
+
+				
+			}
+	
+	
+			catch(error){
+				alert("failed"+error)
+			}
+		}
+	}
+
+});
+```
+
 [Top](#table-of-contents)
 
 ### Next time we explore vulnerabilities and exploitations in hybrid apps.
