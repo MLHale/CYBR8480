@@ -5,14 +5,7 @@ This repo contains a digitized version of the course content for IA8470 Secure M
 Mobile devices are already pervasive fixtures of 21st century culture and increasingly the internet of things (IoT) and wearables are proliferating throughout the world. As this proliferation occurs, numerous vendor-centric and third party mobile, wearable, and internet of things apps are being created by developers and downloaded by end-users with little to no thought about the security and privacy of the information used and collected by the apps. This course examines this issue from a development point of view to a) introduce mobile/wearable/IoT architectures and technologies, b) increase developer application development competencies with these technologies, and c) integrate secure design principles into the ideation, design, and testing phases during development.
 
 ### Table of contents
-[Online discussion area](#online-discussion-area)  
-[Location](#location) 
-[Supplies](#supplies)  
-[Projects](#projects)  
-[Labs](#labs)  
-[Class topics](#class-topics)  
-[Syllabus](#syllabus)  
-[License](#license)
+[Online discussion area](#online-discussion-area) | [Location](#location) | [Supplies](#supplies) | [Projects](#projects) | [Labs](#labs) | [Class topics](#class-topics) | [Syllabus](#syllabus) | [License](#license)
 
 ## Online Discussion Area
 I have setup an online discussion board on slack.com for usage in this class. If you decide to work on a group project, I can create some private channels for you to work on, but I want to be able to participate in your conversations - so please use the space on slack.
