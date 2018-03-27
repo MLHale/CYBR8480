@@ -27,7 +27,10 @@ Your will be graded as follows:
 |---|---|---|---|
 | Effort and progress | It is clear that the individual/team has made non-trivial effort and progress towards user story realization.| There is some evidence of effort and progress, but more could have been done in the time. | Little effort or progress was made towards user story realization.|
 | Documentation | Code artifacts and tasks are documented well. Documentation is clear and illustrative. | Some code is documented, but large portions are not. | Little or no documentation.|
-| Prototype Demo | The product is successfully demoed for Dr. Hale and the class. The individual/team addresses and handles questions well. | The demo partially works, but there are some significant issues. | Many significant issues or non-functional prototype.|
+| Prototype Demo* | The product is successfully demoed for Dr. Hale and the class. The individual/team addresses and handles questions well. | The demo partially works, but there are some significant issues. | Many significant issues or non-functional prototype.|
+
+
+> `*` Note that Demos may include videos if the conditions necessary to replicate the demo cannot be re-created in a live in-class demo.
 
 **Total 120 points.**
 
@@ -49,14 +52,7 @@ Your presentation will be graded using the following rubric:
 | Explain user stories | User stories are quickly re-capped. | Too much time is spent reading off user stories | Way to much time spent or no coverage at all. |
 | Explain architecture | Overall architecture is briefly discussed in terms of important components. | Too much time is spent on the architecture. | Way too much time is spent or no coverage of architecture. |
 
-
-| | Meets expectations (17-20) | Some Issues (10-16) | Does not meet expectations (0-9)|
-|---|---|---|---|
-| Demo* | Deliverable is demonstrated with accompanied explanation of outcomes and success. Product functionality is successfully demoed. | Demo is mildly successful. | Demo fails or is not included in the presentation |
-
-> `*` Note that Demos may include videos if the conditions necessary to replicate the demo cannot be re-created in a live in-class demo.
-
-**Total 80 points.**
+**Total 60 points.**
 
 #### License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CYBER4580 and related works</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://faculty.ist.unomaha.edu/mlhale" property="cc:attributionName" rel="cc:attributionURL">Matt Hale</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
