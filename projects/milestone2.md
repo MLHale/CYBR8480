@@ -1,74 +1,62 @@
-## CYBR 8480 Project Milestone 2: Prototype development
-**Assigned: Tuesday 4/4/17**
+# CYBR 8480 Project Milestone 2: Prototype development
+**Assigned: Tuesday 3/27/18**
 
-### Due Date
-Monday April 17th (4/17/17) at 11:59PM, Presentation and Demo 4/18/17.
+## Due Date
+Tuesday April 17th (4/17/17) by class time, Presentation and Demo 4/17/17.
 
-### Overview
-This project milestone tasks you with building a prototype application that addresses your top User stories. This means you will be creating features to support and realize your user stories. The milestone also tasks you with generating relevant documentation associated with design and implementation of your app. Towards this goal, you will be required to submit the following by the due date:
+## Overview
+This project milestone tasks you with building a prototype application that addresses your top user stories. This means you will be creating features to support and realize your user stories. The milestone also tasks you with generating relevant documentation associated with design and implementation of your app. Towards this goal, you will be required to submit the following by the due date:
 
-- [Component-based Architectural Diagram](#architectural-diagram) - How do the components in your product work together?
-- [User story realization](#user-story-realization) - Document and describe what was done.
-  - Identify tasks achieved in this product increment (an agile term for the things you produce)
+* [User story realization](#user-story-realization) - Document and describe what was done.
+  - Identify tasks achieved in this product increment
   - Bind tasks, code artifacts, and documentation together
-- [Presentation](#presentation) - Demo and discuss your milestone 2 work with Dr. Hale and the class
-  - Focus on achieving primary user story
+* [Presentation](#presentation) - Demo and discuss your milestone 2 work with Dr. Hale and the class
 
-**All materials will be submitted on GitHub, be sure to slack message me with your GitHub Repo link.**
+**All materials will be submitted on GitHub, be sure to post your slides and a link to your GitHub Repo on canvas.**
 
-### Architectural Diagram
-An architecture diagram clearly identifies the various components and connectors that comprise a product. For this part of Milestone 2, you should create a diagram that shows how the components in your product are composed together. This means you should identify which components fit into your design, how you plan to connect them together, and how other (third party, etc) components fit into the design. Think about questions such as "What layers exist in my application?, Are components cleanly separated from one another and are they appropriately coupled and cohesive?, How is data passed between components or external resources (e.g. are APIs being used appropriately)?"
+## User story realization
+In this milestone, you will focus on drilling into actually realizing (i.e. completing) your user stories. This means actually start coding and working to develop the features to support the stories. As you do this, keep basic documentation to connect your work to the ideas that created it. Make sure to update your architectural diagrams if anything changes from your design.
 
-#### Submission materials
-You should create your diagram using an architectural tool such as Lucidchart, MS Visio, or similar tools. You should include the diagram in your README.md file, in your Github repo, as an image and/or link to Lucidchart.
+### Submission materials
+You should prepare a prototype application/product that demonstrates the three selected user stories. The prototype should include an IoT component and a mobile app. The app may be hybrid or native. The IoT component should use Bluetooth or another wireless protocol (such as RFID or Wi-Fi) to communicate. All code should be properly documented - with non-trivial code (such as methods and algorithms) briefly explained in-line using appropriate comments. Update your component descriptions associated with the architecture diagram with appropriate references in the code (where applicable). The last element of submission materials include a demo-ready compiled app that can demonstrate some basic functionality.
 
-It should contain the following:
+### Grading Criteria
+Your will be graded as follows:
 
-1. Components, represented as a box or a small picture. Each component must have a label that names it. Each component should identify input and output interfaces. On a separate note (in markdown), you should briefly list and explain what each component does.
-1. Connectors, represented as arrows with appropriately labeled data sent over the connectors.
-1. Other grouping concepts, as necessary. In some cases, components may have sub components, systems might be part of a larger system of systems, or there could be other needs for identifying clusters of concepts. Use these where necessary.
+| | Meets expectations (33-40) | Some Issues (25-32) | Does not meet expectations (0-24) |
+|---|---|---|---|
+| Effort and progress | It is clear that the individual/team has made non-trivial effort and progress towards user story realization.| There is some evidence of effort and progress, but more could have been done in the time. | Little effort or progress was made towards user story realization.|
+| Documentation | Code artifacts and tasks are documented well. Documentation is clear and illustrative. | Some code is documented, but large portions are not. | Little or no documentation.|
+| Prototype Demo | The product is successfully demoed for Dr. Hale and the class. The individual/team addresses and handles questions well. | The demo partially works, but there are some significant issues. | Many significant issues or non-functional prototype.|
 
-**Follow UML or UML-like conventions to build your diagram**
-For more information on component diagrams, see:
-* [http://www.uml-diagrams.org/component-diagrams-reference.html](http://www.uml-diagrams.org/component-diagrams-reference.html)
-* [http://agilemodeling.com/artifacts/componentDiagram.htm](http://agilemodeling.com/artifacts/componentDiagram.htm)
+**Total 120 points.**
 
-### Grading criteria
-Your architecture diagram will be graded as follows:
+## Presentation
+You will be expected to present your Milestone 2 achievements to the class on the submission day. It is important that you use this time to both inform your classmates of your activities and to get feedback. You will be expected to demo your prototype product.
+
+### Submission Materials
+Submit your slides to Dr. Hale by class time on the day of the presentation. Submit them via canvas.
+
+### Grading Criteria
+Your presentation will be graded using the following rubric:
 
 | | Meets expectations (9-10) | Some Issues (6-8) | Does not meet expectations (0-5)|
 |---|---|---|---|
-|Appropriate Components| Identifies relevant components in your product design | some components are tangential to user stories | components are not relevant to user stories |
-|Component descriptions| Each component is described in accompanying text (in markdown). | Some descriptions are missing. | Components are not described in text.|
-|Component labels| Each component is labeled and the labels are relevant. | Some components are not labeled, or are labeled poorly. | Many components are not labeled, or labeled poorly.|
-|Coverage| Diagram contains a reasonable number of components for your user stories and product | Some obvious components are missing from the diagram | Many components are missing from the diagram|
-|Usage of interfaces| Components clearly identify the input and output interfaces that make available | Some interfaces between components are undefined or unidentified | Many missing interfaces.|
-|Appropriate grouping and clustering| Concepts are grouped according to function or how they appear in the product. | There are some issues of grouping and clustering concepts.|  There are multiple issues with clustering and grouping concepts.|
-|Clear and understandable| The diagram clearly and unambiguously conveys the structure of the application or product. | The diagram leaves some concerns open for interpretation.| The diagram is not clear or understandable.|
+| Enthusiasm and clarity | Presenter exhibits enthusiasm about the work and speaks clearly and confidently. | Some issues with clarity and enthusiasm. | Presenter has mumbles, is not clear, and/or does not demonstrate any enthusiasm. |
+| Understanding of product | Presenter understands all aspects presented about the project. | Some gaps in understanding when questioned by audience or routinely looks at team slides |Poor understanding of project. |
+| Relevant information | Engaging relevant information is presented about the project. | Valuable information is presented but there are multiple tangents. | Little valuable information is presented |
+| Explain high level goal(s) | Overall goals are briefly recapped. | Too much time is spend on the goals | Way too much time is spent or goals are not covered at all. |
+| Explain user stories | User stories are quickly re-capped. | Too much time is spent reading off user stories | Way to much time spent or no coverage at all. |
+| Explain architecture | Overall architecture is briefly discussed in terms of important components. | Too much time is spent on the architecture. | Way too much time is spent or no coverage of architecture. |
 
-### User story realization
-Once you've created a component diagram, begin drilling into actually realizing (i.e. completing) your user stories. This means actually start coding and working to develop the features to support the stories. As you do this, keep basic documentation to connect your work to the ideas that created it. Make sure to update your component diagram if anything changes.
 
-#### Submission materials
-You should prepare a prototype application/product that demonstrates the three selected user stories. The prototype should include an IoT component and a mobile app. The app may be hybrid or native. The IoT component should use Bluetooth or another wireless protocol (such as RFID or Wi-Fi) to communicate. All code should be properly documented - with non-trivial code (such as methods and algorithms) briefly explained in-line using appropriate comments. Update your component descriptions associated with the architecture diagram with appropriate references in the code (where applicable). The last element of submission materials include a demo-ready compiled app that can demonstrate some basic functionality.
-
-#### Grading Criteria
-Your will be graded as follows:
-
-| | Meets expectations (33-40) | Some Issues (25-32) | Does not meet expectations (0-24)|
+| | Meets expectations (17-20) | Some Issues (10-16) | Does not meet expectations (0-9)|
 |---|---|---|---|
-|Effort and progress| It is clear that the team has made non-trivial effort and progress towards user story realization.| There is some evidence of effort and progress, but more could have been done in the time. | Little effort or progress was made towards user story realization.|
-|Documentation| Code artifacts and tasks are documented well. Documentation is clear and illustrative. | Some code is documented, but large portions are not. | Little or no documentation.|
-|Prototype Demo| The product is successfully demoed for Dr. Hale and the class. The team addresses and handles questions well. | The demo partially works, but there are some significant issues. | Many significant issues or non-functional prototype.|
+| Demo* | Deliverable is demonstrated with accompanied explanation of outcomes and success. Product functionality is successfully demoed. | Demo is mildly successful. | Demo fails or is not included in the presentation |
 
-### Presentation
-You will be expected to present your Milestone 2 achievements to the class following the deadline. It is important that you use this time to both inform your classmates of your activities and to get feedback. You will be expected to Demo your prototype product.
+* Note that Demos may include videos if the conditions necessary to replicate the demo cannot be re-created in a live in-class demo.
 
-#### Submission Materials
-Submit your slides to Dr. Hale by 11:59pm on the day of the presentation. Submit them by posting and pinning them in your team slack channel.
-
-#### Grading Criteria
-You will be graded by a rubric TBA.
+**Total 80 points.**
 
 #### License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CYBER4580 and related works</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://faculty.ist.unomaha.edu/mlhale" property="cc:attributionName" rel="cc:attributionURL">Matt Hale</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
