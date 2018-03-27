@@ -4,6 +4,9 @@
 ## Due Date
 Tuesday April 17th (4/17/17) by class time, Presentation and Demo 4/17/17.
 
+## Points
+180 Project points (15% of overall grade), 40 Participation Points
+
 ## Overview
 This project milestone tasks you with building a prototype application that addresses your top user stories. This means you will be creating features to support and realize your user stories. The milestone also tasks you with generating relevant documentation associated with design and implementation of your app. Towards this goal, you will be required to submit the following by the due date:
 
@@ -53,6 +56,7 @@ Your presentation will be graded using the following rubric:
 | Explain architecture | Overall architecture is briefly discussed in terms of important components. | Too much time is spent on the architecture. | Way too much time is spent or no coverage of architecture. |
 
 **Total 60 points.**
+> 40 participation points will also be alotted for attending class on the presentation day.
 
 #### License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CYBER4580 and related works</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://faculty.ist.unomaha.edu/mlhale" property="cc:attributionName" rel="cc:attributionURL">Matt Hale</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
