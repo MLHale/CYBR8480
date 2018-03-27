@@ -60,7 +60,7 @@ All classroom activities will take place in PKI room 361 unless otherwise noted 
 
 ## Projects
 - [Project Milestone 1 rubric](/projects/milestone1.md) : In this project you will define your idea and discuss it with Dr. Hale to get some initial feedback.
-- Project Milestone 2 - Rubric TBA : In this milestone you will work to create an initial basic prototype of your product.
+- [Project Milestone 2 rubric](/projects/milestone2.md): In this milestone you will work to create an initial basic prototype of your product.
 - Final Milestone - Rubric TBA : In this milestone you will polish your product and realize your user stories.
 
 2018 Projects TBA
