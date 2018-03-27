@@ -54,7 +54,7 @@ Your presentation will be graded using the following rubric:
 |---|---|---|---|
 | Demo* | Deliverable is demonstrated with accompanied explanation of outcomes and success. Product functionality is successfully demoed. | Demo is mildly successful. | Demo fails or is not included in the presentation |
 
-* Note that Demos may include videos if the conditions necessary to replicate the demo cannot be re-created in a live in-class demo.
+> * Note that Demos may include videos if the conditions necessary to replicate the demo cannot be re-created in a live in-class demo.
 
 **Total 80 points.**
 
