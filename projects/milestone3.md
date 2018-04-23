@@ -1,8 +1,7 @@
 ## CYBR 8480 Project Milestone 3: Final Polish and Packaging
-**Assigned: Wednesday 4/19/17**
 
 ### Due Date
-Tuesday May 2nd (5/2/17) at 11:59PM, Presentation and Demo 5/2/17 during class time @5:30pm.
+Tuesday May 1st (5/1/18) at 11:59PM, Presentation and Demo 5/1/17 during class time @7:30pm.
 
 ### Overview
 This project milestone tasks you with polishing your overall application and packaging your product for release. The components of the Final Milestone include:
@@ -29,7 +28,7 @@ An important part of developing or assessing a product is making the product or 
 
 #### Submission materials
 For this submission, you should
- * Package your code and/or deployment environment for release using [github](https://github.com/). (Optional) you may also use other potential deployment solutions such as [docker](https://www.docker.com/) in addition to github. 
+ * Package your code and/or deployment environment for release using [github](https://github.com/). (Optional) you may also use other potential deployment solutions such as Android play store, an APK distribution, [docker](https://www.docker.com/), etc in addition to github. 
  * Create a ```hardware/software requirements``` section in your github repository and list the hardware components, software, and other technology required to make your app work.
  * Create ```installation``` and ```getting started``` instructions using markdown in your repository to detail what an end-user must do to setup and use your product.
 
