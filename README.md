@@ -68,6 +68,7 @@ All classroom activities will take place in PKI room 361 unless otherwise noted 
 * [DropTap](https://tap.apt-get-sudo.com/) - Michael Galde
 * [SmartThingsWebAPP](https://github.com/woonat01/SmartThingsWebAPP) - Nate Wood
 * [Laundry Notification App](https://github.com/SarahLN/Laundry-Notification-App) - Sarah Noles
+* [MetaShot](https://github.com/gandersonUNO/MetaShot) - Glenn Anderson and Daniel Lucier
 
 2017 Projects and Final Presentations
 * [E-notifier](https://github.com/vingle1/E-Notifier) - Vaibhav Ingle
