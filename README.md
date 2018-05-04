@@ -63,7 +63,11 @@ All classroom activities will take place in PKI room 361 unless otherwise noted 
 - [Project Milestone 2 rubric](/projects/milestone2.md): In this milestone you will work to create an initial basic prototype of your product.
 - [Final Milestone rubric](/projects/milestone3.md) : In this milestone you will polish your product and realize your user stories.
 
-2018 Projects TBA
+2018 Projects
+* [BikeSpeedMonitor](https://github.com/oliavd/bikeSpeedMonitor/tree/master/ProjectMileStone1) - Olivier Avande
+* [DropTap](https://tap.apt-get-sudo.com/) - Michael Galde
+* [SmartThingsWebAPP](https://github.com/woonat01/SmartThingsWebAPP) - Nate Wood
+* [Laundry Notification App](https://github.com/SarahLN/Laundry-Notification-App) - Sarah Noles
 
 2017 Projects and Final Presentations
 * [E-notifier](https://github.com/vingle1/E-Notifier) - Vaibhav Ingle
