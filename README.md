@@ -13,7 +13,7 @@ I have setup an online discussion board on slack.com for usage in this class. If
 Go to [https://drhale8480.slack.com](https://drhale8480.slack.com) and use your unomaha email address to register an account. This will give you access to the course discussion and project collaboration spaces. Use the the general channel or create a new one for your team.
 
 ## Location
-All classroom activities will take place in PKI room 361 unless otherwise noted ahead of time.
+All classroom activities will take place in PKI room 259 unless otherwise noted ahead of time.
 
 ## Supplies
 
