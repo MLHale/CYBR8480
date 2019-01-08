@@ -80,7 +80,7 @@ All classroom activities will take place in PKI room 259 unless otherwise noted 
 
 
 ## Syllabus
-### Date/Time: Tuesday 5:30pm – 8:10pm
+### Date/Time: Wednesday 5:30pm – 8:10pm
 ### Instructor:  Dr. Hale
 ### Office:  PKI 174-D, (402) 554-3978
 ### Office Hours:  By appointment or walk-ins anytime the door is open
