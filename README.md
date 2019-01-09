@@ -19,7 +19,7 @@ All classroom activities will take place in PKI room 259 unless otherwise noted 
 
 ### Hardware/software
 * Your laptop - capable of running android studio (Win7+/MacOSX10.10+ 8GB Ram, 2GB disk space, 1280x800 min, 64bit (pref))
-* [Metawear](https://store.mbientlab.com/) Any of the R, RPRO, RG, C, or CPRO models will work. If you are just using it in the class, the R version is the cheapest and recommended ($40).
+* [Metawear](https://mbientlab.com/store/) Any of the R, RPRO, RG, C, or CPRO models will work. If you are just using it in the class, the R version is the cheapest and recommended ($40).
 * Android 4.3+ (API level 18+) Bluetooth LE capable phone or tablet
 * IoT Device of your choice for your project (something you can select later when you choose a project)
 
