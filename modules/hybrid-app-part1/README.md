@@ -137,7 +137,7 @@ git push -u origin master
 
 [Top](#table-of-contents)
 ### Make ember and cordova play nice
-There is a handy ember addon (built by [@poetic](https://github.com/poetic/ember-cli-cordova) and [@isleofcode](https://github.com/isleofcode/ember-cordova)) that makes cordova cli and ember cli seamlessly (and I mean really seamlessly) work together. Lets install it.
+There is a handy ember addon called [Corber](http://corber.io/) (built by [@poetic](https://github.com/poetic/ember-cli-cordova) and [@isleofcode](https://github.com/isleofcode/ember-cordova)) that makes cordova cli and ember cli seamlessly (and I mean really seamlessly) work together. Lets install it. I suggest you also take a moment to look over the Corber documentation at [http://corber.io/](http://corber.io/).
 
 ```
 npm install -g yarn
@@ -189,11 +189,10 @@ to
     rootURL: '',
     locationType: 'hash',
 ```
-We also need to fix one small versioning issue with the current corber version.
-Currently, as of 1.1.13, corber place the www folder in the android project in the wrong spot.
+As of 1.1.13, corber places the www folder in the android project in the wrong spot and you may need to confirm that the files are in the correct place. 
 
 To fix this:
-copy files from `hybridapp/corber/cordova/platforms/android/platform_www/` to `hybridapp/corber/cordova/platforms/android/assets/www/`
+copy any files (if any) from `hybridapp/corber/cordova/platforms/android/platform_www/` to `hybridapp/corber/cordova/platforms/android/assets/www/`
 
 Now rebuild the app:
 ```
