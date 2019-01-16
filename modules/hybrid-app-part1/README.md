@@ -256,7 +256,7 @@ Pretty cool!
 [Top](#table-of-contents)
 
 #### Exploring cordova packages
-The [next tutorial](hybrid-app-tutorial-part2.md) explores cordova packages that give us access to native features on the device.
+The [next tutorial](https://github.com/MLHale/CYBR8480/blob/master/modules/hybrid-app-part2/README.md) explores cordova packages that give us access to native features on the device.
 
 
 
