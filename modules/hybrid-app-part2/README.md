@@ -19,7 +19,7 @@ Start by getting your development environment setup. For this tutorial, we will 
 Begin by starting the live-reload ember server. Change into your code repository and issue the following command:
 
 ```bash
-corber serve --platform=android --verbose
+corber start --platform=android --verbose
 ```
 
 If all goes well you should see a terminal running ember (leave it running).
