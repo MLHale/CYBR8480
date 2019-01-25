@@ -35,8 +35,6 @@ This guide assumes you have already installed git (github desktop for windows us
 
 ```
 sudo apt-get install git
-npm install -g n
-sudo n latest
 ```
 > Windows users should make sure to install the latest versions of npm and node
 
@@ -53,9 +51,36 @@ Cordova (and anything android related) requires the Java Development Kit (JDK) a
 
 > Mac users will need to add the following to your bash profile:
 ```
-export JAVA_HOME=`/usr/libexec/java_home`
-export ANDROID_HOME=~/Library/Android/sdk
-export PATH=${PATH}:$ANDROID_HOME/platform-tools:ANDROID_HOME/tools
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+export ANDROID_HOME=~/Library/Android/sdk/
+export PATH=${PATH}:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_HOME/build-tools$
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+```
+> MAC USER WARNING: You may have an older JDK already in your path. Make sure to update accordingly.
+
+> Windows users need to ensure similar variables are setup in their PATH, but modifying the PATH in environmental variables (under system-> advanced).
+
+name: 
+```
+JAVA_HOME
+```
+value:
+```
+C:\Program Files\Java\jdk1.8.0_202
+```
+name: 
+
+```
+ANDROID_HOME
+```
+value:
+```
+C:\Android\sdk\
+```
+Then ensure the following is in your path string:
+```
+C:\Android\android-sdk\tools;C:\Android\android-sdk\platform-tools;C:\Android\android-sdk\build-tools
 ```
 
 ###### Installing latest Android SDK latest build
@@ -91,7 +116,7 @@ See [https://cordova.apache.org/docs/en/latest/guide/support/index.html](https:/
 Since we will be building our app in Ember, lets also install the Ember CLI you worked with before in sec. web dev.
 
 ```
-npm install -g ember-cli
+npm install -g ember-cli@3.4
 ```
 
 Now you should be able to interact on the command line and see the Cordova and ember build tools functioning:
@@ -189,10 +214,6 @@ to
     rootURL: '',
     locationType: 'hash',
 ```
-As of 1.1.13, corber places the www folder in the android project in the wrong spot and you may need to confirm that the files are in the correct place. 
-
-To fix this:
-copy any files (if any) from `hybridapp/corber/cordova/platforms/android/platform_www/` to `hybridapp/corber/cordova/platforms/android/assets/www/`
 
 Now rebuild the app:
 ```
@@ -214,7 +235,7 @@ Since this is tedious, we can use an emulator for this.
 - wait for android to load and update the project workspace
 - once done, click the `play icon` in android studio to launch the app
 - select create virtual device (or connect your phone)
-- on the virtual device menu, select your favorite phone version (e.g. 6P) and then select Oreo (API V26)
+- on the virtual device menu, select your favorite phone version (e.g. Pixel) and then select Pie (APIV28)
 - click finish
 - now launch your app from the emulator toolbar
 
@@ -222,35 +243,31 @@ Since this is tedious, we can use an emulator for this.
 To deploy to an Android device, you can instead run the app in the android device instead of the emulator.
 > note this requires that you have previously installed and configured ADB (the Android Device Bridge) and that your phone is connected to your computer.
 
-With your emulator running, we can now put corber in serve mode - which makes it operate just like ember-cli except for apps.
-
-Type:
+You can also use corber now to launch your emulator and push your app to the emulated phone:
 ```
 corber start --platform=android
 ```
-> This deploys to a previously configured emulator (you can set this up in android studio). Before you run the command, lets setup an emulator
+> This deploys to a previously configured emulator (you can set this up in android studio). 
 
-With corber's live reload feature running, we just need to tell corber to deploy our app for live reload to the emulator.
-
-```
-corber proxy run android --emulator --nobuild
-```
-
-This should deploy the apk we built earlier to the emulator to be run.
-
+> Leave this terminal running anytime you want to make changes to your code - so that the changes you make will livereload on the phone.
 
 
 ### Trying it out
-Lets try it out. In a new terminal (other than where corber is running) create a new application template. Then we will deploy the live reload build and then run ember cdv server.
+Lets try it out. In a **new terminal** (other than where corber is running) create a new application template. Then we will deploy the live reload build and then run ember cdv server.
 
 ```
 ember generate template application
 ```
 
-Lets just type 'Hello World!' in our new template.
-> After it has finished building, the app will restart in the emulator and you should see hello world.
+open the file in your favorite text editor (e.g. ATOM):
+you are looking for `hybridapp/app/templates/application.hbs`
 
-Now modify the application.hbs file in `hybridapp/app/templates to say` `Hello world! - oh look it changed`
+
+Lets just type 'Hello World!' in our new template and save it.
+
+Corber/ember will reload your app automatically.
+
+> After it has finished building, the app will restart in the emulator and you should see hello world.
 
 Pretty cool!
 [Top](#table-of-contents)
