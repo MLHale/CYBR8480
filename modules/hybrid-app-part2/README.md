@@ -25,36 +25,6 @@ corber start --platform=android --verbose
 If all goes well you should see a terminal running ember (leave it running).
 ![Corber live reload](assets/README-5e7bd.png)
 
-#### Starting the Android Emulator
-Since we are working with command line tools, lets configure our environment to allow us to launch the emulator from command line.
-
-Make sure the following is in your path, (linux/mac paths shown below).
-
-```
-export JAVA_HOME=`/usr/libexec/java_home`
-export ANDROID_HOME=~/Library/Android/sdk
-export PATH=${PATH}:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
-```
-
-check to make sure the android tools are accessible from the command line using the command:
-
-```bash
-android
-```
-if so, chances are you are good!
-
-Now, open a new shell (power shell or CMD if windows), navigate to your code repository, and launch the emulator.
-
-```bash
-corber proxy run android --emulator
-```
-> Note this assumes you created an AVD in android in the previous exercise. If not you need to create one using the `avd manager`
-
-Once your app launches, you should see your app running in the emulator
-
-![Ember app running in the emulator](assets/README-bb226.png)
-
-[Top](#table-of-contents)
 ### Dev tool usage
 
 #### Android Tools
@@ -104,14 +74,15 @@ Once this completes, rebuild your app and send the apk to the emulator.
 
 ```bash
 corber build --platform=android
-corber proxy run android --emulator --nobuild
+corber start --platform=android
 ```
-> Note that anytime you modify the native container (i.e. the android part) by adding or removing plugins, you will need to rebuild and relauch the app. You can leave the corber live reload server open as you rebuild.
+> Note that anytime you modify the native container (i.e. the android part) by adding or removing plugins, you will need to stop and start the corber terminal. Otherwise, if you are just making code changes, there is no need to stop/start.
 
 [Top](#table-of-contents)
 
 ### Accelerometer display component
-Lets create a new component that will be responsible for displaying accelerometer data as it comes in.
+Lets create a new component that will be responsible for displaying accelerometer data as it comes in. In a separate terminal than where corber is running, 
+
 ```bash
 ember generate component accelerometer-display
 ```
@@ -216,7 +187,7 @@ Since we edited the libraries in the ember app, we need to rebuild and re-run th
 
 ```bash
 corber build --platform=android
-corber proxy run android --emulator --nobuild
+corber start --platform=android
 ```
 
 #### Template Code
