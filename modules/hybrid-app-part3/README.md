@@ -15,17 +15,27 @@ Start by getting our development environment setup. For this tutorial, we will u
 
 >!!! It is very important that you are on the UNO VPN for this lab. It will not work otherwise!!!
 
-#### Not using live reload
-For this tutorial, we will not be using the live reload feature - so we can work with an external API properly. Basically, don't start the corber server, since the live reload feature only works when it is running. Without it running, your app runs based off whatever is in the .apk package.
 
 #### New workflow
 Open a new shell (power shell or CMD if windows), navigate to your code repository, and launch the emulator.
 
-```bash
-corber build --platform=android
-corber proxy run android --emulator
+In one terminal run
 ```
-> Note, live reload will no longer work and you will need to rebuid the app everytime you make a change
+corber build --platform=android
+corber server --platform=android
+```
+
+In a second terminal run:
+```
+corber proxy run android
+```
+
+OR
+
+```
+corber proxy build android
+adb -e install -r corber\cordova\platforms\android\app\build\outputs\apk\debug\
+```
 
 and then upon opening the app, the app should be running in the emulator.
 
