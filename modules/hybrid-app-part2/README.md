@@ -25,7 +25,8 @@ corber start --platform=android --verbose
 If all goes well you should see a terminal running ember (leave it running).
 ![Corber live reload](assets/README-5e7bd.png)
 
-> Windows users: If corber start does not work, you can do the following:
+
+Windows users: If corber start does not work, you can do the following:
 In one terminal run
 ```
 corber server --platform=android
