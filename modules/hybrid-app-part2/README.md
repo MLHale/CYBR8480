@@ -1,12 +1,12 @@
 # Building a Hybrid App in Android and Ember
 
 ### Table of Contents
-[Introduction](#introduction)
-[Getting started](#getting-started)
-[Dev tool usage](#dev-tool-usage)
-[Working with your first Cordova Plugin](#working-with-your-first-cordova-plugin)
-[Accelerometer display component](#accelerometer-display-component)
-[Extending the app](#extending-the-app)
+[Introduction](#introduction)  
+[Getting started](#getting-started)  
+[Dev tool usage](#dev-tool-usage)  
+[Working with your first Cordova Plugin](#working-with-your-first-cordova-plugin)  
+[Accelerometer display component](#accelerometer-display-component)  
+[Extending the app](#extending-the-app)  
 
 
 ### Introduction
@@ -25,6 +25,16 @@ corber start --platform=android --verbose
 If all goes well you should see a terminal running ember (leave it running).
 ![Corber live reload](assets/README-5e7bd.png)
 
+> Windows users: If corber start does not work, you can do the following:
+In one terminal run
+```
+corber server --platform=android
+```
+
+In a second terminal run:
+```
+corber proxy run android
+```
 ### Dev tool usage
 
 #### Android Tools
@@ -180,6 +190,7 @@ With rotate display off, I opened the Android emulator tools and started rotatin
 Just for kicks, lets extend this app and add a time-series chart from [http://opensource.addepar.com/ember-charts/#/time-series](http://opensource.addepar.com/ember-charts/#/time-series). We can store accelerometer data into an array of previous points and then graph them.
 
 ```bash
+ember install ember-cli-shims
 ember install ember-charts
 ```
 
