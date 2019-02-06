@@ -35,6 +35,13 @@ In a second terminal run:
 ```
 corber proxy run android
 ```
+
+OR
+
+```
+corber proxy build android
+adb -e install -r corber\cordova\platforms\android\app\build\outputs\apk\debug\
+```
 ### Dev tool usage
 
 #### Android Tools
