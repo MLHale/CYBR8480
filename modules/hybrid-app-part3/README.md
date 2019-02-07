@@ -22,7 +22,7 @@ Open a new shell (power shell or CMD if windows), navigate to your code reposito
 In one terminal run
 ```
 corber build --platform=android
-corber server --platform=android
+corber serve --platform=android
 ```
 
 In a second terminal run:
