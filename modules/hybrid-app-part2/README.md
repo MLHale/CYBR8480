@@ -29,7 +29,7 @@ If all goes well you should see a terminal running ember (leave it running).
 Windows users: If corber start does not work, you can do the following:
 In one terminal run
 ```
-corber server --platform=android
+corber serve --platform=android
 ```
 
 In a second terminal run:
