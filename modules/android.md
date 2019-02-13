@@ -2,9 +2,9 @@
 I am a firm believer in not reinventing the wheel. Android is a well documented framework that has a variety of solid content (slides and tutorials). This lab uses open source materials from [@vogella](https://github.com/vogellacompany).
 
 ### First task
-Go to [http://www.vogella.com/tutorials/Android/article.html](http://www.vogella.com/tutorials/Android/article.html) and follow the step-by-step instructions provided to create your first native Android app. The app the guide has you build is a temperature converter that converts to and from farenheit and celcius.
+Go to [http://www.vogella.com/tutorials/Android/article.html](http://www.vogella.com/tutorials/Android/article.html) and follow the step-by-step instructions provided to create your first few native Android apps. The guide provides several exercises. In particular, I would like you to complete exercises 10, 11, and 12. Exercises 10 and 11 have you build a simple hello world app with some icons and a few buttons. Exercises 12 has you build a temperature converter that converts to and from farenheit and celcius.
 
-Ultimately you app should end up looking like:
+Ultimately your exercise 12 app should end up looking like:
 
 ![Final app](http://www.vogella.com/tutorials/Android/img/xtemperature96.png.pagespeed.ic.Qf89ajp3Vp.webp)
 
