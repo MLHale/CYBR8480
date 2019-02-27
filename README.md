@@ -41,16 +41,16 @@ All classroom activities will take place in PKI room 259 unless otherwise noted 
 ## Class Topics
 - Getting up to speed
   - Virtualization and Github Labs
-- Introduction to Mobile app Ecosystem ([PDF Lecture PDF](/lectures/1.pdf))
+- Introduction to Mobile app Ecosystem ([Lecture PDF](/lectures/1.pdf))
   - Types of mobile apps
   - Stats: Threat Vectors and vulnerabilities
   - Wearable and IoT Introduction
-- Hybrid app Development ([PDF Lecture PDF](/lectures/lecture2.pdf))
+- Hybrid app Development ([Lecture PDF](/lectures/lecture2.pdf))
   - [Lab Part 1](modules/hybrid-app-part1/README.md)
   - [Lab Part 2](modules/hybrid-app-part2/README.md)
   - [Lab Part 3](modules/hybrid-app-part3/README.md)
   - Reading [Reducing Attack Surface on Cordova-based Hybrid Mobile Apps](https://dl.acm.org/citation.cfm?id=2688417)
-- Native app Development ([PDF - Credit Xin Yang, UC Santa Barbara](http://lbmedia.ece.ucsb.edu/member/uweb/Teaching/website/PPT/01_Intro_Android_Basics.pdf))
+- Native app Development ([Lecture PDF - Credit Xin Yang, UC Santa Barbara](http://lbmedia.ece.ucsb.edu/member/uweb/Teaching/website/PPT/01_Intro_Android_Basics.pdf))
   - Dalvik vs ART architecture [Link to Figure](https://github.com/MLHale/CYBR8480/blob/master/lectures/ART_view.png)
   - Platform Architecture overview from android docs [https://developer.android.com/guide/platform#art](https://developer.android.com/guide/platform#art)
   - Android security design and features [https://source.android.com/security](https://source.android.com/security)
