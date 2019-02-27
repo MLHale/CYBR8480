@@ -1,8 +1,8 @@
 # CYBR 8480 Project Milestone 1: Project Ideation and Requirement Analysis
-**Assigned: Tuesday 2/27/18**
+**Assigned: Wednesday 2/27/19**
 
 ## Due Date
-Monday March (3/12/18) at 11:59PM, Discuss idea at Meeting with Dr. Hale 3/13/17 at assigned time block.
+March 13 (3/13/19) at 11:59PM, Discuss idea with Dr. Hale during class 3/14/19.
 
 ## Points
 180 Project points (15% of overall grade), 40 Participation Points
@@ -204,10 +204,7 @@ Your security analysis will be graded as follows:
 The last element of your grade for Milestone 1, is just talking to Dr. Hale about your idea and getting some feedback. Come prepared to discuss the technology needed, the overall idea, and your initial thoughts for how you will go about achieving it.
 
 ### Submission materials
-No extra materials, come prepared with your submission materials above.
-
-### Grading Criteria
-There is no rubric for this grade, you will get 20 points for coming to the meeting and being prepared.
+No extra materials for the discussion, come prepared with your other submission materials ready though for discussion.
 
 #### License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CYBER4580 and related works</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://faculty.ist.unomaha.edu/mlhale" property="cc:attributionName" rel="cc:attributionURL">Matt Hale</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
