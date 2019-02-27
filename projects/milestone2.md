@@ -5,7 +5,7 @@
 Tuesday April 17th (4/17/17) by class time, Presentation and Demo 4/17/17.
 
 ## Points
-180 Project points (15% of overall grade), 40 Participation Points
+160 Project points (15% of overall grade), 40 Participation Points
 
 ## Overview
 This project milestone tasks you with building a prototype application that addresses your top user stories. This means you will be creating features to support and realize your user stories. The milestone also tasks you with generating relevant documentation associated with design and implementation of your app. Towards this goal, you will be required to submit the following by the due date:
@@ -13,7 +13,7 @@ This project milestone tasks you with building a prototype application that addr
 * [User story realization](#user-story-realization) - Document and describe what was done.
   - Identify tasks achieved in this product increment
   - Bind tasks, code artifacts, and documentation together
-* [Presentation](#presentation) - Demo and discuss your milestone 2 work with Dr. Hale and the class
+* [Demo](#demo) - Demo and discuss your milestone 2 work with Dr. Hale 
 
 **All materials will be submitted on GitHub, be sure to post your slides and a link to your GitHub Repo on canvas.**
 
@@ -37,26 +37,10 @@ Your will be graded as follows:
 
 **Total 120 points.**
 
-## Presentation
-You will be expected to present your Milestone 2 achievements to the class on the submission day. It is important that you use this time to both inform your classmates of your activities and to get feedback. You will be expected to demo your prototype product.
+## Demo
+You must demo your app for Dr. Hale. You should show off the features you've realized so far, as well as speak to the current design problems you are encountering and how you will surmount them.
 
-### Submission Materials
-Submit your slides to Dr. Hale by class time on the day of the presentation. Submit them via canvas.
-
-### Grading Criteria
-Your presentation will be graded using the following rubric:
-
-| | Meets expectations (9-10) | Some Issues (6-8) | Does not meet expectations (0-5)|
-|---|---|---|---|
-| Enthusiasm and clarity | Presenter exhibits enthusiasm about the work and speaks clearly and confidently. | Some issues with clarity and enthusiasm. | Presenter has mumbles, is not clear, and/or does not demonstrate any enthusiasm. |
-| Understanding of product | Presenter understands all aspects presented about the project. | Some gaps in understanding when questioned by audience or routinely looks at team slides |Poor understanding of project. |
-| Relevant information | Engaging relevant information is presented about the project. | Valuable information is presented but there are multiple tangents. | Little valuable information is presented |
-| Explain high level goal(s) | Overall goals are briefly recapped. | Too much time is spend on the goals | Way too much time is spent or goals are not covered at all. |
-| Explain user stories | User stories are quickly re-capped. | Too much time is spent reading off user stories | Way to much time spent or no coverage at all. |
-| Explain architecture | Overall architecture is briefly discussed in terms of important components. | Too much time is spent on the architecture. | Way too much time is spent or no coverage of architecture. |
-
-**Total 60 points.**
-> 40 participation points will also be alotted for attending class on the presentation day.
+This is worth 40 points and is not assessed by a specific rubric.
 
 #### License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CYBER4580 and related works</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://faculty.ist.unomaha.edu/mlhale" property="cc:attributionName" rel="cc:attributionURL">Matt Hale</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
