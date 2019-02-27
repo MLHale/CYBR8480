@@ -54,6 +54,7 @@ All classroom activities will take place in PKI room 259 unless otherwise noted 
   - Dalvik vs ART architecture [Link to Figure](https://github.com/MLHale/CYBR8480/blob/master/lectures/ART_view.png)
   - Platform Architecture overview from android docs [https://developer.android.com/guide/platform#art](https://developer.android.com/guide/platform#art)
   - Android security design and features [https://source.android.com/security](https://source.android.com/security)
+  - Designing for security guide [https://developer.android.com/training/articles/security-tips](https://developer.android.com/training/articles/security-tips)
 - IoT Development primer ([PDF Lecture 4](/lectures/lecture4.pdf))
 - Android / IoT Security Readings
   - P. Faruki et al., "Android Security: A Survey of Issues, Malware Penetration, and Defenses," in IEEE Communications Surveys & Tutorials, vol. 17, no. 2, pp. 998-1022, Secondquarter 2015. doi: [https://doi.org/10.1109/COMST.2014.2386139](https://doi.org/10.1109/COMST.2014.2386139)
