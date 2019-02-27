@@ -41,11 +41,11 @@ All classroom activities will take place in PKI room 259 unless otherwise noted 
 ## Class Topics
 - Getting up to speed
   - Virtualization and Github Labs
-- Introduction to Mobile app Ecosystem ([PDF Lecture 1](/lectures/1.pdf))
+- Introduction to Mobile app Ecosystem ([PDF Lecture PDF](/lectures/1.pdf))
   - Types of mobile apps
   - Stats: Threat Vectors and vulnerabilities
   - Wearable and IoT Introduction
-- Hybrid app Development ([PDF Lecture 2](/lectures/lecture2.pdf))
+- Hybrid app Development ([PDF Lecture PDF](/lectures/lecture2.pdf))
   - [Lab Part 1](modules/hybrid-app-part1/README.md)
   - [Lab Part 2](modules/hybrid-app-part2/README.md)
   - [Lab Part 3](modules/hybrid-app-part3/README.md)
@@ -55,7 +55,7 @@ All classroom activities will take place in PKI room 259 unless otherwise noted 
   - Platform Architecture overview from android docs [https://developer.android.com/guide/platform#art](https://developer.android.com/guide/platform#art)
   - Android security design and features [https://source.android.com/security](https://source.android.com/security)
   - Designing for security guide [https://developer.android.com/training/articles/security-tips](https://developer.android.com/training/articles/security-tips)
-- IoT Development primer ([PDF Lecture 4](/lectures/iot-and-wearables.pdf))
+- IoT Development primer ([Lecture PDF](/lectures/iot-and-wearables.pdf))
 - Android / IoT Security Readings
   - P. Faruki et al., "Android Security: A Survey of Issues, Malware Penetration, and Defenses," in IEEE Communications Surveys & Tutorials, vol. 17, no. 2, pp. 998-1022, Secondquarter 2015. doi: [https://doi.org/10.1109/COMST.2014.2386139](https://doi.org/10.1109/COMST.2014.2386139)
   - M. M. Hossain, M. Fotouhi and R. Hasan, "Towards an Analysis of Security Issues, Challenges, and Open Problems in the Internet of Things," 2015 IEEE World Congress on Services, New York City, NY, 2015, pp. 21-28. doi: [https://doi.org/10.1109/SERVICES.2015.12](https://doi.org/10.1109/SERVICES.2015.12)
