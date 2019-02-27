@@ -51,7 +51,8 @@ All classroom activities will take place in PKI room 259 unless otherwise noted 
   - [Lab Part 3](modules/hybrid-app-part3/README.md)
   - Reading [Reducing Attack Surface on Cordova-based Hybrid Mobile Apps](https://dl.acm.org/citation.cfm?id=2688417)
 - Native app Development ([PDF - Credit Xin Yang, UC Santa Barbara](http://lbmedia.ece.ucsb.edu/member/uweb/Teaching/website/PPT/01_Intro_Android_Basics.pdf))
-  - Dalvik vs ART architecture [Figure](https://github.com/MLHale/CYBR8480/blob/master/lectures/ART_view.png)
+  - Dalvik vs ART architecture [Link to Figure](https://github.com/MLHale/CYBR8480/blob/master/lectures/ART_view.png)
+  - Native-level security design features [https://source.android.com/security/overview/kernel-security.html](https://source.android.com/security/overview/kernel-security.html)
 - IoT Development primer ([PDF Lecture 4](/lectures/lecture4.pdf))
 - Android / IoT Security Readings
   - P. Faruki et al., "Android Security: A Survey of Issues, Malware Penetration, and Defenses," in IEEE Communications Surveys & Tutorials, vol. 17, no. 2, pp. 998-1022, Secondquarter 2015. doi: [https://doi.org/10.1109/COMST.2014.2386139](https://doi.org/10.1109/COMST.2014.2386139)
