@@ -5,7 +5,7 @@
 March 13 (3/13/19) at 11:59PM, Discuss idea with Dr. Hale during class 3/14/19.
 
 ## Points
-180 Project points (15% of overall grade), 40 Participation Points
+180 Project points (15% of overall grade), 10 Participation Points
 
 ## Overview
 This project milestone tasks you with developing and expressing a project idea, identifying its requirements, and then analyzing them to determine needed resources and a project management plan for the rest of the semester. Towards this goal, you will be required to submit the following by the due date:
