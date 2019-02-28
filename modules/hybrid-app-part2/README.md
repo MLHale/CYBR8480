@@ -1415,7 +1415,7 @@ alert("Cordova version: " + device.cordova + "\n" +
 });
 ```
 ## Authors  
-Ronald Ramirez
+Ronald Ramirez (see more: https://github.com/ramirezronald/CYBR8480-hybrid-app-part2)
 
 ###### Note - My app is a continuation to the previous author: Sai Guru Karthik Damuluri, who also used the same Cordova plugin. My new additions provide a more appealing look as well as a sound effect when clicking on the button.  
 
