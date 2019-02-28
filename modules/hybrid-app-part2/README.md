@@ -1961,6 +1961,38 @@ export default Component.extend({
 });
 ```
 
+#### Author 
+Patrick Peters
+#### Plugin Name (which plugin did you look at?)
+cordova-plugin-device: [Link](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-device/)
+#### Usage
+Step 1: Add cordova plugin to project
+**make sure you are inside your project folders!**
+```bash
+corber plugin add cordova-plugin-device
+```
+Once you add the plugin, make sure you rebuild your project files!
+```bash
+corber build --platform=android
+corber start --platform=android
+```
+Step 2: Generate the plugin template files with ember
+```bash
+ember generate component device-display
+```
+This generates the hbs and js template files we will use in our project. 
+
+Step 3: Now open the application.hbs file in /app/templates/application.hbs
+Raw Code below:
+```hbs
+Device info For Days (or just right now)
+{{device-display}}
+```
+
+Step 4: Open up the device-display
+
+
+
 [Top](#table-of-contents)
 
 ### Next time we explore vulnerabilities and exploitations in hybrid apps.
