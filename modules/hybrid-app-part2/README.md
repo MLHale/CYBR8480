@@ -1989,8 +1989,57 @@ Device info For Days (or just right now)
 {{device-display}}
 ```
 
-Step 4: Open up the device-display
+Step 4: Open up the device-display hbs file (/app/templates/components/device-display.hbs) to prepare it for the info we'll grab from the plugin. You can put whatever you'd like here, this is what I put. Make sure to save your work!
+Raw Code below
+```hbs
+This is a model {{model}}, <br/> 
+which is made by {{manufacturer}} running the {{platform}} platform<br/>
+The Unique Identifier for this phone is {{uuid}} and it is running {{isVirtual}}<br/>
+This device has a serial number of {{serial}}<br/>
+```
 
+Step 5: Open up the device-display js file (/app/components/device-display.js), and add the following, then save.
+Code below:
+```js
+import Component from '@ember/component';
+
+export default Component.extend({
+	model: 'unknown',
+	device: 'who knows',
+	manufacturer: 'evilcorp',
+	platform:'skynet',
+	uuid:'43110-808',
+	isVirtual: 'away',
+	serial:'cheerios',
+	init: function(){
+		this._super(...arguments);
+		this.updateDeviceData(this);
+	},
+	updateDeviceData(component){
+			//wrapper to preserve binding satisfaction
+			try //invoke cordova device plugin and get the device information to replace my garbage
+			{
+				component.set('model', device.model);
+				component.set('device', device.device);
+				component.set('manufacturer', device.manufacturer);
+				component.set('platform', device.platform);
+				component.set('uuid', device.uuid);
+				component.set('serial', device.serial);
+				if(device.isVirtual==true)
+					component.set('isVirtual', 'Virtually');
+				else if (device.isVirtual==false)
+					component.set('isVirtual', 'Physically');
+				
+			}
+			catch(err)
+			{
+				console.log('error' + err);
+			}
+		
+	}
+});
+```
+This uses the Cordova plugin to query the device, and assign the variables we setup in the hbs template file. I noticed that when using a virtual device, the device.device call doesn't actually assign anything, so you might want to avoid using that in your app or in any attacks you are setting up against your app. Other than that, once you save the code, you should be good to go for testing!
 
 
 [Top](#table-of-contents)
