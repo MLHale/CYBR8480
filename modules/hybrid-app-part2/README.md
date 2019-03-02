@@ -1982,7 +1982,7 @@ Sanjar Hamidi
 
 #### Usage
 
-* Status Bar: 
+* Status Bar: Follow the steps below to install and use this plugin 
   * Install plugin:
      ```hbs
     cordova plugin add cordova-plugin-statusbar
@@ -1996,7 +1996,7 @@ Sanjar Hamidi
        ```
        * You can change the preferences, the first preference can be set to "true" or "false". True will show the status bar and false will hide it. The second preference will change the color of the status bar only while using the hybrid app. The value "00E5FF" is for a turquoise color; you can replace that with any valid Hex color code in android of your chosing. 
        
-* Splashscreen:
+* Splashscreen: Follow the steps below to install and use this plugin
   * Install plugin: 
      ```hbs
     cordova plugin add cordova-plugin-splashscreen
