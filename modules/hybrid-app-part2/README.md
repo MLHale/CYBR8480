@@ -1963,6 +1963,48 @@ export default Component.extend({
 
 [Top](#table-of-contents)
 
+
+Authors
+Sriram Srinivasan
+
+Plugin Name (which plugin did you look at?)
+Battery 
+
+Usage
+ Run the following commands- 
+ cordova plugin add cordova-plugin-battery-status
+ ember generate component battery-display
+ 
+ app/component/battery-display.js
+ ``` JavaScript
+ import Component from '@ember/component';
+
+export default Ember.Component.extend({
+  lvl: 0,
+  on: true,
+  startLogging: function(){
+      var component = this;
+      this.onBatteryStatus(component);
+  }.on('init'),
+  onBatteryStatus: function (component) {
+     navigator.getBattery().then(function(battery){
+     component.set('lvl', battery.level * 100);
+     component.set('plugged', battery.isPlugged);
+     });
+  }
+});
+ 
+ 
+ ```
+ Update app/templates/components/battery-display.hbs
+  ```
+  Battery Level: {{lvl}} % <br>
+Battery Plugged: {{plugged}} <br>
+
+  
+   ```
+ 
+
 ### Next time we explore vulnerabilities and exploitations in hybrid apps.
 
 #### License
