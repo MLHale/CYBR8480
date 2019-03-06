@@ -1975,5 +1975,69 @@ Emily Mays
 #### Plugin Name (which plugin did you look at?)
 cordova-plugin-network-information
 
-#### Usage
-1. blah, blah, and blah
+#### 1. Install Cordova Plugin
+```bash
+cordova plugin add cordova-plugin-network-information
+
+#### 2. Generate Ember Component
+```bash
+ember generate component network-display
+```
+
+#### 3. Edit the following files:
+#### 3a. application.hbs
+Calls the network-display component.
+```hbs
+ Network Display Plugin
+ {{network-display}}
+ {{outlet}}
+```
+#### 3b. network-display.hbs
+````hbs
+You are using a {{networkType}} network <br>
+{{notification}}
+````
+#### 3c. network-display.js
+````javascript
+import Component from '@ember/component';
+import { later } from '@ember/runloop';
+
+export default Component.extend({
+  networkType: 'Unknown Network',
+  notification: 'No notification',
+  on: true,
+  init: function() {
+    this._super(...arguments);
+    this.checkConnections(this);
+  },
+  checkConnections: function(scope) {
+    later(function() {
+      let newNetworkState = navigator.connection.type;
+      if(newNetworkState !== scope.get('networkType')){
+        if(scope.get('networkType') !== 'Unknown Network') {
+          navigator.notification.alert(
+            'Your connection type has changed. You are now using ' + newNetworkState + '.',
+            scope.alertDismissed,
+            'Connection Changed',
+            'Ok'
+          );
+        }
+        if(newNetworkState !== 'wifi') {
+          scope.set('notification', 'Offline');
+        }
+        else {
+          scope.set('notification', 'Online');
+        }
+      }
+
+      scope.set('networkType', newNetworkState);
+
+      if(scope.get('on')){
+        scope.checkConnections(scope); //recurse
+      }
+    }, 100);
+  },
+  alertDismissed: function(scope) {
+
+  }
+});
