@@ -1,8 +1,8 @@
 # CYBR 8480 Project Milestone 2: Prototype development
-**Assigned: Tuesday 3/27/18**
+**Assigned: Wednesday 3/27/19**
 
 ## Due Date
-Tuesday April 17th (4/17/17) by class time, Presentation and Demo 4/17/17.
+Tuesday April 17th (4/17/19) by class time, Demo with Dr. Hale 4/17/19.
 
 ## Points
 160 Project points (15% of overall grade), 40 Participation Points
