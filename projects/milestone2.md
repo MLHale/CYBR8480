@@ -30,7 +30,7 @@ Your will be graded as follows:
 |---|---|---|---|
 | Effort and progress | It is clear that the individual/team has made non-trivial effort and progress towards user story realization.| There is some evidence of effort and progress, but more could have been done in the time. | Little effort or progress was made towards user story realization.|
 | Documentation | Code artifacts and tasks are documented well. Documentation is clear and illustrative. | Some code is documented, but large portions are not. | Little or no documentation.|
-| Prototype Demo* | The product is successfully demoed for Dr. Hale and the class. The individual/team addresses and handles questions well. | The demo partially works, but there are some significant issues. | Many significant issues or non-functional prototype.|
+| Outcomes | The product has clear outcomes delivered in this milestone. | Some outcomes are clear | Many significant issues or non-functional prototype.|
 
 
 > `*` Note that Demos may include videos if the conditions necessary to replicate the demo cannot be re-created in a live in-class demo.
@@ -40,7 +40,9 @@ Your will be graded as follows:
 ## Demo (Participation)
 You must demo your app for Dr. Hale. You should show off the features you've realized so far, as well as speak to the current design problems you are encountering and how you will surmount them.
 
-This is worth 40 points and is not assessed by a specific rubric.
+| | Meets expectations (33-40) | Some Issues (25-32) | Does not meet expectations (0-24) |
+|---|---|---|---|
+| Prototype Demo* | The product is successfully demoed for Dr. Hale and the class. The individual/team addresses and handles questions well. | The demo partially works, but there are some significant issues. | Many significant issues or non-functional prototype.|
 
 #### License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CYBER4580 and related works</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://faculty.ist.unomaha.edu/mlhale" property="cc:attributionName" rel="cc:attributionURL">Matt Hale</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
