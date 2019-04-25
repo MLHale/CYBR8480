@@ -5,7 +5,7 @@
 Tuesday April 17th (4/17/19) by class time, Demo with Dr. Hale 4/17/19.
 
 ## Points
-160 Project points (15% of overall grade), 40 Participation Points
+120 Project points (15% of overall grade), 40 Participation Points
 
 ## Overview
 This project milestone tasks you with building a prototype application that addresses your top user stories. This means you will be creating features to support and realize your user stories. The milestone also tasks you with generating relevant documentation associated with design and implementation of your app. Towards this goal, you will be required to submit the following by the due date:
@@ -37,7 +37,7 @@ Your will be graded as follows:
 
 **Total 120 points.**
 
-## Demo
+## Demo (Participation)
 You must demo your app for Dr. Hale. You should show off the features you've realized so far, as well as speak to the current design problems you are encountering and how you will surmount them.
 
 This is worth 40 points and is not assessed by a specific rubric.
