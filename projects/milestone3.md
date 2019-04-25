@@ -1,7 +1,7 @@
 ## CYBR 8480 Project Milestone 3: Final Polish and Packaging
 
 ### Due Date
-Wednesday May 1st (5/1/18) at 11:59PM, Presentation and Demo 5/1/19 during class time @7:30pm.
+Wednesday May 1st (5/1/18) at 11:59PM, Presentation and Demo 5/1/19 during class time @5:30pm.
 
 ### Overview
 This project milestone tasks you with polishing your overall application and packaging your product for release. The components of the Final Milestone include:
