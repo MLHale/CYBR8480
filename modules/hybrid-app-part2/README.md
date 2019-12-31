@@ -1960,6 +1960,43 @@ export default Component.extend({
 
 });
 ```
+Authors:
+Marvin Roe
+Plugin Name:
+Cordova plugin vibration   https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-vibration/index.html
+This plugin uses global objects including {navigator.vibrate}. The plugin has global scope, but will not work until a {deviceready} event occurs. The coding for that is included below.
+Usage:
+1.	Install Cordova plugin;
+cordova plugin add cordova-plugin-vibration
+
+2.	The plugin device ready event listener code;
+
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    	console.log(navigator.vibrate);
+}
+
+
+3.	Length of time;
+You can set the time duration two different ways 
+a.	navigator.vibrate(time)
+b.	navigator.vibrate([time])
+
+4.	IOS has a set time and will ignore any given time so
+navigator.vibrate(3000); //will be ignored and will run for the set time
+
+5.	Windows has a max time at 5000ms {5s} so
+navigator.vibrate(8000);// will be truncated to 5000ms {5s}
+
+6.	Android and Windows can use a pattern
+navigator.vibrate(pattern);// will not work for IOS at this time
+
+7.	Ending the vibrate.
+This is not supported by IOS. This code is only needed for Android and Windows.
+
+navigator.vibrate(0)
+navigator.vibrate([])
+navigator.vibrate([0])
 
 [Top](#table-of-contents)
 
