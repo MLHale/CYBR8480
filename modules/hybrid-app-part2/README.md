@@ -1967,3 +1967,77 @@ export default Component.extend({
 
 #### License
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">CYBER8480 and related works</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://faculty.ist.unomaha.edu/mlhale" property="cc:attributionName" rel="cc:attributionURL">Matt Hale</a> are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+
+
+#### Authors
+Emily Mays
+
+#### Plugin Name (which plugin did you look at?)
+cordova-plugin-network-information
+
+#### 1. Install Cordova Plugin
+```bash
+cordova plugin add cordova-plugin-network-information
+
+#### 2. Generate Ember Component
+```bash
+ember generate component network-display
+```
+
+#### 3. Edit the following files:
+#### 3a. application.hbs
+Calls the network-display component.
+```hbs
+ Network Display Plugin
+ {{network-display}}
+ {{outlet}}
+```
+#### 3b. network-display.hbs
+````hbs
+You are using a {{networkType}} network <br>
+{{notification}}
+````
+#### 3c. network-display.js
+````javascript
+import Component from '@ember/component';
+import { later } from '@ember/runloop';
+
+export default Component.extend({
+  networkType: 'Unknown Network',
+  notification: 'No notification',
+  on: true,
+  init: function() {
+    this._super(...arguments);
+    this.checkConnections(this);
+  },
+  checkConnections: function(scope) {
+    later(function() {
+      let newNetworkState = navigator.connection.type;
+      if(newNetworkState !== scope.get('networkType')){
+        if(scope.get('networkType') !== 'Unknown Network') {
+          navigator.notification.alert(
+            'Your connection type has changed. You are now using ' + newNetworkState + '.',
+            scope.alertDismissed,
+            'Connection Changed',
+            'Ok'
+          );
+        }
+        if(newNetworkState !== 'wifi') {
+          scope.set('notification', 'Offline');
+        }
+        else {
+          scope.set('notification', 'Online');
+        }
+      }
+
+      scope.set('networkType', newNetworkState);
+
+      if(scope.get('on')){
+        scope.checkConnections(scope); //recurse
+      }
+    }, 100);
+  },
+  alertDismissed: function(scope) {
+
+  }
+});
