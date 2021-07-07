@@ -1961,6 +1961,60 @@ export default Component.extend({
 });
 ```
 
+#### Authors
+
+Sanjar Hamidi
+
+#### Plugin Name (which plugin did you look at?)
+
+* [Status Bar:](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-statusbar/index.html) The StatusBar object provides some functions to customize the iOS and Android StatusBar.
+* [Splashscreen:](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-splashscreen/index.html) This plugin displays and hides a splash screen during application launch.
+
+#### Usage
+
+* Status Bar: Follow the steps below to install and use this plugin 
+  * Install plugin:
+     ```hbs
+    cordova plugin add cordova-plugin-statusbar
+    ```
+  * Add the following to your hybridapp config file, the config.xml is under User/(your-user-name)/hybridapp/corber/cordova/config.xml
+     ```hbs
+       <plugin name="cordova-plugin-statusbar" spec="^2.4.2"/>
+       
+       <preference name="StatusBarOverlaysWebView" value="true"/>
+       <preference name="StatusBarBackgroundColor" value="#00e5ff"/>
+       ```
+       * You can change the preferences, the first preference can be set to "true" or "false". True will show the status bar and false will hide it. The second preference will change the color of the status bar only while using the hybrid app. The value "00E5FF" is for a turquoise color; you can replace that with any valid Hex color code in android of your chosing. 
+       
+* Splashscreen: Follow the steps below to install and use this plugin
+  * Install plugin: 
+     ```hbs
+    cordova plugin add cordova-plugin-splashscreen
+    ```
+  * Add the following to your hybridapp config file, the config.xml is under User/(your-user-name)/hybridapp/corber/cordova/config.xml
+     ```hbs
+       <plugin name="cordova-plugin-splashscreen" spec="^5.0.2"/>
+   
+      <platform>
+          <splash density="land-hdpi" src="res/screen/splash-image/img.png"/>
+          <splash density="land-ldpi" src="res/screen/splash-image/img.png"/>
+          <splash density="land-mdpi" src="res/screen/splashscreen/img.png"/>
+          <splash density="land-xhdpi" src="res/screen/splashscreen/img.png"/>
+          <splash density="land-hdpi" src="res/screen/splash-image/img.png"/>
+          <splash density="land-ldpi" src="res/screen/splash-image/img.png"/>
+          <splash density="land-mdpi" src="res/screen/splashscreen/img.png"/>
+          <splash density="land-xhdpi" src="res/screen/splashscreen/img.png"/>
+          <preference name="SplashScreenDelay" value="3000"/>
+          <preference name="SplashMaintainAspectRatio" value="true"/>
+          <preference name="SplashShowOnlyFirstTime" value="true"/>
+          <preference name="FadeSplashScreen" value="false"/>
+      </platform>
+      ```
+     * img.png is the image I've added to my app's splash screen. Make sure you add your image to the correct folder or this plugin will not work! (I spend a couple hours trying to figure-out where to add my image lol). 
+     * The preferences can me modified, e.g., "SplashScreenDelay" is in miliseconds; so the value "3000" will display your image before loading the app for 3 seconds. The rest of the preferences are described in the plugin's [cordova doumentation](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-splashscreen/index.html). And there are more preferences if you choose to add them. Have fun!
+     
+   
+
 [Top](#table-of-contents)
 
 ### Next time we explore vulnerabilities and exploitations in hybrid apps.
