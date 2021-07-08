@@ -1961,6 +1961,72 @@ export default Component.extend({
 });
 ```
 
+#### Authors
+Gary Roth
+
+#### Plugin Name
+[solidaridad-plugin-calendar](https://www.npmjs.com/package/solidaridad-plugin-calendar)
+
+This plugin allows you to manipulate the native calendar.
+
+#### Usage
+
+##### 1. Install the plugin
+```ps
+corber plugin add cordova-plugin-calendar
+```
+
+##### 2. Generate the Ember component
+```ps
+ember generate component calendar-display
+```
+
+##### 3. Edit the necessary files
+
+###### 3a. /app/templates/application.hbs
+```hbs
+{{calendar-display}}
+```
+
+###### 3b. /app/template/components/calendar-display.hbs
+I created a few buttons to to execute functions to interact with the calendar.
+```hbs
+<button {{action "CreateEvent"}}>Create Event</button>
+<button {{action "DeleteEvent"}}>Delete Event</button>
+<button {{action "OpenCalendar"}}>Open Calendar</button>
+```
+###### 3c. /app/components/calendar-display.js
+Define the calendar event variables required for function calls to the plugin. I just hard coded values in for this, but you could set them to values that a user enters in various textboxes. It's important to note that when creating a Date object that the month is zero-based, i.e. January is 0 and December is 11. The plugin is designed to be used for both iOS and Android apps. Some function calls are specfic to one or the other. Since the example is using buttons, plugin function calls are housed within functions defined for 'actions' which is called when the user clicks one of the buttons. Aside from creating and deleting calendar events and opening the native calendar app, there are additional function calls for modifying an event, finding an event, listing all events in a date range, and creating and deleting entire calendars. 
+```js
+import Component from '@ember/component';
+
+export default Component.extend({
+	startDate: new Date(2019,2,15,18,30,0,0,0),
+	endDate: new Date(2019,2,15,19,30,0,0,0),
+	title: "Leverage Toys 20% Off Sale",
+	eventLocation: "PKI 259",
+	notes: "Pick up Dr. Hale plush toy",
+	success: function(message) { alert("Success: " + JSON.stringify(message)); },
+	error: function(message) { alert("Error: " + message); },
+	actions: {
+		CreateEvent() {
+			window.plugins.calendar.createEvent(this.title,this.eventLocation,this.notes,this.startDate,this.endDate,this.success,this.error);
+		},
+		DeleteEvent() {
+			// The dates are mandatory and represent a date range to delete events in. Other parameters can be null.
+			// Since 4.3.0 you can match events starting with a prefix title, so if the event title is 'My app - cool event' then 'My app -' will match.
+			window.plugins.calendar.deleteEvent(this.title,this.eventLocation,this.notes,this.startDate,this.endDate,this.success,this.error);
+		},
+		OpenCalendar() {
+			window.plugins.calendar.openCalendar();
+		}	
+	},
+	init: function(){
+		this._super(...arguments);
+	},
+});
+```
+
 [Top](#table-of-contents)
 
 ### Next time we explore vulnerabilities and exploitations in hybrid apps.
